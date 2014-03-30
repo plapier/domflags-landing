@@ -1,0 +1,27 @@
+%open-domflags {
+  @include animation(open-domflags 0.1s $ease-out-cubic);
+  @include animation-fill-mode(forwards);
+  @include animation-delay(0.3s);
+}
+
+@include keyframes(open-domflags) {
+  0% {
+    width: 0px;
+  }
+  100% {
+    width: 314px;
+  }
+}
+
+%selected-node {
+  @include animation(selected-node 0.55s $ease-in-sine);
+  @include animation-delay(0.25s);
+  // @include animation-fill-mode(forwards);
+  // @include transform-origin(top left);
+}
+
+@include keyframes(selected-node) {
+  50% {
+    @include transform(scale(1.2));
+  }
+}

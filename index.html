@@ -1,0 +1,44 @@
+---
+title: Another Test
+tags: [Jekyll]
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>DomFlags</title>
+    <link rel="stylesheet" href="stylesheets/application.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="js/application.js"></script>
+  </head>
+  <body>
+    <section class="main">
+      <section class="browser">
+        <div class="header">
+          <div class="browser-button"></div>
+          <div class="browser-button"></div>
+          <div class="browser-button"></div>
+        </div>
+
+        <div class="body">
+        </div>
+
+        <section class="devtools">
+          <div class="domflags-panel">
+            <header>DOMFLAGS</header>
+            <ol>
+              <li>SECTION class="browser"</li>
+              <li>SECTION class="browser"</li>
+              <li>SECTION class="browser"</li>
+            </ol>
+          </div>
+          <div class="dom-tree">
+            {% include dom-tree.html %}
+          </div>
+          <div class="dom-properties">
+          </div>
+        <section>
+      </section>
+    </section>
+  </body>
+</html>
