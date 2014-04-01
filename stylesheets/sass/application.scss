@@ -3,9 +3,6 @@
 @import 'animations';
 
 @import 'syntax';
-// @import 'colorful';
-// @import 'default';
-// @import 'github';
 
 body, html {
   margin: 0;
@@ -17,6 +14,7 @@ body, html {
 }
 
 .browser {
+  border: 1px solid hsla(0, 0%, 0%, 0.24);
   background: $browser-bg;
   border-radius: 4px;
   height: 80vh;
@@ -25,7 +23,7 @@ body, html {
   position: relative;
 
   .header {
-    background: hsla(0, 0%, 0%, 0.05);
+    background: #E1E1E1;
     line-height: 0;
     padding: 12px;
     padding-left: 15px;
@@ -45,19 +43,32 @@ body, html {
   }
 }
 
+$devtools-height: 300px;
+.devtool-toolbar {
+  background: #efefef;
+  border-bottom: 1px solid #bbb;
+  z-index: 1;
+  border-top: 1px solid #ccc;
+  @include flex(1 100%);
+  height: 26px;
+  @include position(absolute, null null $devtools-height null);
+  width: 100%;
+}
+
 .devtools {
   background: #fff;
+  @include display(flex);
   height: 300px;
   @include position(absolute, null 0 0 0);
-  box-shadow: inset 0 -2px 0 $browser-bg;
-  @include display(flex);
 
   .domflags-panel {
-    @extend %open-domflags;
+    // @extend %open-domflags;
     background: #D6DDE5;
     font-family: $lucida-grande;
     font-size: 12px;
-    width: 0;
+    width: 314px;
+    box-shadow: inset -1px 0 0 hsla(0, 0%, 0%, 0.2);
+    -webkit-font-smoothing: subpixel-antialiased;
 
     header {
       text-transform: uppercase;
@@ -75,7 +86,6 @@ body, html {
     }
 
     ol {
-
       li {
         cursor: pointer;
         display: block;
@@ -86,7 +96,7 @@ body, html {
         text-overflow: ellipsis;
         white-space: nowrap;
 
-        &:hover {
+        &:hover, &.active {
           background-color: #3779D9;
           color: #FFF;
           text-shadow: rgba(0, 0, 0, 0.33) 0px 1px 0px;
@@ -123,9 +133,13 @@ body, html {
       position: relative;
       z-index: 1;
 
-      &.selected {
-        // overflow: hidden;
+      > span {
+        // Fix for animation not working
+        display: inline-block;
+        line-height: 1em;
+      }
 
+      &.selected {
         &, * {
           color: #fff !important;
         }
@@ -158,6 +172,7 @@ body, html {
   }
 
   .dom-properties {
+    box-shadow: -1px 0 0 hsla(0, 0%, 0%, 0.2);
     background: hsla(0, 0%, 0%, 0.04);
     width: 200px;
   }

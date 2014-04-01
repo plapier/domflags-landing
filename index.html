@@ -8,7 +8,9 @@ tags: [Jekyll]
     <meta charset="utf-8">
     <title>DomFlags</title>
     <link rel="stylesheet" href="stylesheets/application.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.11/jquery.scrollTo.min.js"></script>
+    <script src="js/visibility.js"></script>
     <script src="js/application.js"></script>
   </head>
   <body>
@@ -23,13 +25,14 @@ tags: [Jekyll]
         <div class="body">
         </div>
 
+        <div class="devtool-toolbar"></div>
         <section class="devtools">
           <div class="domflags-panel">
             <header>DOMFLAGS</header>
             <ol>
-              <li>SECTION class="browser"</li>
-              <li>SECTION class="browser"</li>
-              <li>SECTION class="browser"</li>
+              <li class="flag">DIV class="header"</li>
+              <li class="flag">SECTION class="devtools"</li>
+              <li class="flag">DIV class="dom-properties"</li>
             </ol>
           </div>
           <div class="dom-tree">

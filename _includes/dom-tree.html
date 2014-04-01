@@ -1,16 +1,31 @@
 {% highlight html lineanchors=anchor linespans=line %}
-<section class="devtools" domflag>
-  <div class="domflags-panel">
-    <header>DOMFLAGS</header>
-    <ol>
-      <li>SECTION class="browser"</li>
-      <li>SECTION class="browser"</li>
-      <li>SECTION class="browser"</li>
-    </ol>
-  </div>
-  <div class="dom-tree" domflag>
-  </div>
-  <div class="dom-properties" domflag>
-  </div>
-<section>
+<!DOCTYPE html>
+<html lang="en">
+  <head></head>
+  <body>
+    <section class="main">
+      <section class="browser">
+        <div class="header" domflag>
+          <div class="browser-button"></div>
+          <div class="browser-button"></div>
+          <div class="browser-button"></div>
+        </div>
+        <div class="body">..</div>
+        <div class="devtool-toolbar"></div>
+        <section class="devtools" domflag>
+          <div class="domflags-panel">
+            <header>DOMFLAGS</header>
+            <ol>
+              <li>DIV class="header"</li>
+              <li>SECTION class="devtools"</li>
+              <li>LI class="flag"</li>
+            </ol>
+          </div>
+          <div class="dom-tree">..</div>
+          <div class="dom-properties" domflag>..</div>
+        <section>
+      </section>
+    </section>
+  </body>
+</html>
 {% endhighlight %}
