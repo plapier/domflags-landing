@@ -19,7 +19,6 @@ body, html {
   border-radius: 4px;
   height: 80vh;
   min-height: 400px;
-  overflow: hidden;
   position: relative;
 
   .header {
@@ -96,10 +95,17 @@ $devtools-height: 300px;
         text-overflow: ellipsis;
         white-space: nowrap;
 
-        &:hover, &.active {
-          background-color: #3779D9;
+        &:hover {
+          background-color: darken(#D6DDE5, 3%);
+          box-shadow: inset -1px 0 0 hsla(0, 0%, 0%, 0.1);
+        }
+
+        &.active {
+          $bg: #3779D9;
+          background-color: $bg;
           color: #FFF;
           text-shadow: rgba(0, 0, 0, 0.33) 0px 1px 0px;
+          box-shadow: -1px 0 0 $bg;
         }
       }
     }
