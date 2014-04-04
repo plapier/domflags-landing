@@ -669,7 +669,7 @@ body, html {
   background-color: #97B4C6; }
 
 .bg {
-  background: url("/images/bg-sm.jpg");
+  background: url("../images/bg-sm.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   bottom: 0;

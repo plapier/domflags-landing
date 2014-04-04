@@ -11,7 +11,7 @@ body, html {
 
 .bg {
   // @include filter(blur(1px));
-  background: url('/images/bg-sm.jpg');
+  background: url('../images/bg-sm.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   bottom: 0;
