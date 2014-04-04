@@ -8,16 +8,30 @@ body, html {
   margin: 0;
 }
 
+.bg {
+  // @include filter(blur(2px));
+  background: url('/images/bg.jpg');
+  background: url('/images/bg-sm.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 .main {
   padding: 10vh 10%;
-  background: #fff;
+  background-color: #fff;
 }
 
 .browser {
-  border: 1px solid hsla(0, 0%, 0%, 0.24);
+  // border: 1px solid hsla(0, 0%, 0%, 0.4);
+  box-shadow: 0 2px 5px 1px hsla(0, 0%, 0%, 0.3);
   background: $browser-bg;
-  border-radius: 4px;
-  height: 80vh;
+  border-radius: $browser-radius;
+  height: $browser-height;
   min-height: 400px;
   position: relative;
 
@@ -26,6 +40,8 @@ body, html {
     line-height: 0;
     padding: 12px;
     padding-left: 15px;
+    border-radius: $browser-radius $browser-radius 0 0;
+    overflow: hidden;
   }
 
   .browser-button {
@@ -39,10 +55,44 @@ body, html {
   }
 
   .body {
+    @include background-image(radial-gradient(circle farthest-side at right bottom, #94B9C9, #516994 80%, #324C74));
+    background-repeat: no-repeat;
+    @include box-sizing(border-box);
+    @include calc(height, "#{$browser-height} - #{$devtools-height} - 38px");
+    color: hsla(0, 0%, 100%, 0.9);
+    padding: 9vh 8vw;
+    text-align: center;
+
+    h1 {
+      font-size: 40px;
+      text-transform: uppercase;
+      margin-bottom: 0.3em;
+      letter-spacing: 41.5px;
+      margin-left: 41.5px;
+      font-weight: 700;
+      font-weight: 900;
+    }
+
+    h2 {
+      font-weight: 500;
+      font-weight: 300;
+      font-size: 26px;
+      line-height: 1.5em;
+      margin-bottom: 0.6em;
+    }
+    a {
+      font-family: "brandon-grotesque", $helvetica;
+      display: inline-block;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 8px 50px;
+      border: 3px solid hsla(0, 0%, 100%, 0.9);
+      color: hsla(0, 0%, 100%, 0.9);
+      letter-spacing: 5px;
+    }
   }
 }
 
-$devtools-height: 300px;
 .devtool-toolbar {
   background: #efefef;
   border-bottom: 1px solid #bbb;
@@ -58,16 +108,18 @@ $devtools-height: 300px;
   background: #fff;
   @include display(flex);
   height: 300px;
+  border-radius: 0 0 $browser-radius $browser-radius;
   @include position(absolute, null 0 0 0);
 
   .domflags-panel {
     // @extend %open-domflags;
     background: #D6DDE5;
+    border-radius: 0 0 0 $browser-radius;
+    box-shadow: inset -1px 0 0 hsla(0, 0%, 0%, 0.2);
     font-family: $lucida-grande;
     font-size: 12px;
-    width: 314px;
-    box-shadow: inset -1px 0 0 hsla(0, 0%, 0%, 0.2);
     -webkit-font-smoothing: subpixel-antialiased;
+    width: 314px;
 
     header {
       text-transform: uppercase;
@@ -97,7 +149,7 @@ $devtools-height: 300px;
 
         &:hover {
           background-color: darken(#D6DDE5, 3%);
-          box-shadow: inset -1px 0 0 hsla(0, 0%, 0%, 0.1);
+          box-shadow: inset -1px 0 0 hsla(0, 0%, 0%, 0.2);
         }
 
         &.active {
@@ -105,7 +157,7 @@ $devtools-height: 300px;
           background-color: $bg;
           color: #FFF;
           text-shadow: rgba(0, 0, 0, 0.33) 0px 1px 0px;
-          box-shadow: -1px 0 0 $bg;
+          // box-shadow: -1px 0 0 $bg;
         }
       }
     }
@@ -178,8 +230,10 @@ $devtools-height: 300px;
   }
 
   .dom-properties {
-    box-shadow: -1px 0 0 hsla(0, 0%, 0%, 0.2);
     background: hsla(0, 0%, 0%, 0.04);
+    border-radius: 0 0 $browser-radius 0;
+    box-shadow: -1px 0 0 hsla(0, 0%, 0%, 0.2);
+    @include flex(1);
     width: 200px;
   }
 }
