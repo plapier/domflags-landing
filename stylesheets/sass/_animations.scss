@@ -25,3 +25,17 @@
     @include transform(scale(1.2));
   }
 }
+
+%browser-zoom {
+  @include animation(browser-zoom 1.2s $ease-out-sine 0s forwards);
+  @include transform(scale(0.85));
+}
+
+@include keyframes(browser-zoom) {
+  0% {
+    @include transform(scale(0.85));
+  }
+  100% {
+    @include transform(scale(1));
+  }
+}

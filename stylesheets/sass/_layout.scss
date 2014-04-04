@@ -1,0 +1,47 @@
+body, html {
+  margin: 0;
+}
+
+.browser {
+  @include display(flex);
+  @include flex-direction(column);
+  height: $browser-height;
+  min-height: 400px;
+
+  .body {
+    @include calc(height, "#{$browser-height} - #{$devtools-height} - 38px");
+    @include flex(1);
+    @include display(flex);
+
+    .inner {
+      @include align-self(center);
+      @include flex-direction(column);
+      @include justify-content(center);
+      width: 100%;
+    }
+  }
+}
+
+.devtool-toolbar {
+}
+
+.devtools {
+  @include display(flex);
+  @include flex(1);
+  height: 300px;
+
+  .domflags-panel {
+    // width: 314px;
+    max-width: 314px;
+    @include flex(1.5);
+  }
+
+  .dom-tree {
+    @include flex(3);
+  }
+
+  .dom-properties {
+    @include flex(0.5);
+    max-width: 200px;
+  }
+}

@@ -1,16 +1,16 @@
 @import 'bourbon/bourbon';
 @import 'bitters/bitters';
 @import 'animations';
+@import 'layout';
 
 @import 'syntax';
 
 body, html {
-  margin: 0;
+  background-color: #97B4C6;
 }
 
 .bg {
-  // @include filter(blur(2px));
-  background: url('/images/bg.jpg');
+  // @include filter(blur(1px));
   background: url('/images/bg-sm.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -19,6 +19,7 @@ body, html {
   position: absolute;
   right: 0;
   top: 0;
+  @include image-rendering(optimizeSpeed);
 }
 
 .main {
@@ -27,21 +28,21 @@ body, html {
 }
 
 .browser {
-  // border: 1px solid hsla(0, 0%, 0%, 0.4);
+  @extend %browser-zoom;
   box-shadow: 0 2px 5px 1px hsla(0, 0%, 0%, 0.3);
   background: $browser-bg;
   border-radius: $browser-radius;
-  height: $browser-height;
-  min-height: 400px;
   position: relative;
 
   .header {
-    background: #E1E1E1;
+    $bg: #E1E1E1;
+    background: $bg;
+    @include background-image(linear-gradient(#FAFAFA, $bg));
+    border-radius: $browser-radius $browser-radius 0 0;
     line-height: 0;
+    overflow: hidden;
     padding: 12px;
     padding-left: 15px;
-    border-radius: $browser-radius $browser-radius 0 0;
-    overflow: hidden;
   }
 
   .browser-button {
@@ -57,38 +58,57 @@ body, html {
   .body {
     @include background-image(radial-gradient(circle farthest-side at right bottom, #94B9C9, #516994 80%, #324C74));
     background-repeat: no-repeat;
-    @include box-sizing(border-box);
-    @include calc(height, "#{$browser-height} - #{$devtools-height} - 38px");
-    color: hsla(0, 0%, 100%, 0.9);
-    padding: 9vh 8vw;
+    color: hsla(0, 0%, 100%, 1);
     text-align: center;
 
     h1 {
+      $letter-spacing: 40.5px;
       font-size: 40px;
       text-transform: uppercase;
-      margin-bottom: 0.3em;
-      letter-spacing: 41.5px;
-      margin-left: 41.5px;
-      font-weight: 700;
+      margin-bottom: 0em;
+      letter-spacing: $letter-spacing;
+      margin-left: $letter-spacing;
       font-weight: 900;
     }
 
     h2 {
-      font-weight: 500;
-      font-weight: 300;
+      font-weight: 400;
       font-size: 26px;
       line-height: 1.5em;
-      margin-bottom: 0.6em;
+      margin-bottom: 1.6em;
+
+      @include hidpi {
+        font-weight: 300;
+      }
     }
+
     a {
-      font-family: "brandon-grotesque", $helvetica;
+      $letter-spacing: 16px;
+      $padding-lr: 50px;
+      $color: #214D7A;
+      $color: #ADCCEE;
+      $color: #C6DCF3;
+      border: 2px solid $color;
+      border-radius: 2px;
+      color: $color;
       display: inline-block;
+      font-family: "brandon-grotesque", $helvetica;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: $letter-spacing;
+      padding: 4px $padding-lr;
+      padding-right: $padding-lr - $letter-spacing;
+      text-rendering: optimizeLegibility;
       text-transform: uppercase;
-      font-weight: 700;
-      padding: 8px 50px;
-      border: 3px solid hsla(0, 0%, 100%, 0.9);
-      color: hsla(0, 0%, 100%, 0.9);
-      letter-spacing: 5px;
+      @include transition;
+      width: 406px;
+
+      &:hover {
+        $color: #214D7A;
+        color: darken($color, 5%);
+        border: 2px solid $color;
+      }
+
     }
   }
 }
@@ -97,19 +117,12 @@ body, html {
   background: #efefef;
   border-bottom: 1px solid #bbb;
   z-index: 1;
-  border-top: 1px solid #ccc;
-  @include flex(1 100%);
   height: 26px;
-  @include position(absolute, null null $devtools-height null);
-  width: 100%;
 }
 
 .devtools {
   background: #fff;
-  @include display(flex);
-  height: 300px;
   border-radius: 0 0 $browser-radius $browser-radius;
-  @include position(absolute, null 0 0 0);
 
   .domflags-panel {
     // @extend %open-domflags;
@@ -119,7 +132,6 @@ body, html {
     font-family: $lucida-grande;
     font-size: 12px;
     -webkit-font-smoothing: subpixel-antialiased;
-    width: 314px;
 
     header {
       text-transform: uppercase;
@@ -164,7 +176,6 @@ body, html {
   }
 
   .dom-tree {
-    @include flex(3);
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 5px 0;
@@ -233,7 +244,5 @@ body, html {
     background: hsla(0, 0%, 0%, 0.04);
     border-radius: 0 0 $browser-radius 0;
     box-shadow: -1px 0 0 hsla(0, 0%, 0%, 0.2);
-    @include flex(1);
-    width: 200px;
   }
 }
