@@ -2,6 +2,9 @@ $(document).ready ->
   $domflagsPanel = $('.domflags-panel')
   $domtree = $('.dom-tree')
   $treeDomflags = $domtree.find('span').filter( ->
+    $('#line-2').addClass('non-flaggable')
+    if $(@).hasClass('s')
+      $(@).parent().addClass('flaggable')
     $(@).text() is "domflag"
   )
 
@@ -34,8 +37,19 @@ $(document).ready ->
   $('.dom-tree code > span').find('span:last-of-type').after('<span class="tooltip">Add Domflag</span>')
 
   $('.tooltip').on('click', ->
-    $domflagStr = ' <span class="na domflag-attr">domflag</span>'
-
-    $(@).parent().addClass('.domflag-line').find('span.s').after($domflagStr)
+    $domflagStr = '<span class="na domflag-attr">domflag</span>'
+    if $(@).parent().hasClass('domflag-line')
+      $(@).siblings('.domflag-attr').remove()
+      $(@).parent().removeClass('domflag-line')
+    else
+      elString = []
+      stringArray = $(@).siblings().contents().filter( (index) ->
+        unless @data.match(/\>/g) ## unless closing tag
+          string = @data
+          string = @data.toUpperCase() + " " if index == 0
+          elString.push string.replace(/</g,' ').replace(/\= /, '=') ## formatting cleanup
+      )
+      flagItem = "<li class='flag'>#{elString.join("")}</li>"
+      $('ol.flags').append(flagItem)
+      $(@).parent().addClass('domflag-line').find('span.s').after($domflagStr)
   )
-

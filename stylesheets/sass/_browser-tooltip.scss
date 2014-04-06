@@ -1,6 +1,15 @@
-code > span:hover {
-  .tooltip {
-    opacity: 1;
+code > span {
+  &.flaggable:hover {
+    .tooltip {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+  &.non-flaggable:hover {
+    .tooltip {
+      opacity: 0;
+      pointer-events: none;
+    }
   }
 }
 
@@ -10,11 +19,12 @@ code > span:hover {
   border-radius: 0px;
   color: #FFF;
   cursor: pointer;
+  display: none;
   font-size: 10px;
-  margin-left: 15px;
   margin-top: -1px;
   opacity: 0;
   padding: 3px 7px 2px;
+  pointer-events: none;
   position: absolute;
   right: 0;
   text-transform: uppercase;

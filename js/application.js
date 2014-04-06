@@ -5,6 +5,10 @@
     $domflagsPanel = $('.domflags-panel');
     $domtree = $('.dom-tree');
     $treeDomflags = $domtree.find('span').filter(function() {
+      $('#line-2').addClass('non-flaggable');
+      if ($(this).hasClass('s')) {
+        $(this).parent().addClass('flaggable');
+      }
       return $(this).text() === "domflag";
     });
     $treeDomflags.addClass('domflag-attr').parent().addClass('domflag-line');
@@ -31,9 +35,27 @@
     });
     $('.dom-tree code > span').find('span:last-of-type').after('<span class="tooltip">Add Domflag</span>');
     return $('.tooltip').on('click', function() {
-      var $domflagStr;
-      $domflagStr = ' <span class="na domflag-attr">domflag</span>';
-      return $(this).parent().addClass('.domflag-line').find('span.s').after($domflagStr);
+      var $domflagStr, elString, flagItem, stringArray;
+      $domflagStr = '<span class="na domflag-attr">domflag</span>';
+      if ($(this).parent().hasClass('domflag-line')) {
+        $(this).siblings('.domflag-attr').remove();
+        return $(this).parent().removeClass('domflag-line');
+      } else {
+        elString = [];
+        stringArray = $(this).siblings().contents().filter(function(index) {
+          var string;
+          if (!this.data.match(/\>/g)) {
+            string = this.data;
+            if (index === 0) {
+              string = this.data.toUpperCase() + " ";
+            }
+            return elString.push(string.replace(/</g, ' ').replace(/\= /, '='));
+          }
+        });
+        flagItem = "<li class='flag'>" + (elString.join("")) + "</li>";
+        $('ol.flags').append(flagItem);
+        return $(this).parent().addClass('domflag-line').find('span.s').after($domflagStr);
+      }
     });
   });
 

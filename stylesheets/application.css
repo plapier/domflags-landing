@@ -505,6 +505,8 @@ body, html {
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.2);
   font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
   font-size: 12px;
+  overflow-x: hidden;
+  overflow-y: scroll;
   -webkit-font-smoothing: subpixel-antialiased; }
   .devtools .domflags-panel header {
     text-transform: uppercase;
@@ -560,6 +562,8 @@ body, html {
     .devtools .dom-tree code > span > span {
       display: inline-block;
       line-height: 1em; }
+    .devtools .dom-tree code > span .domflag-attr {
+      margin-left: 5px; }
     .devtools .dom-tree code > span.selected, .devtools .dom-tree code > span.selected * {
       color: #fff !important; }
     .devtools .dom-tree code > span.selected .domflag-attr {
@@ -586,19 +590,24 @@ body, html {
   border-radius: 0 0 4px 0;
   box-shadow: -1px 0 0 rgba(0, 0, 0, 0.2); }
 
-code > span:hover .tooltip {
-  opacity: 1; }
+code > span.flaggable:hover .tooltip {
+  opacity: 1;
+  pointer-events: auto; }
+code > span.non-flaggable:hover .tooltip {
+  opacity: 0;
+  pointer-events: none; }
 
 .tooltip {
   background: rgba(11, 106, 194, 0.8);
   border-radius: 0px;
   color: #FFF;
   cursor: pointer;
+  display: none;
   font-size: 10px;
-  margin-left: 15px;
   margin-top: -1px;
   opacity: 0;
   padding: 3px 7px 2px;
+  pointer-events: none;
   position: absolute;
   right: 0;
   text-transform: uppercase; }

@@ -27,6 +27,8 @@
     box-shadow: inset -1px 0 0 hsla(0, 0%, 0%, 0.2);
     font-family: $lucida-grande;
     font-size: 12px;
+    overflow-x: hidden;
+    overflow-y: scroll;
     -webkit-font-smoothing: subpixel-antialiased;
 
     header {
@@ -108,6 +110,9 @@
         // Fix for animation not working
         display: inline-block;
         line-height: 1em;
+      }
+      .domflag-attr {
+        margin-left: 5px;
       }
 
       &.selected {
