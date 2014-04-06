@@ -1,0 +1,60 @@
+.body {
+  // @include background-image(radial-gradient(circle farthest-side at right bottom, #94B9C9, #516994 80%, #324C74));
+  @include background-image(linear-gradient(to right, rgba(251, 95, 119, 0.73), #FC7967 50%, rgba(252, 203, 68, 0.77)));
+  @include background-image(linear-gradient(to right, rgba(251, 95, 119, 0.66), rgba(252, 121, 103, 0.90) 50%, rgba(252, 203, 68, 0.66)));
+  background: rgba(21, 72, 138, 0.56);
+  background: rgba(27, 144, 211, 0.6);
+  background: rgba(0, 82, 128, 0.8);
+  background: rgba(11, 106, 194, 0.8);
+  background-repeat: no-repeat;
+  color: hsla(0, 0%, 100%, 1);
+  text-align: center;
+
+  h1 {
+    $letter-spacing: 40.5px;
+    font-size: 40px;
+    text-transform: uppercase;
+    margin-bottom: 0em;
+    letter-spacing: $letter-spacing;
+    margin-left: $letter-spacing;
+    font-weight: 900;
+  }
+
+  h2 {
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 1.3em;
+    margin-bottom: 1.3em;
+    margin-bottom: 4.3vh;
+
+    // @include hidpi {
+      // font-weight: 300;
+    // }
+  }
+
+  a {
+    $letter-spacing: 8px;
+    $padding-lr: 50px;
+    $bg-color: rgba(11, 106, 194, 1);
+    $fg-color: #fff;
+    background: $fg-color;
+    border: 2px solid $fg-color;
+    border-radius: 2px;
+    display: inline-block;
+    font-family: "brandon-grotesque", $helvetica;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: $letter-spacing;
+    padding: 4px $padding-lr;
+    padding-right: $padding-lr - $letter-spacing;
+    text-rendering: optimizeLegibility;
+    text-transform: uppercase;
+    @include transition;
+    width: 260px;
+
+    &:hover {
+      color: $fg-color;
+      background: transparent;
+    }
+  }
+}

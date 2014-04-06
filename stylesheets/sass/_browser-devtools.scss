@@ -1,0 +1,154 @@
+.devtools-toolbar {
+  background: #efefef;
+  z-index: 1;
+  height: 0;
+
+  &.open {
+    height: 20px;
+    border-bottom: 1px solid #bbb;
+  }
+}
+
+.devtools {
+  background: #fff;
+  border-radius: 0 0 $browser-radius $browser-radius;
+  overflow: hidden;
+  @include transform(translateZ(0));
+  @include transition(all 0.4s $ease-out-sine);
+}
+
+// DOMFLAGS PANEL
+///////////////////////////////////////////////////////////////////////////
+.devtools {
+  .domflags-panel {
+    // @extend %open-domflags;
+    background: #D6DDE5;
+    border-radius: 0 0 0 $browser-radius;
+    box-shadow: inset -1px 0 0 hsla(0, 0%, 0%, 0.2);
+    font-family: $lucida-grande;
+    font-size: 12px;
+    -webkit-font-smoothing: subpixel-antialiased;
+
+    header {
+      text-transform: uppercase;
+      padding: 9px 14px 1px;
+      color: hsla(0, 0%, 20%, 0.75);
+
+      &:before {
+        background: url('../images/flag.svg') no-repeat;
+        content: "";
+        display: inline-block;
+        height: 12px;
+        width: 11px;
+        margin-right: 10px;
+      }
+    }
+
+    ol {
+      li {
+        cursor: pointer;
+        @include ellipsis;
+        display: block;
+        max-width: 100%;
+        padding: 6px 14px;
+        position: relative;
+
+        &:hover {
+          background-color: darken(#D6DDE5, 3%);
+          box-shadow: inset -1px 0 0 hsla(0, 0%, 0%, 0.2);
+        }
+
+        &.active {
+          $bg: #3779D9;
+          background-color: $bg;
+          color: #FFF;
+          text-shadow: rgba(0, 0, 0, 0.33) 0px 1px 0px;
+          // box-shadow: -1px 0 0 $bg;
+        }
+      }
+    }
+  }
+}
+
+// DOMTREE
+///////////////////////////////////////////////////////////////////////////
+.devtools {
+  .dom-tree {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 5px 0;
+    font-size: 11px;
+    -webkit-font-smoothing: subpixel-antialiased;
+
+    span {
+      font-family: Menlo, monospace;
+    }
+
+    .highlight {
+      background: none;
+    }
+
+    pre {
+      margin: 0;
+    }
+
+    code > span {
+      display: block;
+      line-height: 1.3em;
+      padding: 0 10px;
+      padding-top: 1px;
+      position: relative;
+      z-index: 1;
+
+      &:hover {
+        background-color: #EAF1FB;
+      }
+
+      > span {
+        // Fix for animation not working
+        display: inline-block;
+        line-height: 1em;
+      }
+
+      &.selected {
+        &, * {
+          color: #fff !important;
+        }
+
+        .domflag-attr {
+          @extend %selected-node;
+          position: relative;
+          background: #F36133;
+          padding: 1px 4px;
+          border-radius: 1px;
+          margin-right: 5px;
+        }
+
+        &:before {
+          height: 100%;
+          z-index: -1;
+          @include calc(width, "100% + 20px");
+          background-color: #3779D9;
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -10px;
+        }
+      }
+    }
+
+    .domflag-attr {
+      color: red !important;
+    }
+  }
+}
+
+// DOM PROPERTIES
+///////////////////////////////////////////////////////////////////////////
+.devtools {
+  .dom-properties {
+    background: hsla(0, 0%, 0%, 0.04);
+    border-radius: 0 0 $browser-radius 0;
+    box-shadow: -1px 0 0 hsla(0, 0%, 0%, 0.2);
+  }
+}

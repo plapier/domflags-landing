@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head></head>
-  <body>
+  <body data-attr="foo">
     <section class="main">
       <section class="browser">
         <div class="header" domflag>
@@ -14,16 +14,16 @@
         <div class="devtool-toolbar"></div>
         <section class="devtools" domflag>
           <div class="domflags-panel">
-            <header>DOMFLAGS</header>
-            <ol>
-              <li>DIV class="header"</li>
-              <li>SECTION class="devtools"</li>
-              <li>LI class="flag"</li>
+            <header class="title">DOMFLAGS</header>
+            <ol class="flags">
+              <li class="flag">DIV class="header"</li>
+              <li class="flag">SECTION class="devtools"</li>
+              <li class="flag">LI class="flag"</li>
             </ol>
           </div>
           <div class="dom-tree">..</div>
           <div class="dom-properties" domflag>..</div>
-        <section>
+        </section>
       </section>
     </section>
   </body>

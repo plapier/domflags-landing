@@ -29,16 +29,11 @@
       $domflagsPanel.addClass('open');
       return false;
     });
-    $('.dom-tree code > span').addClass('tooltip');
-    return $('.tooltip').tooltipster({
-      content: '<a href="#">Add Domflag</a>',
-      contentAsHTML: true,
-      position: 'left',
-      interactive: true,
-      speed: 300,
-      animation: 'fade',
-      onlyOne: true,
-      delay: 400
+    $('.dom-tree code > span').find('span:last-of-type').after('<span class="tooltip">Add Domflag</span>');
+    return $('.tooltip').on('click', function() {
+      var $domflagStr;
+      $domflagStr = ' <span class="na domflag-attr">domflag</span>';
+      return $(this).parent().addClass('.domflag-line').find('span.s').after($domflagStr);
     });
   });
 

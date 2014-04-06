@@ -31,25 +31,11 @@ $(document).ready ->
   )
 
   ## NEEDS REFACTORING
-  $('.dom-tree code > span').addClass('tooltip')
+  $('.dom-tree code > span').find('span:last-of-type').after('<span class="tooltip">Add Domflag</span>')
 
-  $('.tooltip').tooltipster({
-    content: '<a href="#">Add Domflag</a>'
-    contentAsHTML: true
-    position: 'left'
-    interactive: true
-    speed: 300
-    animation: 'fade'
-    onlyOne: true
-    delay: 400
-    # functionReady: (origin) ->
-      # $('.dom-tree code > span').hover( ->
-        # setTimeout =>
-          # $lastSpan = $(@).find('span:last-of-type')
-          # posX = $lastSpan.offset().left + $lastSpan.width() + 25
-          # console.log posX
-          # $('.tooltipster-base').css 'left', posX + "px"
-        # , 400
-      # )
-  })
+  $('.tooltip').on('click', ->
+    $domflagStr = ' <span class="na domflag-attr">domflag</span>'
+
+    $(@).parent().addClass('.domflag-line').find('span.s').after($domflagStr)
+  )
 

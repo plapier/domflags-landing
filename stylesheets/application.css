@@ -415,177 +415,195 @@ body, html {
     flex: 0.5;
     max-width: 200px; }
 
-/* This is the default Tooltipster theme (feel free to modify or duplicate and create multiple themes!): */
-.tooltipster-default {
-  border-radius: 2px;
-  background: #4c4c4c;
-  color: #fff; }
-
-/* Use this next selector to style things like font-size and line-height: */
-.tooltipster-default .tooltipster-content {
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  line-height: 16px;
-  padding: 4px 8px;
-  overflow: hidden; }
-
-/* This next selector defines the color of the border on the outside of the arrow. This will automatically match the color and size of the border set on the main tooltip styles. Set display: none; if you would like a border around the tooltip but no border around the arrow */
-.tooltipster-default .tooltipster-arrow .tooltipster-arrow-border {
-  /* border-color: ... !important; */ }
-
-/* If you're using the icon option, use this next selector to style them */
-.tooltipster-icon {
-  cursor: help;
-  margin-left: 4px; }
-
-/* This is the base styling required to make all Tooltipsters work */
-.tooltipster-base {
-  padding: 0;
-  font-size: 0;
+.browser .header {
+  background: #e1e1e1;
+  background-image: -webkit-linear-gradient(#fafafa, #e1e1e1);
+  background-image: linear-gradient(#fafafa, #e1e1e1);
+  border-radius: 4px 4px 0 0;
   line-height: 0;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 9999999;
-  pointer-events: none;
-  width: auto;
-  overflow: visible; }
+  overflow: hidden;
+  padding: 8px;
+  padding-left: 15px; }
+.browser .browser-button {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  display: inline-block;
+  height: 12px;
+  margin-right: 5px;
+  width: 12px; }
 
-.tooltipster-base .tooltipster-content {
-  overflow: hidden; }
+.body {
+  background-image: -webkit-linear-gradient( left , rgba(251, 95, 119, 0.73), #fc7967 50%, rgba(252, 203, 68, 0.77));
+  background-image: linear-gradient(to right, rgba(251, 95, 119, 0.73), #fc7967 50%, rgba(252, 203, 68, 0.77));
+  background-image: -webkit-linear-gradient( left , rgba(251, 95, 119, 0.66), rgba(252, 121, 103, 0.9) 50%, rgba(252, 203, 68, 0.66));
+  background-image: linear-gradient(to right, rgba(251, 95, 119, 0.66), rgba(252, 121, 103, 0.9) 50%, rgba(252, 203, 68, 0.66));
+  background: rgba(21, 72, 138, 0.56);
+  background: rgba(27, 144, 211, 0.6);
+  background: rgba(0, 82, 128, 0.8);
+  background: rgba(11, 106, 194, 0.8);
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center; }
+  .body h1 {
+    font-size: 40px;
+    text-transform: uppercase;
+    margin-bottom: 0em;
+    letter-spacing: 40.5px;
+    margin-left: 40.5px;
+    font-weight: 900; }
+  .body h2 {
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 1.3em;
+    margin-bottom: 1.3em;
+    margin-bottom: 4.3vh; }
+  .body a {
+    background: white;
+    border: 2px solid white;
+    border-radius: 2px;
+    display: inline-block;
+    font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 8px;
+    padding: 4px 50px;
+    padding-right: 42px;
+    text-rendering: optimizeLegibility;
+    text-transform: uppercase;
+    -webkit-transition: all 0.15s ease-out 0s;
+    -moz-transition: all 0.15s ease-out 0s;
+    transition: all 0.15s ease-out 0s;
+    width: 260px; }
+    .body a:hover {
+      color: white;
+      background: transparent; }
 
-/* These next classes handle the styles for the little arrow attached to the tooltip. By default, the arrow will inherit the same colors and border as what is set on the main tooltip itself. */
-.tooltipster-arrow {
-  display: block;
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1; }
+.devtools-toolbar {
+  background: #efefef;
+  z-index: 1;
+  height: 0; }
+  .devtools-toolbar.open {
+    height: 20px;
+    border-bottom: 1px solid #bbb; }
 
-.tooltipster-arrow span, .tooltipster-arrow-border {
-  display: block;
-  width: 0;
-  height: 0;
-  position: absolute; }
+.devtools {
+  background: #fff;
+  border-radius: 0 0 4px 4px;
+  overflow: hidden;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition: all 0.4s cubic-bezier(0.39, 0.575, 0.565, 1);
+  -moz-transition: all 0.4s cubic-bezier(0.39, 0.575, 0.565, 1);
+  transition: all 0.4s cubic-bezier(0.39, 0.575, 0.565, 1); }
 
-.tooltipster-arrow-top span, .tooltipster-arrow-top-right span, .tooltipster-arrow-top-left span {
-  border-left: 8px solid transparent !important;
-  border-right: 8px solid transparent !important;
-  border-top: 8px solid;
-  bottom: -7px; }
+.devtools .domflags-panel {
+  background: #D6DDE5;
+  border-radius: 0 0 0 4px;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.2);
+  font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  -webkit-font-smoothing: subpixel-antialiased; }
+  .devtools .domflags-panel header {
+    text-transform: uppercase;
+    padding: 9px 14px 1px;
+    color: rgba(51, 51, 51, 0.75); }
+    .devtools .domflags-panel header:before {
+      background: url("../images/flag.svg") no-repeat;
+      content: "";
+      display: inline-block;
+      height: 12px;
+      width: 11px;
+      margin-right: 10px; }
+  .devtools .domflags-panel ol li {
+    cursor: pointer;
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    max-width: 100%;
+    padding: 6px 14px;
+    position: relative; }
+    .devtools .domflags-panel ol li:hover {
+      background-color: #cdd5df;
+      box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.2); }
+    .devtools .domflags-panel ol li.active {
+      background-color: #3779d9;
+      color: #FFF;
+      text-shadow: rgba(0, 0, 0, 0.33) 0px 1px 0px; }
 
-.tooltipster-arrow-top .tooltipster-arrow-border, .tooltipster-arrow-top-right .tooltipster-arrow-border, .tooltipster-arrow-top-left .tooltipster-arrow-border {
-  border-left: 9px solid transparent !important;
-  border-right: 9px solid transparent !important;
-  border-top: 9px solid;
-  bottom: -7px; }
+.devtools .dom-tree {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 5px 0;
+  font-size: 11px;
+  -webkit-font-smoothing: subpixel-antialiased; }
+  .devtools .dom-tree span {
+    font-family: Menlo, monospace; }
+  .devtools .dom-tree .highlight {
+    background: none; }
+  .devtools .dom-tree pre {
+    margin: 0; }
+  .devtools .dom-tree code > span {
+    display: block;
+    line-height: 1.3em;
+    padding: 0 10px;
+    padding-top: 1px;
+    position: relative;
+    z-index: 1; }
+    .devtools .dom-tree code > span:hover {
+      background-color: #EAF1FB; }
+    .devtools .dom-tree code > span > span {
+      display: inline-block;
+      line-height: 1em; }
+    .devtools .dom-tree code > span.selected, .devtools .dom-tree code > span.selected * {
+      color: #fff !important; }
+    .devtools .dom-tree code > span.selected .domflag-attr {
+      position: relative;
+      background: #F36133;
+      padding: 1px 4px;
+      border-radius: 1px;
+      margin-right: 5px; }
+    .devtools .dom-tree code > span.selected:before {
+      height: 100%;
+      z-index: -1;
+      width: -webkit-calc(100% + 20px);
+      width: calc(100% + 20px);
+      background-color: #3779D9;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -10px; }
+  .devtools .dom-tree .domflag-attr {
+    color: red !important; }
 
-.tooltipster-arrow-bottom span, .tooltipster-arrow-bottom-right span, .tooltipster-arrow-bottom-left span {
-  border-left: 8px solid transparent !important;
-  border-right: 8px solid transparent !important;
-  border-bottom: 8px solid;
-  top: -7px; }
+.devtools .dom-properties {
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 0 0 4px 0;
+  box-shadow: -1px 0 0 rgba(0, 0, 0, 0.2); }
 
-.tooltipster-arrow-bottom .tooltipster-arrow-border, .tooltipster-arrow-bottom-right .tooltipster-arrow-border, .tooltipster-arrow-bottom-left .tooltipster-arrow-border {
-  border-left: 9px solid transparent !important;
-  border-right: 9px solid transparent !important;
-  border-bottom: 9px solid;
-  top: -7px; }
-
-.tooltipster-arrow-top span, .tooltipster-arrow-top .tooltipster-arrow-border, .tooltipster-arrow-bottom span, .tooltipster-arrow-bottom .tooltipster-arrow-border {
-  left: 0;
-  right: 0;
-  margin: 0 auto; }
-
-.tooltipster-arrow-top-left span, .tooltipster-arrow-bottom-left span {
-  left: 6px; }
-
-.tooltipster-arrow-top-left .tooltipster-arrow-border, .tooltipster-arrow-bottom-left .tooltipster-arrow-border {
-  left: 5px; }
-
-.tooltipster-arrow-top-right span, .tooltipster-arrow-bottom-right span {
-  right: 6px; }
-
-.tooltipster-arrow-top-right .tooltipster-arrow-border, .tooltipster-arrow-bottom-right .tooltipster-arrow-border {
-  right: 5px; }
-
-.tooltipster-arrow-left span, .tooltipster-arrow-left .tooltipster-arrow-border {
-  border-top: 8px solid transparent !important;
-  border-bottom: 8px solid transparent !important;
-  border-left: 8px solid;
-  top: 50%;
-  margin-top: -7px;
-  right: -7px; }
-
-.tooltipster-arrow-left .tooltipster-arrow-border {
-  border-top: 9px solid transparent !important;
-  border-bottom: 9px solid transparent !important;
-  border-left: 9px solid;
-  margin-top: -8px; }
-
-.tooltipster-arrow-right span, .tooltipster-arrow-right .tooltipster-arrow-border {
-  border-top: 8px solid transparent !important;
-  border-bottom: 8px solid transparent !important;
-  border-right: 8px solid;
-  top: 50%;
-  margin-top: -7px;
-  left: -7px; }
-
-.tooltipster-arrow-right .tooltipster-arrow-border {
-  border-top: 9px solid transparent !important;
-  border-bottom: 9px solid transparent !important;
-  border-right: 9px solid;
-  margin-top: -8px; }
-
-/* Some CSS magic for the awesome animations - feel free to make your own custom animations and reference it in your Tooltipster settings! */
-.tooltipster-fade {
-  opacity: 0;
-  -webkit-transition-property: opacity;
-  -moz-transition-property: opacity;
-  -o-transition-property: opacity;
-  -ms-transition-property: opacity;
-  transition-property: opacity; }
-
-.tooltipster-fade-show {
+code > span:hover .tooltip {
   opacity: 1; }
 
-.tooltipster-grow {
+.tooltip {
+  background: rgba(11, 106, 194, 0.8);
+  border-radius: 0px;
+  color: #FFF;
+  cursor: pointer;
+  font-size: 10px;
+  margin-left: 15px;
+  margin-top: -1px;
   opacity: 0;
-  -webkit-transform: scale(0, 0);
-  -moz-transform: scale(0, 0);
-  -ms-transform: scale(0, 0);
-  -o-transform: scale(0, 0);
-  transform: scale(0, 0);
-  -webkit-transition-property: -webkit-transform;
-  -moz-transition-property: -moz-transform;
-  transition-property: transform;
-  -webkit-backface-visibility: hidden; }
-
-.tooltipster-grow-show {
-  opacity: 1;
-  -webkit-transform: scale(1, 1);
-  -moz-transform: scale(1, 1);
-  -ms-transform: scale(1, 1);
-  -o-transform: scale(1, 1);
-  transform: scale(1, 1);
-  -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
-  -moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
-  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.15);
-  -webkit-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -moz-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-
-/* CSS transition for when contenting is changing in a tooltip that is still open. The only properties that will NOT transition are: width, height, top, and left */
-.tooltipster-content-changing {
-  opacity: 0.5;
-  -webkit-transform: scale(1.1, 1.1);
-  -moz-transform: scale(1.1, 1.1);
-  -o-transform: scale(1.1, 1.1);
-  -ms-transform: scale(1.1, 1.1);
-  transform: scale(1.1, 1.1); }
+  padding: 3px 7px 2px;
+  position: absolute;
+  right: 0;
+  text-transform: uppercase; }
+  .tooltip:hover {
+    background: rgba(15, 132, 241, 0.8); }
 
 .highlight {
   background: #ffffff; }
@@ -843,13 +861,6 @@ body, html {
 body, html {
   background-color: #97B4C6; }
 
-.scene {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0; }
-
 .bg {
   background: url("../images/bg-sm.jpg") no-repeat;
   background-position: 0 50%;
@@ -869,187 +880,3 @@ body, html {
   background: none;
   border-radius: 4px;
   position: relative; }
-  .browser .header {
-    background: #e1e1e1;
-    background-image: -webkit-linear-gradient(#fafafa, #e1e1e1);
-    background-image: linear-gradient(#fafafa, #e1e1e1);
-    border-radius: 4px 4px 0 0;
-    line-height: 0;
-    overflow: hidden;
-    padding: 8px;
-    padding-left: 15px; }
-  .browser .browser-button {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    display: inline-block;
-    height: 12px;
-    margin-right: 5px;
-    width: 12px; }
-  .browser .body {
-    background-image: -webkit-linear-gradient( left , rgba(251, 95, 119, 0.73), #fc7967 50%, rgba(252, 203, 68, 0.77));
-    background-image: linear-gradient(to right, rgba(251, 95, 119, 0.73), #fc7967 50%, rgba(252, 203, 68, 0.77));
-    background-image: -webkit-linear-gradient( left , rgba(251, 95, 119, 0.66), rgba(252, 121, 103, 0.9) 50%, rgba(252, 203, 68, 0.66));
-    background-image: linear-gradient(to right, rgba(251, 95, 119, 0.66), rgba(252, 121, 103, 0.9) 50%, rgba(252, 203, 68, 0.66));
-    background: rgba(21, 72, 138, 0.56);
-    background: rgba(27, 144, 211, 0.6);
-    background: rgba(0, 82, 128, 0.8);
-    background: rgba(11, 106, 194, 0.8);
-    background-repeat: no-repeat;
-    color: white;
-    text-align: center; }
-    .browser .body h1 {
-      font-size: 40px;
-      text-transform: uppercase;
-      margin-bottom: 0em;
-      letter-spacing: 40.5px;
-      margin-left: 40.5px;
-      font-weight: 900; }
-    .browser .body h2 {
-      font-weight: 400;
-      font-size: 26px;
-      line-height: 1.3em;
-      margin-bottom: 1.3em;
-      margin-bottom: 4.3vh; }
-    .browser .body a {
-      background: white;
-      border: 2px solid white;
-      border-radius: 2px;
-      display: inline-block;
-      font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 8px;
-      padding: 4px 50px;
-      padding-right: 42px;
-      text-rendering: optimizeLegibility;
-      text-transform: uppercase;
-      -webkit-transition: all 0.15s ease-out 0s;
-      -moz-transition: all 0.15s ease-out 0s;
-      transition: all 0.15s ease-out 0s;
-      width: 260px; }
-      .browser .body a:hover {
-        color: white;
-        background: transparent; }
-
-.devtools-toolbar {
-  background: #efefef;
-  z-index: 1;
-  height: 0; }
-  .devtools-toolbar.open {
-    height: 20px;
-    border-bottom: 1px solid #bbb; }
-
-.devtools {
-  background: #fff;
-  border-radius: 0 0 4px 4px;
-  overflow: hidden;
-  -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  -o-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-transition: all 0.4s cubic-bezier(0.39, 0.575, 0.565, 1);
-  -moz-transition: all 0.4s cubic-bezier(0.39, 0.575, 0.565, 1);
-  transition: all 0.4s cubic-bezier(0.39, 0.575, 0.565, 1); }
-  .devtools .domflags-panel {
-    background: #D6DDE5;
-    border-radius: 0 0 0 4px;
-    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.2);
-    font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
-    font-size: 12px;
-    -webkit-font-smoothing: subpixel-antialiased; }
-    .devtools .domflags-panel header {
-      text-transform: uppercase;
-      padding: 9px 14px 1px;
-      color: rgba(51, 51, 51, 0.75); }
-      .devtools .domflags-panel header:before {
-        background: url("../images/flag.svg") no-repeat;
-        content: "";
-        display: inline-block;
-        height: 12px;
-        width: 11px;
-        margin-right: 10px; }
-    .devtools .domflags-panel ol li {
-      cursor: pointer;
-      display: inline-block;
-      max-width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      display: block;
-      max-width: 100%;
-      padding: 6px 14px;
-      position: relative; }
-      .devtools .domflags-panel ol li:hover {
-        background-color: #cdd5df;
-        box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.2); }
-      .devtools .domflags-panel ol li.active {
-        background-color: #3779d9;
-        color: #FFF;
-        text-shadow: rgba(0, 0, 0, 0.33) 0px 1px 0px; }
-  .devtools .dom-tree {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    padding: 5px 0;
-    font-size: 11px;
-    -webkit-font-smoothing: subpixel-antialiased; }
-    .devtools .dom-tree * {
-      font-family: Menlo, monospace; }
-    .devtools .dom-tree .highlight {
-      background: none; }
-    .devtools .dom-tree pre {
-      margin: 0; }
-    .devtools .dom-tree code > span {
-      display: block;
-      line-height: 1.3em;
-      padding: 0 10px;
-      padding-top: 1px;
-      position: relative;
-      z-index: 1; }
-      .devtools .dom-tree code > span:hover {
-        background: rgba(0, 0, 0, 0.1); }
-      .devtools .dom-tree code > span > span {
-        display: inline-block;
-        line-height: 1em; }
-      .devtools .dom-tree code > span.selected, .devtools .dom-tree code > span.selected * {
-        color: #fff !important; }
-      .devtools .dom-tree code > span.selected .domflag-attr {
-        position: relative;
-        background: #F36133;
-        padding: 1px 4px;
-        border-radius: 1px;
-        margin-right: 5px; }
-      .devtools .dom-tree code > span.selected:before {
-        height: 100%;
-        z-index: -1;
-        width: -webkit-calc(100% + 20px);
-        width: calc(100% + 20px);
-        background-color: #3779D9;
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -10px; }
-    .devtools .dom-tree .domflag-attr {
-      color: red !important; }
-  .devtools .dom-properties {
-    background: rgba(0, 0, 0, 0.04);
-    border-radius: 0 0 4px 0;
-    box-shadow: -1px 0 0 rgba(0, 0, 0, 0.2); }
-
-.tooltipster-base:hover {
-  background: #0b6ac2; }
-  .tooltipster-base:hover .tooltipster-arrow span {
-    border-left-color: #0b6ac2 !important; }
-.tooltipster-base a {
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 10px;
-  border-bottom: 1px solid transparent;
-  -webkit-transition: all 0.15s ease-out 0s;
-  -moz-transition: all 0.15s ease-out 0s;
-  transition: all 0.15s ease-out 0s; }
-
-.tooltipster-dying {
-  opacity: 0;
-  display: none; }
