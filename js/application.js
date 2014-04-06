@@ -8,7 +8,7 @@
       return $(this).text() === "domflag";
     });
     $treeDomflags.addClass('domflag-attr').parent().addClass('domflag-line');
-    return $domflagsPanel.on('click', 'li', function() {
+    $domflagsPanel.on('click', 'li', function() {
       var $domtreeBottom, $domtreeTop, $el, $elPos, index;
       index = $domflagsPanel.find('li').index(this);
       $el = $treeDomflags.eq(index);
@@ -22,6 +22,23 @@
       if (!($elPos > $domtreeTop && $elPos < $domtreeBottom)) {
         return $domtree.scrollTo('.domflag-line.selected');
       }
+    });
+    $('#start-demo').on('click', function() {
+      $('.devtools-toolbar').addClass('open');
+      $('.devtools').addClass('open');
+      $domflagsPanel.addClass('open');
+      return false;
+    });
+    $('.dom-tree code > span').addClass('tooltip');
+    return $('.tooltip').tooltipster({
+      content: '<a href="#">Add Domflag</a>',
+      contentAsHTML: true,
+      position: 'left',
+      interactive: true,
+      speed: 300,
+      animation: 'fade',
+      onlyOne: true,
+      delay: 400
     });
   });
 

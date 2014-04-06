@@ -1,15 +1,17 @@
 %open-domflags {
-  @include animation(open-domflags 0.1s $ease-out-cubic);
-  @include animation-fill-mode(forwards);
-  @include animation-delay(0.3s);
+  @include animation(open-domflags 0.6s $ease-out-sine);
+  @include animation-fill-mode(both);
+  @include animation-delay(2s);
 }
 
 @include keyframes(open-domflags) {
   0% {
-    width: 0px;
+    @include transform(translateY(300px))
+    // @include flex(0 0 0);
   }
   100% {
-    width: 314px;
+    // @include flex(1.5 1.5 314px)
+    @include transform(translateY(0px))
   }
 }
 

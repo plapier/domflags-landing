@@ -10,14 +10,15 @@ tags: [Jekyll]
     <link rel="stylesheet" href="stylesheets/application.css">
     <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.11/jquery.scrollTo.min.js"></script>
+    <script src="js/jquery.tooltipster.min.js"></script>
     <script src="js/application.js"></script>
     <script type="text/javascript" src="//use.typekit.net/irh3bar.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   </head>
   <body>
-    <section class="bg"></section>
+    <div class="bg"></div>
     <section class="main">
-      <section class="browser">
+      <section class="browser layer" data-depth="0.1">
         <div class="header">
           <div class="browser-button"></div>
           <div class="browser-button"></div>
@@ -28,11 +29,11 @@ tags: [Jekyll]
           <div class="inner">
             <h1>Domflags</h1>
             <h2>create shortcuts to dom elements in the devtools</h2>
-            <a href="#">Start Demo</a>
+            <a href="#" id="start-demo">Start Demo</a>
           </div>
         </div>
 
-        <div class="devtool-toolbar"></div>
+        <div class="devtools-toolbar"></div>
         <section class="devtools">
           <div class="domflags-panel">
             <header>DOMFLAGS</header>
@@ -45,9 +46,8 @@ tags: [Jekyll]
           <div class="dom-tree">
             {% include dom-tree.html %}
           </div>
-          <div class="dom-properties">
-          </div>
-        <section>
+          <div class="dom-properties"></div>
+        </section>
       </section>
     </section>
   </body>
