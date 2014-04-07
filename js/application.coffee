@@ -52,7 +52,12 @@ $(document).ready ->
           string = @data.toUpperCase() + " " if index == 0
           elString.push string.replace(/</g,' ').replace(/\= /, '=') ## formatting cleanup
       )
-      flagItem = "<li class='flag'>#{elString.join("")}</li>"
-      $('ol.flags').append(flagItem)
       $parent.addClass('domflag-line').find('.s').after($domflagStr)
+      index = $parent.index('.domflag-line')
+      flagItem = "<li class='flag'>#{elString.join("")}</li>"
+
+      if index < $('ol.flags li').length
+        $('ol.flags li').eq(index).before(flagItem)
+      else
+        $('ol.flags').append(flagItem)
   )

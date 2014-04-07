@@ -54,9 +54,14 @@
             return elString.push(string.replace(/</g, ' ').replace(/\= /, '='));
           }
         });
+        $parent.addClass('domflag-line').find('.s').after($domflagStr);
+        index = $parent.index('.domflag-line');
         flagItem = "<li class='flag'>" + (elString.join("")) + "</li>";
-        $('ol.flags').append(flagItem);
-        return $parent.addClass('domflag-line').find('.s').after($domflagStr);
+        if (index < $('ol.flags li').length) {
+          return $('ol.flags li').eq(index).before(flagItem);
+        } else {
+          return $('ol.flags').append(flagItem);
+        }
       }
     });
   });
