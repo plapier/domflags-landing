@@ -15,11 +15,11 @@
     $domflagsPanel.on('click', 'li', function() {
       var $domtreeBottom, $domtreeTop, $el, $elPos, index;
       index = $domflagsPanel.find('li').index(this);
-      $el = $treeDomflags.eq(index);
+      $el = $domtree.find('.domflag-line').eq(index);
       $domflagsPanel.find('li').removeClass('active');
       $(this).addClass('active');
       $domtree.find('span').removeClass('selected');
-      $el.parent().addClass('selected');
+      $el.addClass('selected');
       $elPos = $el.offset().top;
       $domtreeTop = $domtree.offset().top;
       $domtreeBottom = $domtreeTop + $domtree.height();
@@ -35,11 +35,13 @@
     });
     $('.dom-tree code > span').find('span:last-of-type').after('<span class="tooltip">Add Domflag</span>');
     return $('.tooltip').on('click', function() {
-      var $domflagStr, elString, flagItem, stringArray;
+      var $domflagStr, $parent, elString, flagItem, index, stringArray;
       $domflagStr = '<span class="na domflag-attr">domflag</span>';
-      if ($(this).parent().hasClass('domflag-line')) {
-        $(this).siblings('.domflag-attr').remove();
-        return $(this).parent().removeClass('domflag-line');
+      $parent = $(this).parent();
+      if ($parent.hasClass('domflag-line')) {
+        index = $parent.index('.domflag-line');
+        $domflagsPanel.find('li').eq(index).remove();
+        return $parent.removeClass('domflag-line').find('.domflag-attr').remove();
       } else {
         elString = [];
         stringArray = $(this).siblings().contents().filter(function(index) {
@@ -54,7 +56,7 @@
         });
         flagItem = "<li class='flag'>" + (elString.join("")) + "</li>";
         $('ol.flags').append(flagItem);
-        return $(this).parent().addClass('domflag-line').find('span.s').after($domflagStr);
+        return $parent.addClass('domflag-line').find('.s').after($domflagStr);
       }
     });
   });

@@ -12,12 +12,12 @@ $(document).ready ->
 
   $domflagsPanel.on('click', 'li', ->
     index = $domflagsPanel.find('li').index(@)
-    $el = $treeDomflags.eq(index)
+    $el = $domtree.find('.domflag-line').eq(index)
 
     $domflagsPanel.find('li').removeClass('active')
     $(@).addClass('active')
     $domtree.find('span').removeClass('selected')
-    $el.parent().addClass('selected')
+    $el.addClass('selected')
 
     ## Scroll to line if el is offscreen
     $elPos = $el.offset().top
@@ -38,9 +38,12 @@ $(document).ready ->
 
   $('.tooltip').on('click', ->
     $domflagStr = '<span class="na domflag-attr">domflag</span>'
-    if $(@).parent().hasClass('domflag-line')
-      $(@).siblings('.domflag-attr').remove()
-      $(@).parent().removeClass('domflag-line')
+    $parent = $(@).parent()
+
+    if $parent.hasClass('domflag-line')
+      index = $parent.index('.domflag-line')
+      $domflagsPanel.find('li').eq(index).remove()
+      $parent.removeClass('domflag-line').find('.domflag-attr').remove()
     else
       elString = []
       stringArray = $(@).siblings().contents().filter( (index) ->
@@ -51,5 +54,5 @@ $(document).ready ->
       )
       flagItem = "<li class='flag'>#{elString.join("")}</li>"
       $('ol.flags').append(flagItem)
-      $(@).parent().addClass('domflag-line').find('span.s').after($domflagStr)
+      $parent.addClass('domflag-line').find('.s').after($domflagStr)
   )
