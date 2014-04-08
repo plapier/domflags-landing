@@ -51,7 +51,7 @@
         @extend %animation-click-target-solid;
         @include transform(scale(0.4));
         // @include animation(none);
-        opacity: 0.8;
+        // opacity: 0.8;
       }
 
       &.pos-1 {
