@@ -317,6 +317,78 @@ dl {
     -ms-transform: scale(1);
     -o-transform: scale(1);
     transform: scale(1); } }
+.devtools .domflags-panel a.target {
+  -webkit-animation: click-target 1.5s cubic-bezier(0.39, 0.575, 0.565, 1) 0s forwards;
+  -moz-animation: click-target 1.5s cubic-bezier(0.39, 0.575, 0.565, 1) 0s forwards;
+  animation: click-target 1.5s cubic-bezier(0.39, 0.575, 0.565, 1) 0s forwards;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  opacity: 1; }
+
+@-webkit-keyframes click-target {
+  0% {
+    opacity: 0.55;
+    -webkit-transform: scale(0.3); }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1.1); } }
+@-moz-keyframes click-target {
+  0% {
+    opacity: 0.55;
+    -moz-transform: scale(0.3); }
+
+  100% {
+    opacity: 0;
+    -moz-transform: scale(1.1); } }
+@keyframes click-target {
+  0% {
+    opacity: 0.55;
+    -webkit-transform: scale(0.3);
+    -moz-transform: scale(0.3);
+    -ms-transform: scale(0.3);
+    -o-transform: scale(0.3);
+    transform: scale(0.3); }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1); } }
+.devtools .domflags-panel a.target.solid {
+  -webkit-animation: click-target-solid 1.5s linear 1.2s forwards infinite;
+  -moz-animation: click-target-solid 1.5s linear 1.2s forwards infinite;
+  animation: click-target-solid 1.5s linear 1.2s forwards infinite; }
+
+@-webkit-keyframes click-target-solid {
+  10% {
+    -webkit-transform: scale(0.48); }
+
+  20% {
+    -webkit-transform: scale(0.4); } }
+@-moz-keyframes click-target-solid {
+  10% {
+    -moz-transform: scale(0.48); }
+
+  20% {
+    -moz-transform: scale(0.4); } }
+@keyframes click-target-solid {
+  10% {
+    -webkit-transform: scale(0.48);
+    -moz-transform: scale(0.48);
+    -ms-transform: scale(0.48);
+    -o-transform: scale(0.48);
+    transform: scale(0.48); }
+
+  20% {
+    -webkit-transform: scale(0.4);
+    -moz-transform: scale(0.4);
+    -ms-transform: scale(0.4);
+    -o-transform: scale(0.4);
+    transform: scale(0.4); } }
 body, html {
   margin: 0; }
 
@@ -454,9 +526,7 @@ body, html {
   .body h2 {
     font-weight: 400;
     font-size: 26px;
-    line-height: 1.3em;
-    margin-bottom: 1.3em;
-    margin-bottom: 4.3vh; }
+    line-height: 1.3em; }
   .body a {
     background: white;
     border: 2px solid white;
@@ -466,6 +536,7 @@ body, html {
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 8px;
+    margin-top: 4.3vh;
     padding: 4px 50px;
     padding-right: 42px;
     text-rendering: optimizeLegibility;
@@ -476,7 +547,7 @@ body, html {
     width: 260px; }
     .body a:hover {
       color: white;
-      background: transparent; }
+      background: rgba(8, 96, 179, 0.5); }
 
 .devtools-toolbar {
   background: #efefef;
@@ -507,7 +578,27 @@ body, html {
   font-size: 12px;
   overflow-x: hidden;
   overflow-y: scroll;
+  position: relative;
   -webkit-font-smoothing: subpixel-antialiased; }
+  .devtools .domflags-panel a.target {
+    background: #1d93f0;
+    border-radius: 30px;
+    left: 140px;
+    pointer-events: none;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 37px;
+    z-index: 1; }
+    .devtools .domflags-panel a.target.solid {
+      -webkit-transform: scale(0.4);
+      -moz-transform: scale(0.4);
+      -ms-transform: scale(0.4);
+      -o-transform: scale(0.4);
+      transform: scale(0.4); }
+    .devtools .domflags-panel a.target.second {
+      top: 73px;
+      left: 170px; }
   .devtools .domflags-panel header {
     text-transform: uppercase;
     padding: 9px 14px 1px;
@@ -530,13 +621,23 @@ body, html {
     max-width: 100%;
     padding: 6px 14px;
     position: relative; }
-    .devtools .domflags-panel ol li:hover {
+    .devtools .domflags-panel ol li:hover, .devtools .domflags-panel ol li.demo {
       background-color: #cdd5df;
       box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.2); }
     .devtools .domflags-panel ol li.active {
       background-color: #3779d9;
       color: #FFF;
       text-shadow: rgba(0, 0, 0, 0.33) 0px 1px 0px; }
+    .devtools .domflags-panel ol li.new:after {
+      background: #f36133;
+      border-radius: 8px;
+      top: -webkit-calc(50% - 4px);
+      top: calc(50% - 4px);
+      content: "";
+      position: absolute;
+      right: 20px;
+      height: 8px;
+      width: 8px; }
 
 .devtools .dom-tree {
   overflow-y: scroll;
@@ -568,7 +669,7 @@ body, html {
       color: #fff !important; }
     .devtools .dom-tree code > span.selected .domflag-attr {
       position: relative;
-      background: #F36133;
+      background: #f36133;
       padding: 1px 4px;
       border-radius: 1px;
       margin-right: 5px; }

@@ -29,7 +29,35 @@
     font-size: 12px;
     overflow-x: hidden;
     overflow-y: scroll;
+    position: relative;
     -webkit-font-smoothing: subpixel-antialiased;
+
+    a.target {
+      $color: #FF8158;
+      $s: 30px;
+      $color: #1D93F0;
+      @extend %animation-click-target;
+      background: $color;
+      border-radius: $s;
+      left: 140px;
+      pointer-events: none;
+      position: absolute;
+      @include size($s);
+      top: 37px;
+      z-index: 1;
+
+      &.solid {
+        @extend %animation-click-target-solid;
+        // @include animation(none);
+        @include transform(scale(0.4));
+        // opacity: 0.8;
+      }
+
+      &.second {
+        top: 73px;
+        left: 170px;
+      }
+    }
 
     header {
       text-transform: uppercase;
@@ -55,7 +83,7 @@
         padding: 6px 14px;
         position: relative;
 
-        &:hover {
+        &:hover, &.demo {
           background-color: darken(#D6DDE5, 3%);
           box-shadow: inset -1px 0 0 hsla(0, 0%, 0%, 0.2);
         }
@@ -66,6 +94,18 @@
           color: #FFF;
           text-shadow: rgba(0, 0, 0, 0.33) 0px 1px 0px;
           // box-shadow: -1px 0 0 $bg;
+        }
+        &.new {
+          &:after {
+            $size: 8px;
+            background: $callout-color;
+            border-radius: $size;
+            @include calc(top, "50% - #{$size/2}");
+            content: "";
+            position: absolute;
+            right: 20px;
+            @include size($size);
+          }
         }
       }
     }
@@ -123,7 +163,7 @@
         .domflag-attr {
           @extend %selected-node;
           position: relative;
-          background: #F36133;
+          background: $callout-color;
           padding: 1px 4px;
           border-radius: 1px;
           margin-right: 5px;

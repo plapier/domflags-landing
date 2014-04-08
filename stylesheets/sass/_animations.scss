@@ -41,3 +41,33 @@
     @include transform(scale(1));
   }
 }
+
+%animation-click-target {
+  @include animation(click-target 1.5s $ease-out-sine 0s forwards);
+  @include animation-iteration-count(infinite);
+  opacity: 1;
+}
+
+@include keyframes(click-target) {
+  0% {
+    opacity: 0.55;
+    @include transform(scale(0.3));
+  }
+  100% {
+    opacity: 0;
+    @include transform(scale(1.1));
+  }
+}
+
+%animation-click-target-solid {
+  @include animation(click-target-solid 1.5s linear 1.2s forwards infinite);
+}
+
+@include keyframes(click-target-solid) {
+  10% {
+    @include transform(scale(0.48));
+  }
+  20% {
+    @include transform(scale(0.4));
+  }
+}
