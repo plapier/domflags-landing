@@ -50,7 +50,7 @@
 
 @include keyframes(click-target) {
   0% {
-    opacity: 0.55;
+    opacity: 0.6;
     @include transform(scale(0.3));
   }
   100% {
@@ -60,7 +60,7 @@
 }
 
 %animation-click-target-solid {
-  @include animation(click-target-solid 1.5s linear 1.2s forwards infinite);
+  @include animation(click-target-solid 1.5s linear 1.3s forwards infinite);
 }
 
 @include keyframes(click-target-solid) {

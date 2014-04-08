@@ -328,7 +328,7 @@ dl {
 
 @-webkit-keyframes click-target {
   0% {
-    opacity: 0.55;
+    opacity: 0.6;
     -webkit-transform: scale(0.3); }
 
   100% {
@@ -336,7 +336,7 @@ dl {
     -webkit-transform: scale(1.1); } }
 @-moz-keyframes click-target {
   0% {
-    opacity: 0.55;
+    opacity: 0.6;
     -moz-transform: scale(0.3); }
 
   100% {
@@ -344,7 +344,7 @@ dl {
     -moz-transform: scale(1.1); } }
 @keyframes click-target {
   0% {
-    opacity: 0.55;
+    opacity: 0.6;
     -webkit-transform: scale(0.3);
     -moz-transform: scale(0.3);
     -ms-transform: scale(0.3);
@@ -359,9 +359,9 @@ dl {
     -o-transform: scale(1.1);
     transform: scale(1.1); } }
 .devtools .domflags-panel a.target.solid {
-  -webkit-animation: click-target-solid 1.5s linear 1.2s forwards infinite;
-  -moz-animation: click-target-solid 1.5s linear 1.2s forwards infinite;
-  animation: click-target-solid 1.5s linear 1.2s forwards infinite; }
+  -webkit-animation: click-target-solid 1.5s linear 1.3s forwards infinite;
+  -moz-animation: click-target-solid 1.5s linear 1.3s forwards infinite;
+  animation: click-target-solid 1.5s linear 1.3s forwards infinite; }
 
 @-webkit-keyframes click-target-solid {
   10% {
@@ -520,8 +520,8 @@ body, html {
     font-size: 40px;
     text-transform: uppercase;
     margin-bottom: 0em;
-    letter-spacing: 40.5px;
-    margin-left: 40.5px;
+    letter-spacing: 38px;
+    margin-left: 38px;
     font-weight: 900; }
   .body h2 {
     font-weight: 400;
