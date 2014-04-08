@@ -31,7 +31,7 @@
       var tooltipStr;
       tooltipStr = '<span class="tooltip">Add Domflag</span>';
       this.treeFlags.addClass('domflag-attr').parent().addClass('domflag-line');
-      this.treeLines.find('span:last-of-type').after(tooltipStr).end().find('.domflag-line .tooltip').text('Remove Domflag');
+      this.treeLines.find('span:last-of-type').after(tooltipStr).end().filter('.domflag-line').find('.tooltip').text('Remove Domflag');
       return $('#line-2').addClass('non-flaggable');
     };
 
@@ -39,10 +39,8 @@
       var _this = this;
       return $('#start-demo').on('click', function(event) {
         $(event.currentTarget).addClass('hide');
-        $('.devtools-toolbar').addClass('open');
-        $('.devtools').addClass('open');
-        _this.panel.addClass('open');
-        _this.panel.find('li:first-child').addClass('demo');
+        $('.devtools-toolbar, .devtools').addClass('open');
+        _this.panel.addClass('open').find('li:first-child').addClass('demo');
         return false;
       });
     };
@@ -50,16 +48,17 @@
     SetupDemo.prototype.panelEvents = function() {
       var _this = this;
       return this.panel.on('click', 'li', function(event) {
-        var $el, $elPos, index;
-        if ($(event.currentTarget).eq(0).hasClass('demo')) {
-          $('a.target').addClass('second');
-        } else {
-          $('a.target').hide();
-        }
+        var $el, $elPos, $target, index;
         index = _this.panel.find('li').index(event.currentTarget);
         $el = _this.tree.find('.domflag-line').eq(index);
-        _this.panel.find('li').removeClass('active');
-        $(event.currentTarget).addClass('active').removeClass('demo new');
+        $target = $('.target');
+        if ($(event.currentTarget).hasClass('demo') && index < 2) {
+          $target.addClass("pos-" + (index + 1));
+          $(event.currentTarget).next().addClass('demo');
+        } else {
+          $target.hide();
+        }
+        _this.panel.find('li').removeClass('active').end().find(event.currentTarget).addClass('active').removeClass('demo new');
         _this.tree.find('span').removeClass('selected');
         $el.addClass('selected');
         $elPos = $el.offset().top;
@@ -78,8 +77,8 @@
         $domflagStr = '<span class="na domflag-attr">domflag</span>';
         $parent = $(event.currentTarget).parent();
         if ($parent.hasClass('domflag-line')) {
-          $(event.currentTarget).text('Add Domflag');
           index = $parent.index('.domflag-line');
+          $(event.currentTarget).text('Add Domflag');
           $(_this.panel).find('li').eq(index).remove();
           return $parent.removeClass('domflag-line').find('.domflag-attr').remove();
         } else {

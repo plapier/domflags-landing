@@ -39,7 +39,8 @@
       @extend %animation-click-target;
       background: $color;
       border-radius: $s;
-      left: 140px;
+      // left: 140px;
+      right: 9px;
       pointer-events: none;
       position: absolute;
       @include size($s);
@@ -48,14 +49,17 @@
 
       &.solid {
         @extend %animation-click-target-solid;
-        // @include animation(none);
         @include transform(scale(0.4));
-        // opacity: 0.8;
+        // @include animation(none);
+        opacity: 0.8;
       }
 
-      &.second {
+      &.pos-1 {
         top: 73px;
-        left: 170px;
+      }
+
+      &.pos-2 {
+        top: 109px;
       }
     }
 

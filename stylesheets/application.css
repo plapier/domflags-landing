@@ -583,7 +583,7 @@ body, html {
   .devtools .domflags-panel a.target {
     background: #1d93f0;
     border-radius: 30px;
-    left: 140px;
+    right: 9px;
     pointer-events: none;
     position: absolute;
     height: 30px;
@@ -595,10 +595,12 @@ body, html {
       -moz-transform: scale(0.4);
       -ms-transform: scale(0.4);
       -o-transform: scale(0.4);
-      transform: scale(0.4); }
-    .devtools .domflags-panel a.target.second {
-      top: 73px;
-      left: 170px; }
+      transform: scale(0.4);
+      opacity: 0.8; }
+    .devtools .domflags-panel a.target.pos-1 {
+      top: 73px; }
+    .devtools .domflags-panel a.target.pos-2 {
+      top: 109px; }
   .devtools .domflags-panel header {
     text-transform: uppercase;
     padding: 9px 14px 1px;
