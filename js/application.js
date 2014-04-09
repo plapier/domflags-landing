@@ -47,6 +47,11 @@
 
     SetupDemo.prototype.panelEvents = function() {
       var _this = this;
+      $('.devtools').on("transitionend webkitTransitionEnd", function() {
+        $('.browser').addClass('open');
+        $('.start').addClass('hide');
+        return $('.download').addClass('show');
+      });
       return this.panel.on('click', 'li', function(event) {
         var $el, $elPos, $target, index;
         index = _this.panel.find('li').index(event.currentTarget);

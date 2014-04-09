@@ -35,6 +35,11 @@ class SetupDemo
     )
 
   panelEvents: ->
+    $('.devtools').on "transitionend webkitTransitionEnd", ->
+      $('.browser').addClass('open')
+      $('.start').addClass('hide')
+      $('.download').addClass('show')
+
     @panel.on('click', 'li', (event) =>
       index = @panel.find('li').index(event.currentTarget)
       $el = @tree.find('.domflag-line').eq(index)

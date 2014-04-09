@@ -26,6 +26,28 @@
     line-height: 1.3em;
   }
 
+  div.start {
+    z-index: 1;
+    position: relative;
+
+    &.hide {
+      @extend %animation-start-hide;
+    }
+  }
+
+  div.download {
+    margin-top: -58px;
+    opacity: 0;
+
+    a {
+      margin-top: 2.8vh;
+    }
+
+    &.show {
+      @extend %animation-download-show;
+    }
+  }
+
   a {
     $bg-color: rgba(11, 106, 194, 1);
     $fg-color: #fff;
@@ -52,7 +74,10 @@
       background: rgba(8, 96, 179, 0.5);
     }
 
-    &.hide {
+    &#download {
+      $letter-spacing: 4px;
+      padding-right: $padding-lr - $letter-spacing;
+      width: 310px;
     }
   }
 }

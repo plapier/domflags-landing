@@ -389,6 +389,77 @@ dl {
     -ms-transform: scale(0.4);
     -o-transform: scale(0.4);
     transform: scale(0.4); } }
+.body div.start.hide {
+  -webkit-animation: start-hide 0.5s linear 0.2s forwards;
+  -moz-animation: start-hide 0.5s linear 0.2s forwards;
+  animation: start-hide 0.5s linear 0.2s forwards; }
+
+@-webkit-keyframes start-hide {
+  0% {
+    -webkit-transform: translateY(0px); }
+
+  100% {
+    -webkit-transform: translateY(-50px);
+    opacity: 0; } }
+@-moz-keyframes start-hide {
+  0% {
+    -moz-transform: translateY(0px); }
+
+  100% {
+    -moz-transform: translateY(-50px);
+    opacity: 0; } }
+@keyframes start-hide {
+  0% {
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px); }
+
+  100% {
+    -webkit-transform: translateY(-50px);
+    -moz-transform: translateY(-50px);
+    -ms-transform: translateY(-50px);
+    -o-transform: translateY(-50px);
+    transform: translateY(-50px);
+    opacity: 0; } }
+.body div.download.show {
+  -webkit-animation: download-show 0.5s linear 0.2s forwards;
+  -moz-animation: download-show 0.5s linear 0.2s forwards;
+  animation: download-show 0.5s linear 0.2s forwards; }
+
+@-webkit-keyframes download-show {
+  0% {
+    -webkit-transform: translateY(100px);
+    opacity: 0; }
+
+  100% {
+    -webkit-transform: translateY(0px);
+    opacity: 1; } }
+@-moz-keyframes download-show {
+  0% {
+    -moz-transform: translateY(100px);
+    opacity: 0; }
+
+  100% {
+    -moz-transform: translateY(0px);
+    opacity: 1; } }
+@keyframes download-show {
+  0% {
+    -webkit-transform: translateY(100px);
+    -moz-transform: translateY(100px);
+    -ms-transform: translateY(100px);
+    -o-transform: translateY(100px);
+    transform: translateY(100px);
+    opacity: 0; }
+
+  100% {
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+    opacity: 1; } }
 body, html {
   margin: 0; }
 
@@ -527,6 +598,14 @@ body, html {
     font-weight: 400;
     font-size: 26px;
     line-height: 1.3em; }
+  .body div.start {
+    z-index: 1;
+    position: relative; }
+  .body div.download {
+    margin-top: -58px;
+    opacity: 0; }
+    .body div.download a {
+      margin-top: 2.8vh; }
   .body a {
     background: white;
     border: 2px solid white;
@@ -548,6 +627,9 @@ body, html {
     .body a:hover {
       color: white;
       background: rgba(8, 96, 179, 0.5); }
+    .body a#download {
+      padding-right: 46px;
+      width: 310px; }
 
 .devtools-toolbar {
   background: #efefef;
