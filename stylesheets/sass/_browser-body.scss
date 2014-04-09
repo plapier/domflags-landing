@@ -27,28 +27,7 @@
   }
 
   div.start {
-    z-index: 1;
     position: relative;
-
-    &.hide {
-      @extend %animation-start-hide;
-      pointer-events: none;
-    }
-  }
-
-  div.download {
-    margin-top: -58px;
-    opacity: 0;
-    pointer-events: none;
-
-    a {
-      margin-top: 2.8vh;
-    }
-
-    &.show {
-      pointer-events: auto;
-      @extend %animation-download-show;
-    }
   }
 
   a {
@@ -67,20 +46,37 @@
     margin-top: 4.3vh;
     padding: 4px $padding-lr;
     padding-right: $padding-lr - $letter-spacing;
+    position: relative;
     text-rendering: optimizeLegibility;
     text-transform: uppercase;
     @include transition;
     width: 260px;
+    z-index: 1;
 
     &:hover {
       color: $fg-color;
       background: rgba(8, 96, 179, 0.5);
     }
 
+    &.hide {
+      @extend %animation-start-hide;
+      pointer-events: none;
+    }
+
     &#download {
       $letter-spacing: 4px;
+      @include calc(left, "50% - (310px/1.5)");
+      opacity: 0;
       padding-right: $padding-lr - $letter-spacing;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
       width: 310px;
+
+      &.show {
+        pointer-events: auto;
+        @extend %animation-download-show;
+      }
     }
   }
 }

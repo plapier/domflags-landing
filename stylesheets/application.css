@@ -389,10 +389,10 @@ dl {
     -ms-transform: scale(0.4);
     -o-transform: scale(0.4);
     transform: scale(0.4); } }
-.body div.start.hide {
-  -webkit-animation: start-hide 0.5s linear 0.2s forwards;
-  -moz-animation: start-hide 0.5s linear 0.2s forwards;
-  animation: start-hide 0.5s linear 0.2s forwards; }
+.body a.hide {
+  -webkit-animation: start-hide 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) 0.5s forwards;
+  -moz-animation: start-hide 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) 0.5s forwards;
+  animation: start-hide 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) 0.5s forwards; }
 
 @-webkit-keyframes start-hide {
   0% {
@@ -423,14 +423,14 @@ dl {
     -o-transform: translateY(-50px);
     transform: translateY(-50px);
     opacity: 0; } }
-.body div.download.show {
-  -webkit-animation: download-show 0.5s linear 0.2s forwards;
-  -moz-animation: download-show 0.5s linear 0.2s forwards;
-  animation: download-show 0.5s linear 0.2s forwards; }
+.body a#download.show {
+  -webkit-animation: download-show 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s forwards;
+  -moz-animation: download-show 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s forwards;
+  animation: download-show 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s forwards; }
 
 @-webkit-keyframes download-show {
   0% {
-    -webkit-transform: translateY(100px);
+    -webkit-transform: translateY(50px);
     opacity: 0; }
 
   100% {
@@ -438,7 +438,7 @@ dl {
     opacity: 1; } }
 @-moz-keyframes download-show {
   0% {
-    -moz-transform: translateY(100px);
+    -moz-transform: translateY(50px);
     opacity: 0; }
 
   100% {
@@ -446,11 +446,11 @@ dl {
     opacity: 1; } }
 @keyframes download-show {
   0% {
-    -webkit-transform: translateY(100px);
-    -moz-transform: translateY(100px);
-    -ms-transform: translateY(100px);
-    -o-transform: translateY(100px);
-    transform: translateY(100px);
+    -webkit-transform: translateY(50px);
+    -moz-transform: translateY(50px);
+    -ms-transform: translateY(50px);
+    -o-transform: translateY(50px);
+    transform: translateY(50px);
     opacity: 0; }
 
   100% {
@@ -599,18 +599,7 @@ body, html {
     font-size: 26px;
     line-height: 1.3em; }
   .body div.start {
-    z-index: 1;
     position: relative; }
-    .body div.start.hide {
-      pointer-events: none; }
-  .body div.download {
-    margin-top: -58px;
-    opacity: 0;
-    pointer-events: none; }
-    .body div.download a {
-      margin-top: 2.8vh; }
-    .body div.download.show {
-      pointer-events: auto; }
   .body a {
     background: white;
     border: 2px solid white;
@@ -623,18 +612,30 @@ body, html {
     margin-top: 4.3vh;
     padding: 4px 50px;
     padding-right: 42px;
+    position: relative;
     text-rendering: optimizeLegibility;
     text-transform: uppercase;
     -webkit-transition: all 0.15s ease-out 0s;
     -moz-transition: all 0.15s ease-out 0s;
     transition: all 0.15s ease-out 0s;
-    width: 260px; }
+    width: 260px;
+    z-index: 1; }
     .body a:hover {
       color: white;
       background: rgba(8, 96, 179, 0.5); }
+    .body a.hide {
+      pointer-events: none; }
     .body a#download {
+      left: -webkit-calc(50% - (310px/1.5));
+      left: calc(50% - (310px/1.5));
+      opacity: 0;
       padding-right: 46px;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
       width: 310px; }
+      .body a#download.show {
+        pointer-events: auto; }
 
 .devtools-toolbar {
   background: #efefef;

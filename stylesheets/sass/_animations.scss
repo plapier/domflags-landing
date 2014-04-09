@@ -73,7 +73,7 @@
 }
 
 %animation-start-hide {
-  @include animation(start-hide 0.5s linear 0.2s forwards);
+  @include animation(start-hide 0.5s $ease-in-quad 0.5s forwards);
 }
 
 @include keyframes(start-hide) {
@@ -87,12 +87,12 @@
 }
 
 %animation-download-show {
-  @include animation(download-show 0.5s linear 0.2s forwards);
+  @include animation(download-show 0.5s $ease-out-quad 0.4s forwards);
 }
 
 @include keyframes(download-show) {
   0% {
-    @include transform(translateY(100px));
+    @include transform(translateY(50px));
     opacity: 0;
   }
   100% {
