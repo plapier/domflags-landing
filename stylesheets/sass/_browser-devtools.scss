@@ -34,17 +34,17 @@
 
     a.target {
       $color: #FF8158;
-      $s: 30px;
+      $s: 32px;
       $color: #1D93F0;
       @extend %animation-click-target;
       background: $color;
       border-radius: $s;
       // left: 140px;
-      right: 9px;
+      right: 8px;
       pointer-events: none;
       position: absolute;
       @include size($s);
-      top: 37px;
+      top: 35px;
       z-index: 1;
 
       &.solid {
@@ -55,11 +55,11 @@
       }
 
       &.pos-1 {
-        top: 73px;
+        top: 71px;
       }
 
       &.pos-2 {
-        top: 109px;
+        top: 107px;
       }
     }
 
@@ -107,7 +107,7 @@
             @include calc(top, "50% - #{$size/2}");
             content: "";
             position: absolute;
-            right: 20px;
+            right: 21px;
             @include size($size);
           }
         }
