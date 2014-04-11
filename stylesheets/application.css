@@ -591,34 +591,43 @@ body, html {
     font-size: 40px;
     text-transform: uppercase;
     margin-bottom: 0em;
-    letter-spacing: 38px;
-    margin-left: 38px;
+    letter-spacing: 34.9px;
+    margin-left: 34.9px;
     font-weight: 900; }
   .body h2 {
-    font-weight: 400;
     font-size: 26px;
-    line-height: 1.3em; }
-  .body div.start {
-    position: relative; }
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    line-height: 1.0em; }
+  .body .buttons {
+    margin-top: 5.5vh;
+    position: relative;
+    -webkit-transition: margin 0.1s linear;
+    -moz-transition: margin 0.1s linear;
+    transition: margin 0.1s linear; }
+    .body .buttons.show-download {
+      margin-top: 4.5vh; }
   .body a {
     background: white;
     border: 2px solid white;
     border-radius: 2px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     display: inline-block;
     font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 8px;
-    margin-top: 4.3vh;
-    padding: 4px 50px;
-    padding-right: 42px;
+    padding: 4px 20px;
+    padding-right: 12px;
     position: relative;
     text-rendering: optimizeLegibility;
     text-transform: uppercase;
     -webkit-transition: all 0.15s ease-out 0s;
     -moz-transition: all 0.15s ease-out 0s;
     transition: all 0.15s ease-out 0s;
-    width: 260px;
+    width: 456px;
     z-index: 1; }
     .body a:hover {
       color: white;
@@ -626,14 +635,15 @@ body, html {
     .body a.hide {
       pointer-events: none; }
     .body a#download {
-      left: -webkit-calc(50% - (310px/1.5));
-      left: calc(50% - (310px/1.5));
+      left: -webkit-calc(50% - (456px/2));
+      left: calc(50% - (456px/2));
+      letter-spacing: 3px;
       opacity: 0;
-      padding-right: 46px;
+      padding-right: 17px;
       pointer-events: none;
       position: absolute;
       top: 0;
-      width: 310px; }
+      width: 456px; }
       .body a#download.show {
         pointer-events: auto; }
 

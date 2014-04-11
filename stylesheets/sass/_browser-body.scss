@@ -11,7 +11,7 @@
   text-align: center;
 
   h1 {
-    $letter-spacing: 38.0px;
+    $letter-spacing: 34.9px;
     font-size: 40px;
     text-transform: uppercase;
     margin-bottom: 0em;
@@ -21,36 +21,45 @@
   }
 
   h2 {
-    font-weight: 400;
     font-size: 26px;
-    line-height: 1.3em;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    line-height: 1.0em;
   }
 
-  div.start {
+  .buttons {
+    margin-top: 5.5vh;
     position: relative;
+    @include transition(margin 0.1s linear);
+
+    &.show-download {
+      margin-top: 4.5vh;
+    }
   }
 
   a {
     $bg-color: rgba(11, 106, 194, 1);
     $fg-color: #fff;
     $letter-spacing: 8px;
-    $padding-lr: 50px;
+    $padding-lr: 20px;
+    $width: 456px;
+    // $width: 400px;
     background: $fg-color;
     border: 2px solid $fg-color;
     border-radius: 2px;
+    @include box-sizing(border-box);
     display: inline-block;
     font-family: "brandon-grotesque", $helvetica;
     font-size: 14px;
     font-weight: 600;
     letter-spacing: $letter-spacing;
-    margin-top: 4.3vh;
     padding: 4px $padding-lr;
     padding-right: $padding-lr - $letter-spacing;
     position: relative;
     text-rendering: optimizeLegibility;
     text-transform: uppercase;
     @include transition;
-    width: 260px;
+    width: $width;
     z-index: 1;
 
     &:hover {
@@ -64,14 +73,15 @@
     }
 
     &#download {
-      $letter-spacing: 4px;
-      @include calc(left, "50% - (310px/1.5)");
+      $letter-spacing: 3px;
+      @include calc(left, "50% - (#{$width}/2)");
+      letter-spacing: $letter-spacing;
       opacity: 0;
       padding-right: $padding-lr - $letter-spacing;
       pointer-events: none;
       position: absolute;
       top: 0;
-      width: 310px;
+      width: $width;
 
       &.show {
         pointer-events: auto;

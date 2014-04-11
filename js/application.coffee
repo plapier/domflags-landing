@@ -28,7 +28,7 @@ class SetupDemo
   demoEvents: ->
     ## Add parent OPEN class and refactor
     $('#start-demo').on('click', (event) =>
-      $(event.currentTarget).addClass('hide')
+      $(event.currentTarget).addClass('hide').parent().addClass('show-download')
       $('.devtools-toolbar, .devtools').addClass('open')
       @panel.addClass('open').find('li:first-child').addClass('demo')
       return false

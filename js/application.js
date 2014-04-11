@@ -38,7 +38,7 @@
     SetupDemo.prototype.demoEvents = function() {
       var _this = this;
       return $('#start-demo').on('click', function(event) {
-        $(event.currentTarget).addClass('hide');
+        $(event.currentTarget).addClass('hide').parent().addClass('show-download');
         $('.devtools-toolbar, .devtools').addClass('open');
         _this.panel.addClass('open').find('li:first-child').addClass('demo');
         return false;
