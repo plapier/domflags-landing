@@ -25,6 +25,7 @@
 @import "functions/grid-width";
 @import "functions/modular-scale";
 @import "functions/px-to-em";
+@import "functions/px-to-rem";
 @import "functions/strip-units";
 @import "functions/tint-shade";
 @import "functions/transition-property-name";
@@ -66,11 +67,11 @@
 @import "addons/html5-input-types";
 @import "addons/position";
 @import "addons/prefixer";
-@import "addons/rem";
 @import "addons/retina-image";
 @import "addons/size";
 @import "addons/timing-functions";
 @import "addons/triangle";
+@import "addons/word-wrap";
 
 // Soon to be deprecated Mixins
 @import "bourbon-deprecated-upcoming";
