@@ -8,9 +8,18 @@ tags: [Jekyll]
     <meta charset="utf-8">
     <title>DomFlags</title>
     <link rel="stylesheet" href="stylesheets/application.css">
+    <link rel="stylesheet" href="stylesheets/codemirror.css">
+    <link rel="stylesheet" href="stylesheets/foldgutter.css">
     <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.11/jquery.scrollTo.min.js"></script>
-    <script src="js/application.js"></script>
+    <script src="./js/codemirror/lib/codemirror.js"></script>
+    <script src="./js/codemirror/addon/fold/foldcode.js"></script>
+    <script src="./js/codemirror/addon/fold/foldgutter.js"></script>
+    <script src="./js/codemirror/addon/fold/xml-fold.js"></script>
+    <script src="./js/codemirror/mode/javascript/javascript.js"></script>
+    <script src="./js/codemirror/mode/xml/xml.js"></script>
+    <script src="./js/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="./js/application.js"></script>
     <script type="text/javascript" src="//use.typekit.net/irh3bar.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   </head>
@@ -47,9 +56,7 @@ tags: [Jekyll]
               <li class="flag">DIV class="dom-properties"</li>
             </ol>
           </div>
-          <div class="dom-tree">
-            {% include dom-tree.html %}
-          </div>
+          <div id="domtree" class="dom-tree"></div>
           <div class="dom-properties"></div>
         </section>
       </section>

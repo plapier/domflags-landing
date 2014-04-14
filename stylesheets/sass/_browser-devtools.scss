@@ -120,9 +120,6 @@
 ///////////////////////////////////////////////////////////////////////////
 .devtools {
   .dom-tree {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    padding: 5px 0;
     font-size: 11px;
     -webkit-font-smoothing: subpixel-antialiased;
 
@@ -136,30 +133,28 @@
 
     pre {
       margin: 0;
+      padding: 0;
     }
 
-    code > span {
-      display: block;
-      line-height: 1.3em;
-      padding: 0 10px;
-      padding-top: 1px;
-      position: relative;
-      z-index: 1;
+    .CodeMirror-code pre {
+      > span {
+        cursor: default;
+        display: block;
+        line-height: 1.3em;
+        padding: 1px 10px 0;
+        position: relative;
+        z-index: 1;
+      }
 
       &:hover {
         background-color: #EAF1FB;
       }
 
-      > span {
-        // Fix for animation not working
-        display: inline-block;
-        line-height: 1em;
-      }
       .domflag-attr {
         margin-left: 5px;
       }
 
-      &.selected {
+      .selected {
         &, * {
           color: #fff !important;
         }
@@ -200,4 +195,8 @@
     border-radius: 0 0 $browser-radius 0;
     box-shadow: -1px 0 0 hsla(0, 0%, 0%, 0.2);
   }
+}
+
+.CodeMirror-scroll {
+  overflow-x: hidden !important;
 }

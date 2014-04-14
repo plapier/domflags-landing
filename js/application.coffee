@@ -1,11 +1,29 @@
 $(document).ready ->
+  myCodeMirror = CodeMirror(document.getElementById('domtree'),
+    value: documentStr
+    # mode: 'text/html'
+    mode: 'htmlmixed'
+    readOnly: true
+    cursorBlinkRate: 0
+    lineWrapping: false
+    lineNumbers: false
+    foldGutter: true
+    foldCode: true
+    gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+  )
+
+  myCodeMirror.foldCode CodeMirror.Pos(4, 0), widget: "..."
+  myCodeMirror.on "change", ->
+    console.log "foo"
+
+
   new SetupDemo()
 
 class SetupDemo
   constructor: ->
     @panel = $('.domflags-panel')
-    @tree  = $('.dom-tree')
-    @treeLines = @tree.find('code > span')
+    @tree  = $('.CodeMirror-code')
+    @treeLines = @tree.find('pre > span')
     @treeFlags = @getTreeFlags()
     @setupTree()
     @demoEvents()
@@ -14,8 +32,8 @@ class SetupDemo
 
   getTreeFlags: ->
     @tree.find('span').filter( ->
-      if $(@).hasClass('s')
-        $(@).parent().addClass('flaggable')
+      if $(@).hasClass('cm-attribute')
+        $(@).parent().addClass('flaggable') ## flag parent if not closing bracket
       $(@).text() is "domflag"
     )
 
@@ -57,10 +75,10 @@ class SetupDemo
 
       ## Scroll to line if el is offscreen
       $elPos = $el.offset().top
-      @treeTop = @tree.offset().top
-      @treeBottom = @treeTop + @tree.height()
-      unless $elPos > @treeTop and $elPos < @treeBottom
-        @tree.scrollTo('.domflag-line.selected')
+      treeTop = @tree.offset().top
+      treeBottom = treeTop + $('#domtree').height()
+      unless $elPos > treeTop and $elPos < treeBottom
+        $('.CodeMirror-scroll').scrollTo('.domflag-line.selected')
     )
 
   tooltipEvents: ->
@@ -82,7 +100,7 @@ class SetupDemo
             string = @data.toUpperCase() + " " if index == 0
             elString.push string.replace(/</g,' ').replace(/\= /, '=') ## formatting cleanup
         )
-        $parent.addClass('domflag-line').find('.s').after($domflagStr)
+        $parent.addClass('domflag-line').find('.cm-string').after($domflagStr)
         index = $parent.index('.domflag-line')
         flagItem = "<li class='flag new'>#{elString.join("")}</li>"
 
@@ -91,3 +109,36 @@ class SetupDemo
         else
           $('ol.flags').append(flagItem)
     )
+
+
+documentStr = """
+              <!DOCTYPE html>
+              <html lang="en">
+                <head></head>
+                <body data-attr="1">
+                  <section class="main">
+                    <section class="browser">
+                      <div class="header"domflag>
+                        <div class="browser-button"></div>
+                        <div class="browser-button"></div>
+                        <div class="browser-button"></div>
+                      </div>
+                      <div class="body">..</div>
+                      <div class="devtool-toolbar"></div>
+                      <section class="devtools"domflag>
+                        <div class="domflags-panel">
+                          <header class="title">DOMFLAGS</header>
+                          <ol class="flags">
+                            <li class="flag">DIV class="header"</li>
+                            <li class="flag">SECTION class="devtools"</li>
+                            <li class="flag">LI class="flag"</li>
+                          </ol>
+                        </div>
+                        <div class="dom-tree">..</div>
+                        <div class="dom-properties"domflag>..</div>
+                      </section>
+                    </section>
+                  </section>
+                </body>
+              </html>
+              """

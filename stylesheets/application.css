@@ -260,7 +260,7 @@ dl {
     -ms-transform: translateY(0px);
     -o-transform: translateY(0px);
     transform: translateY(0px); } }
-.devtools .dom-tree code > span.selected .domflag-attr {
+.devtools .dom-tree .CodeMirror-code pre .selected .domflag-attr {
   -webkit-animation: selected-node 0.55s cubic-bezier(0.47, 0, 0.745, 0.715);
   -moz-animation: selected-node 0.55s cubic-bezier(0.47, 0, 0.745, 0.715);
   animation: selected-node 0.55s cubic-bezier(0.47, 0, 0.745, 0.715);
@@ -739,9 +739,6 @@ body, html {
       width: 8px; }
 
 .devtools .dom-tree {
-  overflow-y: scroll;
-  overflow-x: hidden;
-  padding: 5px 0;
   font-size: 11px;
   -webkit-font-smoothing: subpixel-antialiased; }
   .devtools .dom-tree span {
@@ -749,39 +746,37 @@ body, html {
   .devtools .dom-tree .highlight {
     background: none; }
   .devtools .dom-tree pre {
-    margin: 0; }
-  .devtools .dom-tree code > span {
+    margin: 0;
+    padding: 0; }
+  .devtools .dom-tree .CodeMirror-code pre > span {
+    cursor: default;
     display: block;
     line-height: 1.3em;
-    padding: 0 10px;
-    padding-top: 1px;
+    padding: 1px 10px 0;
     position: relative;
     z-index: 1; }
-    .devtools .dom-tree code > span:hover {
-      background-color: #EAF1FB; }
-    .devtools .dom-tree code > span > span {
-      display: inline-block;
-      line-height: 1em; }
-    .devtools .dom-tree code > span .domflag-attr {
-      margin-left: 5px; }
-    .devtools .dom-tree code > span.selected, .devtools .dom-tree code > span.selected * {
-      color: #fff !important; }
-    .devtools .dom-tree code > span.selected .domflag-attr {
-      position: relative;
-      background: #f36133;
-      padding: 1px 4px;
-      border-radius: 1px;
-      margin-right: 5px; }
-    .devtools .dom-tree code > span.selected:before {
-      height: 100%;
-      z-index: -1;
-      width: -webkit-calc(100% + 20px);
-      width: calc(100% + 20px);
-      background-color: #3779D9;
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -10px; }
+  .devtools .dom-tree .CodeMirror-code pre:hover {
+    background-color: #EAF1FB; }
+  .devtools .dom-tree .CodeMirror-code pre .domflag-attr {
+    margin-left: 5px; }
+  .devtools .dom-tree .CodeMirror-code pre .selected, .devtools .dom-tree .CodeMirror-code pre .selected * {
+    color: #fff !important; }
+  .devtools .dom-tree .CodeMirror-code pre .selected .domflag-attr {
+    position: relative;
+    background: #f36133;
+    padding: 1px 4px;
+    border-radius: 1px;
+    margin-right: 5px; }
+  .devtools .dom-tree .CodeMirror-code pre .selected:before {
+    height: 100%;
+    z-index: -1;
+    width: -webkit-calc(100% + 20px);
+    width: calc(100% + 20px);
+    background-color: #3779D9;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -10px; }
   .devtools .dom-tree .domflag-attr {
     color: red !important; }
 
@@ -790,14 +785,17 @@ body, html {
   border-radius: 0 0 4px 0;
   box-shadow: -1px 0 0 rgba(0, 0, 0, 0.2); }
 
-code > span.selected .tooltip {
+.CodeMirror-scroll {
+  overflow-x: hidden !important; }
+
+.CodeMirror-code pre > span.selected .tooltip {
   background: #5196f6; }
-code > span.selected:hover .tooltip {
+.CodeMirror-code pre > span.selected:hover .tooltip {
   background: #69a5f7; }
-code > span.flaggable:hover .tooltip {
+.CodeMirror-code pre > span.flaggable:hover .tooltip {
   opacity: 1;
   pointer-events: auto; }
-code > span.non-flaggable:hover .tooltip {
+.CodeMirror-code pre > span.non-flaggable:hover .tooltip {
   opacity: 0;
   pointer-events: none; }
 
@@ -806,7 +804,7 @@ code > span.non-flaggable:hover .tooltip {
   border-radius: 0px;
   color: #FFF;
   cursor: pointer;
-  display: none;
+  display: inline-block;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   font-size: 10px;
@@ -819,6 +817,11 @@ code > span.non-flaggable:hover .tooltip {
   text-transform: uppercase; }
   .tooltip:hover {
     background: rgba(12, 102, 218, 0.8); }
+
+.CodeMirror-foldmarker {
+  font-size: 8px;
+  letter-spacing: -3px;
+  margin-right: 2px; }
 
 .highlight {
   background: #ffffff; }

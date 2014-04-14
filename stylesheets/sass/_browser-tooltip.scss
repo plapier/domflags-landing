@@ -1,4 +1,4 @@
-code > span {
+.CodeMirror-code pre > span {
   &.selected {
     $bg: #5196F6;
     .tooltip {
@@ -30,7 +30,7 @@ code > span {
   border-radius: 0px;
   color: #FFF;
   cursor: pointer;
-  display: none;
+  display: inline-block;
   @include border-left-radius(10px);
   font-size: 10px;
   margin-top: -1px;
