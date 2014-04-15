@@ -797,6 +797,17 @@ body, html {
   display: inline-block !important;
   cursor: pointer; }
 
+.fold-true a {
+  display: inline-block;
+  height: 0;
+  width: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 7px solid #6e6e6e;
+  margin-top: 2px;
+  position: absolute;
+  margin-left: -10px; }
+
 .fold-block {
   display: block;
   line-height: 1.3em;

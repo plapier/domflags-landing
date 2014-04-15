@@ -211,6 +211,16 @@
   cursor: pointer;
 }
 
+.fold-true {
+  a {
+    display: inline-block;
+    @include triangle(8px 7px, #6E6E6E, right);
+    margin-top: 2px;
+    position: absolute;
+    margin-left: -10px;
+  }
+}
+
 .fold-block {
   display: block;
   line-height: 1.3em;

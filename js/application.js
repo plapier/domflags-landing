@@ -69,7 +69,7 @@
     };
 
     SetupDemo.prototype.foldBlock = function(folds) {
-      var $block, $end, $inner, $paddingLeft, $start, fold, _i, _len, _results;
+      var $block, $end, $inner, $paddingLeft, $start, blockStr, fold, _i, _len, _results;
       _results = [];
       for (_i = 0, _len = folds.length; _i < _len; _i++) {
         fold = folds[_i];
@@ -78,10 +78,11 @@
         $inner = this.tree.find($start).nextUntil($end);
         $block = this.tree.find("#line-" + (fold.start - 1)).nextUntil("#line-" + (fold.end + 1));
         $paddingLeft = $start.find('span:first-of-type').offset().left - this.tree.offset().left;
-        $start.addClass('fold-true fold-parent').css('padding-left', "" + $paddingLeft + "px");
+        $start.addClass('fold-true fold-parent');
         $end.addClass('fold-parent');
         $inner.addClass('fold-inner');
-        _results.push($block.wrapAll('<div class="fold-block" />'));
+        blockStr = "<div class='fold-block' style='padding-left: " + $paddingLeft + "px' />";
+        _results.push($block.wrapAll(blockStr));
       }
       return _results;
     };
@@ -118,6 +119,10 @@
           _this.panel.find('li').removeClass('active').end().find(event.currentTarget).addClass('active').removeClass('demo new');
           _this.tree.find('span').removeClass('selected');
           $el.addClass('selected');
+          if ($el.is(':hidden')) {
+            $el.parentsUntil(_this.tree).filter('.fold-block').children().unwrap();
+            $el.parents().children().removeClass('fold-parent fold-inner');
+          }
           $elPos = $el.offset().top;
           _this.treeTop = _this.tree.offset().top;
           _this.treeBottom = _this.treeTop + _this.tree.height();
