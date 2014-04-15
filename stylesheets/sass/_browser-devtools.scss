@@ -201,3 +201,18 @@
     box-shadow: -1px 0 0 hsla(0, 0%, 0%, 0.2);
   }
 }
+
+.fold-inner {
+  display: none !important;
+}
+
+.fold-parent {
+  display: inline-block !important;
+  cursor: pointer;
+}
+
+.fold-block {
+  display: block;
+  line-height: 1.3em;
+  white-space: nowrap;
+}

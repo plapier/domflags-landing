@@ -7,10 +7,16 @@ class SetupDemo
     @tree  = $('.dom-tree')
     @treeLines = @tree.find('code > span')
     @treeFlags = @getTreeFlags()
+    @folds = [
+      { start: 7, end: 11 }
+      { start: 4, end: 28 }
+    ]
     @setupTree()
+    @foldingEvents()
     @demoEvents()
     @panelEvents()
     @tooltipEvents()
+
 
   getTreeFlags: ->
     @tree.find('span').filter( ->
@@ -24,6 +30,36 @@ class SetupDemo
     @treeFlags.addClass('domflag-attr').parent().addClass('domflag-line')
     @treeLines.find('span:last-of-type').after(tooltipStr).end().filter('.domflag-line').find('.tooltip').text('Remove Domflag')
     $('#line-2').addClass('non-flaggable')
+
+    @foldBlock(@folds) ## Fold all blocks
+
+  foldingEvents: ->
+    $('.fold-true').on 'click', (event) =>
+      $parent = $(event.currentTarget).parent()
+      if $parent.hasClass('fold-block')
+        @unfoldBlock(event.currentTarget)
+      else
+        spanID = parseInt $(event.currentTarget)[0].id.replace(/\D/g,'') ## Get line-id
+        foldObject = $.grep(@folds, (obj) ->
+          obj.start is spanID
+        )
+        @foldBlock(foldObject)
+
+  unfoldBlock: (target) ->
+    $(target).removeClass('fold-parent').attr('style', '').siblings().removeClass('fold-parent fold-inner').unwrap()
+
+  foldBlock: (folds) ->
+    for fold in folds
+      $start = @tree.find("#line-#{fold.start}")
+      $end   = @tree.find("#line-#{fold.end}")
+      $inner = @tree.find($start).nextUntil($end)
+      $block = @tree.find("#line-#{fold.start - 1}").nextUntil("#line-#{fold.end + 1}")
+      # console.log $start.find('span:first-of-type').offset().left
+      $paddingLeft = $start.find('span:first-of-type').offset().left - @tree.offset().left
+      $start.addClass('fold-true fold-parent').css('padding-left', "#{$paddingLeft}px")
+      $end.addClass('fold-parent')
+      $inner.addClass('fold-inner')
+      $block.wrapAll('<div class="fold-block" />')
 
   demoEvents: ->
     ## Add parent OPEN class and refactor
@@ -56,6 +92,10 @@ class SetupDemo
       $el.addClass('selected')
 
       ## Scroll to line if el is offscreen
+      ## TODO: unfold parent blocks when hidden
+      # if $el.is(':hidden')
+        # $el.parent.attr('style', '').siblings().removeClass('fold-parent fold-inner').unwrap()
+
       $elPos = $el.offset().top
       @treeTop = @tree.offset().top
       @treeBottom = @treeTop + @tree.height()

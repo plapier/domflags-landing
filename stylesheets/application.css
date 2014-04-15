@@ -790,6 +790,18 @@ body, html {
   border-radius: 0 0 4px 0;
   box-shadow: -1px 0 0 rgba(0, 0, 0, 0.2); }
 
+.fold-inner {
+  display: none !important; }
+
+.fold-parent {
+  display: inline-block !important;
+  cursor: pointer; }
+
+.fold-block {
+  display: block;
+  line-height: 1.3em;
+  white-space: nowrap; }
+
 code > span.selected .tooltip {
   background: #5196f6; }
 code > span.selected:hover .tooltip {
