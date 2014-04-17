@@ -109,7 +109,7 @@ class SetupDemo
       ## Unfold blocks if selected node is hidden
       if $el.is(':hidden')
         $el.parentsUntil(@tree).filter('.fold-block').children().unwrap()
-        $el.parents().children().removeClass('fold-parent fold-inner').attr('style', '')
+        $el.parents().children().removeClass('fold-parent fold-inner').attr('style', '').children('a').addClass('open')
 
       ## Scroll to line if el is offscreen
       $elPos = $el.offset().top

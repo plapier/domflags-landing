@@ -143,7 +143,7 @@
           $el.addClass('selected');
           if ($el.is(':hidden')) {
             $el.parentsUntil(_this.tree).filter('.fold-block').children().unwrap();
-            $el.parents().children().removeClass('fold-parent fold-inner').attr('style', '');
+            $el.parents().children().removeClass('fold-parent fold-inner').attr('style', '').children('a').addClass('open');
           }
           $elPos = $el.offset().top;
           _this.treeTop = _this.tree.offset().top;
