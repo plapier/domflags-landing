@@ -14,18 +14,29 @@
       this.treeFlags = this.getTreeFlags();
       this.folds = [
         {
+          start: 17,
+          end: 21
+        }, {
+          start: 15,
+          end: 22
+        }, {
+          start: 14,
+          end: 25
+        }, {
           start: 7,
           end: 11
+        }, {
+          start: 6,
+          end: 26
+        }, {
+          start: 5,
+          end: 27
         }, {
           start: 4,
           end: 28
         }
       ];
-      this.setupTree();
-      this.foldingEvents();
       this.demoEvents();
-      this.panelEvents();
-      this.tooltipEvents();
     }
 
     SetupDemo.prototype.getTreeFlags = function() {
@@ -37,7 +48,14 @@
       });
     };
 
-    SetupDemo.prototype.setupTree = function() {
+    SetupDemo.prototype.initTree = function() {
+      this.setupTreeNodes();
+      this.foldingEvents();
+      this.panelEvents();
+      return this.tooltipEvents();
+    };
+
+    SetupDemo.prototype.setupTreeNodes = function() {
       var tooltipStr;
       tooltipStr = '<span class="tooltip">Add Domflag</span>';
       this.treeFlags.addClass('domflag-attr').parent().addClass('domflag-line');
@@ -65,7 +83,10 @@
     };
 
     SetupDemo.prototype.unfoldBlock = function(target) {
-      return $(target).removeClass('fold-parent').attr('style', '').siblings().removeClass('fold-parent fold-inner').unwrap();
+      var leftVal;
+      leftVal = parseInt($(target).parent().css('padding-left'));
+      $(target).removeClass('fold-parent').attr('style', '').siblings().removeClass('fold-parent fold-inner').unwrap();
+      return $(target).children('a').addClass('open');
     };
 
     SetupDemo.prototype.foldBlock = function(folds) {
@@ -77,11 +98,11 @@
         $end = this.tree.find("#line-" + fold.end);
         $inner = this.tree.find($start).nextUntil($end);
         $block = this.tree.find("#line-" + (fold.start - 1)).nextUntil("#line-" + (fold.end + 1));
-        $paddingLeft = $start.find('span:first-of-type').offset().left - this.tree.offset().left;
-        $start.addClass('fold-true fold-parent');
+        $paddingLeft = Math.ceil($start.find('span:first-of-type').offset().left - this.tree.offset().left);
+        $start.addClass('fold-true fold-parent').css('margin-left', "" + $paddingLeft + "px").children('a').css('left', "" + $paddingLeft + "px").removeClass('open');
         $end.addClass('fold-parent');
         $inner.addClass('fold-inner');
-        blockStr = "<div class='fold-block' style='padding-left: " + $paddingLeft + "px' />";
+        blockStr = "<div class='fold-block' />";
         _results.push($block.wrapAll(blockStr));
       }
       return _results;
@@ -93,6 +114,7 @@
           $(event.currentTarget).addClass('hide').parent().addClass('show-download');
           $('.devtools-toolbar, .devtools').addClass('open');
           _this.panel.addClass('open').find('li:first-child').addClass('demo');
+          _this.initTree();
           return false;
         };
       })(this));
@@ -121,7 +143,7 @@
           $el.addClass('selected');
           if ($el.is(':hidden')) {
             $el.parentsUntil(_this.tree).filter('.fold-block').children().unwrap();
-            $el.parents().children().removeClass('fold-parent fold-inner');
+            $el.parents().children().removeClass('fold-parent fold-inner').attr('style', '');
           }
           $elPos = $el.offset().top;
           _this.treeTop = _this.tree.offset().top;

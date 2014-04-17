@@ -120,10 +120,11 @@
 ///////////////////////////////////////////////////////////////////////////
 .devtools {
   .dom-tree {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    padding: 5px 0;
     font-size: 11px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 5px 0;
+    position: relative;
     -webkit-font-smoothing: subpixel-antialiased;
 
     span {
@@ -136,6 +137,10 @@
 
     pre {
       margin: 0;
+    }
+
+    .domflag-attr {
+      margin-left: 5px;
     }
 
     code > span {
@@ -154,9 +159,6 @@
         // Fix for animation not working
         display: inline-block;
         line-height: 1em;
-      }
-      .domflag-attr {
-        margin-left: 5px;
       }
 
       &.selected {
@@ -215,14 +217,19 @@
   a {
     display: inline-block;
     @include triangle(8px 7px, #6E6E6E, right);
-    margin-top: 2px;
+    margin-top: 3px;
     position: absolute;
     margin-left: -10px;
+
+    &.open {
+      margin-top: 2px;
+      @include transform(rotate(90deg));
+    }
   }
 }
 
 .fold-block {
   display: block;
-  line-height: 1.3em;
+  line-height: 1.4em;
   white-space: nowrap;
 }

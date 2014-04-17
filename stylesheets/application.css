@@ -739,10 +739,11 @@ body, html {
       width: 8px; }
 
 .devtools .dom-tree {
-  overflow-y: scroll;
-  overflow-x: hidden;
-  padding: 5px 0;
   font-size: 11px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 5px 0;
+  position: relative;
   -webkit-font-smoothing: subpixel-antialiased; }
   .devtools .dom-tree span {
     font-family: Menlo, monospace; }
@@ -750,6 +751,8 @@ body, html {
     background: none; }
   .devtools .dom-tree pre {
     margin: 0; }
+  .devtools .dom-tree .domflag-attr {
+    margin-left: 5px; }
   .devtools .dom-tree code > span {
     display: block;
     line-height: 1.3em;
@@ -762,8 +765,6 @@ body, html {
     .devtools .dom-tree code > span > span {
       display: inline-block;
       line-height: 1em; }
-    .devtools .dom-tree code > span .domflag-attr {
-      margin-left: 5px; }
     .devtools .dom-tree code > span.selected, .devtools .dom-tree code > span.selected * {
       color: #fff !important; }
     .devtools .dom-tree code > span.selected .domflag-attr {
@@ -804,13 +805,20 @@ body, html {
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent;
   border-left: 7px solid #6e6e6e;
-  margin-top: 2px;
+  margin-top: 3px;
   position: absolute;
   margin-left: -10px; }
+  .fold-true a.open {
+    margin-top: 2px;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg); }
 
 .fold-block {
   display: block;
-  line-height: 1.3em;
+  line-height: 1.4em;
   white-space: nowrap; }
 
 code > span.selected .tooltip {

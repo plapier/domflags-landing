@@ -8,14 +8,15 @@ class SetupDemo
     @treeLines = @tree.find('code > span')
     @treeFlags = @getTreeFlags()
     @folds = [
+      { start: 17, end: 21 }
+      { start: 15, end: 22 }
+      { start: 14, end: 25 }
       { start: 7, end: 11 }
+      { start: 6, end: 26 }
+      { start: 5, end: 27 }
       { start: 4, end: 28 }
     ]
-    @setupTree()
-    @foldingEvents()
     @demoEvents()
-    @panelEvents()
-    @tooltipEvents()
 
 
   getTreeFlags: ->
@@ -25,7 +26,13 @@ class SetupDemo
       $(@).text() is "domflag"
     )
 
-  setupTree: ->
+  initTree: ->
+    @setupTreeNodes()
+    @foldingEvents()
+    @panelEvents()
+    @tooltipEvents()
+
+  setupTreeNodes: ->
     tooltipStr= '<span class="tooltip">Add Domflag</span>'
     @treeFlags.addClass('domflag-attr').parent().addClass('domflag-line')
     @treeLines.find('span:last-of-type').after(tooltipStr).end()
@@ -47,8 +54,10 @@ class SetupDemo
         @foldBlock(foldObject)
 
   unfoldBlock: (target) ->
+    leftVal = parseInt $(target).parent().css('padding-left')
     $(target).removeClass('fold-parent').attr('style', '')
       .siblings().removeClass('fold-parent fold-inner').unwrap()
+    $(target).children('a').addClass('open')
 
   foldBlock: (folds) ->
     for fold in folds
@@ -57,11 +66,11 @@ class SetupDemo
       $inner = @tree.find($start).nextUntil($end)
       $block = @tree.find("#line-#{fold.start - 1}").nextUntil("#line-#{fold.end + 1}")
       # console.log $start.find('span:first-of-type').offset().left
-      $paddingLeft = $start.find('span:first-of-type').offset().left - @tree.offset().left
-      $start.addClass('fold-true fold-parent')
+      $paddingLeft = Math.ceil $start.find('span:first-of-type').offset().left - @tree.offset().left
+      $start.addClass('fold-true fold-parent').css('margin-left', "#{$paddingLeft}px").children('a').css('left', "#{$paddingLeft}px").removeClass('open')
       $end.addClass('fold-parent')
       $inner.addClass('fold-inner')
-      blockStr = "<div class='fold-block' style='padding-left: #{$paddingLeft}px' />"
+      blockStr = "<div class='fold-block' />"
       $block.wrapAll(blockStr)
 
   demoEvents: ->
@@ -70,6 +79,8 @@ class SetupDemo
       $(event.currentTarget).addClass('hide').parent().addClass('show-download')
       $('.devtools-toolbar, .devtools').addClass('open')
       @panel.addClass('open').find('li:first-child').addClass('demo')
+
+      @initTree() ## initTree after click to fix arrow position bug
       return false
     )
 
@@ -98,7 +109,7 @@ class SetupDemo
       ## Unfold blocks if selected node is hidden
       if $el.is(':hidden')
         $el.parentsUntil(@tree).filter('.fold-block').children().unwrap()
-        $el.parents().children().removeClass('fold-parent fold-inner')
+        $el.parents().children().removeClass('fold-parent fold-inner').attr('style', '')
 
       ## Scroll to line if el is offscreen
       $elPos = $el.offset().top
