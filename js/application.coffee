@@ -42,12 +42,12 @@ class SetupDemo
     @foldBlock(@folds) ## Fold all blocks
 
   foldingEvents: ->
-    $('.fold-true').on 'click', (event) =>
-      $parent = $(event.currentTarget).parent()
+    $('.fold-true').on 'click', 'a', (event) =>
+      $parent = $(event.delegateTarget).parent()
       if $parent.hasClass('fold-block')
-        @unfoldBlock(event.currentTarget)
+        @unfoldBlock(event.delegateTarget)
       else
-        spanID = parseInt $(event.currentTarget)[0].id.replace(/\D/g,'') ## Get line-id
+        spanID = parseInt $(event.delegateTarget)[0].id.replace(/\D/g,'') ## Get line-id
         foldObject = $.grep(@folds, (obj) ->
           obj.start is spanID
         )
@@ -107,7 +107,7 @@ class SetupDemo
       $el.addClass('selected')
 
       ## Unfold blocks if selected node is hidden
-      if $el.is(':hidden')
+      if $el.parent('.fold-block').length is 1
         $el.parentsUntil(@tree).filter('.fold-block').children().unwrap()
         $el.parents().children().removeClass('fold-parent fold-inner').attr('style', '').children('a').addClass('open')
 

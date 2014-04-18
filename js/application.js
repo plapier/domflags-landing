@@ -65,14 +65,14 @@
     };
 
     SetupDemo.prototype.foldingEvents = function() {
-      return $('.fold-true').on('click', (function(_this) {
+      return $('.fold-true').on('click', 'a', (function(_this) {
         return function(event) {
           var $parent, foldObject, spanID;
-          $parent = $(event.currentTarget).parent();
+          $parent = $(event.delegateTarget).parent();
           if ($parent.hasClass('fold-block')) {
-            return _this.unfoldBlock(event.currentTarget);
+            return _this.unfoldBlock(event.delegateTarget);
           } else {
-            spanID = parseInt($(event.currentTarget)[0].id.replace(/\D/g, ''));
+            spanID = parseInt($(event.delegateTarget)[0].id.replace(/\D/g, ''));
             foldObject = $.grep(_this.folds, function(obj) {
               return obj.start === spanID;
             });
@@ -141,7 +141,7 @@
           _this.panel.find('li').removeClass('active').end().find(event.currentTarget).addClass('active').removeClass('demo new');
           _this.tree.find('span').removeClass('selected');
           $el.addClass('selected');
-          if ($el.is(':hidden')) {
+          if ($el.parent('.fold-block').length === 1) {
             $el.parentsUntil(_this.tree).filter('.fold-block').children().unwrap();
             $el.parents().children().removeClass('fold-parent fold-inner').attr('style', '').children('a').addClass('open');
           }
