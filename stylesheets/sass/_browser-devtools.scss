@@ -232,8 +232,10 @@ code > span {
 
 .fold-block {
   display: block;
+  left: 0;
   line-height: 1.4em;
   position: relative;
+  right: 0;
   white-space: nowrap;
 
   &:hover {

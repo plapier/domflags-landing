@@ -31,7 +31,6 @@ class SetupDemo
     @foldBlocks(@folds)
     @foldingEvents()
     @panelEvents()
-    # @appendFoldTooltips()
     @tooltipEvents()
 
   setupTreeNodes: ->
@@ -62,17 +61,16 @@ class SetupDemo
     $(target).children('a').addClass('open')
 
   foldBlocks: (folds) ->
-    blockStr = "<div class='fold-block' />"
-
     for fold in folds
       $start = @tree.find("#line-#{fold.start}")
       $end   = @tree.find("#line-#{fold.end}")
       $inner = @tree.find($start).nextUntil($end)
       $block = @tree.find("#line-#{fold.start - 1}").nextUntil("#line-#{fold.end + 1}")
       $paddingLeft = Math.ceil $start.find('span:first-of-type').offset().left - @tree.offset().left
-      $start.addClass('fold-true fold-parent').css('margin-left', "#{$paddingLeft}px").children('a').css('left', "#{$paddingLeft}px").removeClass('open')
+      $start.addClass('fold-true fold-parent').children('a').css('left', "#{$paddingLeft}px").removeClass('open')
       $end.addClass('fold-parent')
       $inner.addClass('fold-inner')
+      blockStr = "<div class='fold-block' style='padding-left: #{$paddingLeft}px' />"
       $block.wrapAll(blockStr)
 
   demoEvents: ->
@@ -111,7 +109,7 @@ class SetupDemo
       ## Unfold blocks if selected node is hidden
       if $el.parent('.fold-block').length is 1
         $el.parentsUntil(@tree).filter('.fold-block').children().unwrap()
-        $el.parents().children().removeClass('fold-parent fold-inner').attr('style', '').children('a').addClass('open')
+        $el.parents().children().removeClass('fold-parent fold-inner').children('a').addClass('open')
 
       ## Scroll to line if el is offscreen
       $elPos = $el.offset().top
@@ -121,14 +119,9 @@ class SetupDemo
         @tree.scrollTo('.domflag-line.selected')
     )
 
-  appendFoldTooltips: ->
-    $('.fold-block').append(@tooltipStr)
-
   tooltipEvents: ->
     $('.tooltip').on('click', (event) =>
       tooltipEl = event.currentTarget
-      if $(event.currentTarget).parent().is('.fold-block')
-        tooltipEl = $(event.currentTarget).parent().children(':first-child').find('.tooltip')
       @handleTooltipClick(tooltipEl)
     )
 

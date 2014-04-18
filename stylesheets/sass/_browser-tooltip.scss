@@ -1,12 +1,8 @@
 .fold-block {
-  &:hover > .tooltip {
+  &:hover > span:first-of-type .tooltip {
     opacity: 1;
     pointer-events: auto;
-  }
-
-  > .tooltip {
-    background: red;
-    top: 0;
+    top: 1px;
   }
 }
 

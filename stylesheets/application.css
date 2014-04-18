@@ -821,18 +821,18 @@ code > span {
 
 .fold-block {
   display: block;
+  left: 0;
   line-height: 1.4em;
   position: relative;
+  right: 0;
   white-space: nowrap; }
   .fold-block:hover {
     background-color: #eaf1fb; }
 
-.fold-block:hover > .tooltip {
+.fold-block:hover > span:first-of-type .tooltip {
   opacity: 1;
-  pointer-events: auto; }
-.fold-block > .tooltip {
-  background: red;
-  top: 0; }
+  pointer-events: auto;
+  top: 1px; }
 
 code > .tooltip {
   display: none; }

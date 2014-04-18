@@ -91,7 +91,6 @@
 
     SetupDemo.prototype.foldBlocks = function(folds) {
       var $block, $end, $inner, $paddingLeft, $start, blockStr, fold, _i, _len, _results;
-      blockStr = "<div class='fold-block' />";
       _results = [];
       for (_i = 0, _len = folds.length; _i < _len; _i++) {
         fold = folds[_i];
@@ -100,9 +99,10 @@
         $inner = this.tree.find($start).nextUntil($end);
         $block = this.tree.find("#line-" + (fold.start - 1)).nextUntil("#line-" + (fold.end + 1));
         $paddingLeft = Math.ceil($start.find('span:first-of-type').offset().left - this.tree.offset().left);
-        $start.addClass('fold-true fold-parent').css('margin-left', "" + $paddingLeft + "px").children('a').css('left', "" + $paddingLeft + "px").removeClass('open');
+        $start.addClass('fold-true fold-parent').children('a').css('left', "" + $paddingLeft + "px").removeClass('open');
         $end.addClass('fold-parent');
         $inner.addClass('fold-inner');
+        blockStr = "<div class='fold-block' style='padding-left: " + $paddingLeft + "px' />";
         _results.push($block.wrapAll(blockStr));
       }
       return _results;
@@ -143,7 +143,7 @@
           $el.addClass('selected');
           if ($el.parent('.fold-block').length === 1) {
             $el.parentsUntil(_this.tree).filter('.fold-block').children().unwrap();
-            $el.parents().children().removeClass('fold-parent fold-inner').attr('style', '').children('a').addClass('open');
+            $el.parents().children().removeClass('fold-parent fold-inner').children('a').addClass('open');
           }
           $elPos = $el.offset().top;
           _this.treeTop = _this.tree.offset().top;
@@ -155,18 +155,11 @@
       })(this));
     };
 
-    SetupDemo.prototype.appendFoldTooltips = function() {
-      return $('.fold-block').append(this.tooltipStr);
-    };
-
     SetupDemo.prototype.tooltipEvents = function() {
       return $('.tooltip').on('click', (function(_this) {
         return function(event) {
           var tooltipEl;
           tooltipEl = event.currentTarget;
-          if ($(event.currentTarget).parent().is('.fold-block')) {
-            tooltipEl = $(event.currentTarget).parent().children(':first-child').find('.tooltip');
-          }
           return _this.handleTooltipClick(tooltipEl);
         };
       })(this));
