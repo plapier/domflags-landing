@@ -158,44 +158,39 @@
     SetupDemo.prototype.tooltipEvents = function() {
       return $('.tooltip').on('click', (function(_this) {
         return function(event) {
-          var tooltipEl;
+          var $domflagStr, $parent, elString, flagItem, index, stringArray, tooltipEl;
+          $domflagStr = '<span class="na domflag-attr">domflag</span>';
           tooltipEl = event.currentTarget;
-          return _this.handleTooltipClick(tooltipEl);
+          $parent = $(tooltipEl).parent();
+          if ($parent.hasClass('domflag-line')) {
+            index = $parent.index('.domflag-line');
+            $(tooltipEl).text('Add Domflag');
+            $(_this.panel).find('li').eq(index).remove();
+            return $parent.removeClass('domflag-line').find('.domflag-attr').remove();
+          } else {
+            $(tooltipEl).text('Remove Domflag');
+            elString = [];
+            stringArray = $(tooltipEl).siblings().contents().filter(function(index) {
+              var string;
+              if (!this.data.match(/\>/g)) {
+                string = this.data;
+                if (index === 0) {
+                  string = this.data.toUpperCase() + " ";
+                }
+                return elString.push(string.replace(/</g, ' ').replace(/\= /, '='));
+              }
+            });
+            $parent.addClass('domflag-line').find('.s').after($domflagStr);
+            index = $parent.index('.domflag-line');
+            flagItem = "<li class='flag new'>" + (elString.join("")) + "</li>";
+            if (index < $('ol.flags li').length) {
+              return $('ol.flags li').eq(index).before(flagItem);
+            } else {
+              return $('ol.flags').append(flagItem);
+            }
+          }
         };
       })(this));
-    };
-
-    SetupDemo.prototype.handleTooltipClick = function(tooltipEl) {
-      var $domflagStr, $parent, elString, flagItem, index, stringArray;
-      $domflagStr = '<span class="na domflag-attr">domflag</span>';
-      $parent = $(tooltipEl).parent();
-      if ($parent.hasClass('domflag-line')) {
-        index = $parent.index('.domflag-line');
-        $(tooltipEl).text('Add Domflag');
-        $(this.panel).find('li').eq(index).remove();
-        return $parent.removeClass('domflag-line').find('.domflag-attr').remove();
-      } else {
-        $(tooltipEl).text('Remove Domflag');
-        elString = [];
-        stringArray = $(tooltipEl).siblings().contents().filter(function(index) {
-          var string;
-          if (!this.data.match(/\>/g)) {
-            string = this.data;
-            if (index === 0) {
-              string = this.data.toUpperCase() + " ";
-            }
-            return elString.push(string.replace(/</g, ' ').replace(/\= /, '='));
-          }
-        });
-        $parent.addClass('domflag-line').find('.s').after($domflagStr);
-        index = $parent.index('.domflag-line');
-        flagItem = "<li class='flag new'>" + (elString.join("")) + "</li>";
-        if (index < $('ol.flags li').length) {
-          return $('ol.flags li').eq(index).before(flagItem);
-        } else {
-          return $('ol.flags').append(flagItem);
-        }
-      }
     };
 
     return SetupDemo;

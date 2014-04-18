@@ -20,11 +20,10 @@ class SetupDemo
 
 
   getTreeFlags: ->
-    @tree.find('span').filter( ->
+    @tree.find('span').filter ->
       if $(@).hasClass('s')
         $(@).parent().addClass('flaggable')
       $(@).text() is "domflag"
-    )
 
   initTree: ->
     @setupTreeNodes()
@@ -49,9 +48,8 @@ class SetupDemo
         @unfoldBlock(event.delegateTarget)
       else
         spanID = parseInt $(event.delegateTarget)[0].id.replace(/\D/g,'') ## Get line-id
-        foldObject = $.grep(@folds, (obj) ->
+        foldObject = $.grep @folds, (obj) ->
           obj.start is spanID
-        )
         @foldBlocks(foldObject)
 
   unfoldBlock: (target) ->
@@ -75,14 +73,13 @@ class SetupDemo
 
   demoEvents: ->
     ## Add parent OPEN class and refactor
-    $('#start-demo').on('click', (event) =>
+    $('#start-demo').on 'click', (event) =>
       $(event.currentTarget).addClass('hide').parent().addClass('show-download')
       $('.devtools-toolbar, .devtools').addClass('open')
       @panel.addClass('open').find('li:first-child').addClass('demo')
 
       @initTree() ## initTree after click to fix arrow position bug
       return false
-    )
 
   panelEvents: ->
     $('.devtools').on "transitionend webkitTransitionEnd", ->
@@ -90,7 +87,7 @@ class SetupDemo
       $('#start-demo').addClass('hide')
       $('#download').addClass('show')
 
-    @panel.on('click', 'li', (event) =>
+    @panel.on 'click', 'li', (event) =>
       index = @panel.find('li').index(event.currentTarget)
       $el = @tree.find('.domflag-line').eq(index)
       $target = $('.target')
@@ -117,37 +114,31 @@ class SetupDemo
       @treeBottom = @treeTop + @tree.height()
       unless $elPos > @treeTop and $elPos < @treeBottom
         @tree.scrollTo('.domflag-line.selected')
-    )
 
   tooltipEvents: ->
-    $('.tooltip').on('click', (event) =>
+    $('.tooltip').on 'click', (event) =>
+      $domflagStr = '<span class="na domflag-attr">domflag</span>'
       tooltipEl = event.currentTarget
-      @handleTooltipClick(tooltipEl)
-    )
+      $parent = $(tooltipEl).parent()
 
-  handleTooltipClick: (tooltipEl) ->
-    $domflagStr = '<span class="na domflag-attr">domflag</span>'
-    $parent = $(tooltipEl).parent()
-
-    if $parent.hasClass('domflag-line')
-      index = $parent.index('.domflag-line')
-      $(tooltipEl).text('Add Domflag')
-      $(@panel).find('li').eq(index).remove()
-      $parent.removeClass('domflag-line').find('.domflag-attr').remove()
-    else
-      $(tooltipEl).text('Remove Domflag')
-      elString = []
-      stringArray = $(tooltipEl).siblings().contents().filter( (index) ->
-        unless @data.match(/\>/g) ## unless closing tag
-          string = @data
-          string = @data.toUpperCase() + " " if index == 0
-          elString.push string.replace(/</g,' ').replace(/\= /, '=') ## formatting cleanup
-      )
-      $parent.addClass('domflag-line').find('.s').after($domflagStr)
-      index = $parent.index('.domflag-line')
-      flagItem = "<li class='flag new'>#{elString.join("")}</li>"
-
-      if index < $('ol.flags li').length
-        $('ol.flags li').eq(index).before(flagItem)
+      if $parent.hasClass('domflag-line')
+        index = $parent.index('.domflag-line')
+        $(tooltipEl).text('Add Domflag')
+        $(@panel).find('li').eq(index).remove()
+        $parent.removeClass('domflag-line').find('.domflag-attr').remove()
       else
-        $('ol.flags').append(flagItem)
+        $(tooltipEl).text('Remove Domflag')
+        elString = []
+        stringArray = $(tooltipEl).siblings().contents().filter (index) ->
+          unless @data.match(/\>/g) ## unless closing tag
+            string = @data
+            string = @data.toUpperCase() + " " if index == 0
+            elString.push string.replace(/</g,' ').replace(/\= /, '=') ## formatting cleanup
+        $parent.addClass('domflag-line').find('.s').after($domflagStr)
+        index = $parent.index('.domflag-line')
+        flagItem = "<li class='flag new'>#{elString.join("")}</li>"
+
+        if index < $('ol.flags li').length
+          $('ol.flags li').eq(index).before(flagItem)
+        else
+          $('ol.flags').append(flagItem)
