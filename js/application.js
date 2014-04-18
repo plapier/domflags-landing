@@ -10,8 +10,8 @@
     function SetupDemo() {
       this.panel = $('.domflags-panel');
       this.tree = $('.dom-tree');
-      this.treeLines = this.tree.find('code > span');
       this.treeFlags = this.getTreeFlags();
+      this.tooltipStr = '<span class="tooltip">Add Domflag</span>';
       this.folds = [
         {
           start: 17,
@@ -50,18 +50,18 @@
 
     SetupDemo.prototype.initTree = function() {
       this.setupTreeNodes();
+      this.foldBlocks(this.folds);
       this.foldingEvents();
       this.panelEvents();
       return this.tooltipEvents();
     };
 
     SetupDemo.prototype.setupTreeNodes = function() {
-      var tooltipStr;
-      tooltipStr = '<span class="tooltip">Add Domflag</span>';
+      var $treeLines;
       this.treeFlags.addClass('domflag-attr').parent().addClass('domflag-line');
-      this.treeLines.find('span:last-of-type').after(tooltipStr).end().filter('.domflag-line').find('.tooltip').text('Remove Domflag');
-      $('#line-2').addClass('non-flaggable');
-      return this.foldBlock(this.folds);
+      $treeLines = this.tree.find('code > span');
+      $treeLines.find('span:last-of-type').after(this.tooltipStr).end().filter('.domflag-line').find('.tooltip').text('Remove Domflag');
+      return $('#line-2').addClass('non-flaggable');
     };
 
     SetupDemo.prototype.foldingEvents = function() {
@@ -76,7 +76,7 @@
             foldObject = $.grep(_this.folds, function(obj) {
               return obj.start === spanID;
             });
-            return _this.foldBlock(foldObject);
+            return _this.foldBlocks(foldObject);
           }
         };
       })(this));
@@ -89,8 +89,9 @@
       return $(target).children('a').addClass('open');
     };
 
-    SetupDemo.prototype.foldBlock = function(folds) {
+    SetupDemo.prototype.foldBlocks = function(folds) {
       var $block, $end, $inner, $paddingLeft, $start, blockStr, fold, _i, _len, _results;
+      blockStr = "<div class='fold-block' />";
       _results = [];
       for (_i = 0, _len = folds.length; _i < _len; _i++) {
         fold = folds[_i];
@@ -102,7 +103,6 @@
         $start.addClass('fold-true fold-parent').css('margin-left', "" + $paddingLeft + "px").children('a').css('left', "" + $paddingLeft + "px").removeClass('open');
         $end.addClass('fold-parent');
         $inner.addClass('fold-inner');
-        blockStr = "<div class='fold-block' />";
         _results.push($block.wrapAll(blockStr));
       }
       return _results;
@@ -155,41 +155,54 @@
       })(this));
     };
 
+    SetupDemo.prototype.appendFoldTooltips = function() {
+      return $('.fold-block').append(this.tooltipStr);
+    };
+
     SetupDemo.prototype.tooltipEvents = function() {
       return $('.tooltip').on('click', (function(_this) {
         return function(event) {
-          var $domflagStr, $parent, elString, flagItem, index, stringArray;
-          $domflagStr = '<span class="na domflag-attr">domflag</span>';
-          $parent = $(event.currentTarget).parent();
-          if ($parent.hasClass('domflag-line')) {
-            index = $parent.index('.domflag-line');
-            $(event.currentTarget).text('Add Domflag');
-            $(_this.panel).find('li').eq(index).remove();
-            return $parent.removeClass('domflag-line').find('.domflag-attr').remove();
-          } else {
-            $(event.currentTarget).text('Remove Domflag');
-            elString = [];
-            stringArray = $(event.currentTarget).siblings().contents().filter(function(index) {
-              var string;
-              if (!this.data.match(/\>/g)) {
-                string = this.data;
-                if (index === 0) {
-                  string = this.data.toUpperCase() + " ";
-                }
-                return elString.push(string.replace(/</g, ' ').replace(/\= /, '='));
-              }
-            });
-            $parent.addClass('domflag-line').find('.s').after($domflagStr);
-            index = $parent.index('.domflag-line');
-            flagItem = "<li class='flag new'>" + (elString.join("")) + "</li>";
-            if (index < $('ol.flags li').length) {
-              return $('ol.flags li').eq(index).before(flagItem);
-            } else {
-              return $('ol.flags').append(flagItem);
-            }
+          var tooltipEl;
+          tooltipEl = event.currentTarget;
+          if ($(event.currentTarget).parent().is('.fold-block')) {
+            tooltipEl = $(event.currentTarget).parent().children(':first-child').find('.tooltip');
           }
+          return _this.handleTooltipClick(tooltipEl);
         };
       })(this));
+    };
+
+    SetupDemo.prototype.handleTooltipClick = function(tooltipEl) {
+      var $domflagStr, $parent, elString, flagItem, index, stringArray;
+      $domflagStr = '<span class="na domflag-attr">domflag</span>';
+      $parent = $(tooltipEl).parent();
+      if ($parent.hasClass('domflag-line')) {
+        index = $parent.index('.domflag-line');
+        $(tooltipEl).text('Add Domflag');
+        $(this.panel).find('li').eq(index).remove();
+        return $parent.removeClass('domflag-line').find('.domflag-attr').remove();
+      } else {
+        $(tooltipEl).text('Remove Domflag');
+        elString = [];
+        stringArray = $(tooltipEl).siblings().contents().filter(function(index) {
+          var string;
+          if (!this.data.match(/\>/g)) {
+            string = this.data;
+            if (index === 0) {
+              string = this.data.toUpperCase() + " ";
+            }
+            return elString.push(string.replace(/</g, ' ').replace(/\= /, '='));
+          }
+        });
+        $parent.addClass('domflag-line').find('.s').after($domflagStr);
+        index = $parent.index('.domflag-line');
+        flagItem = "<li class='flag new'>" + (elString.join("")) + "</li>";
+        if (index < $('ol.flags li').length) {
+          return $('ol.flags li').eq(index).before(flagItem);
+        } else {
+          return $('ol.flags').append(flagItem);
+        }
+      }
     };
 
     return SetupDemo;

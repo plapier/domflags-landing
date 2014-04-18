@@ -1,21 +1,42 @@
+.fold-block {
+  &:hover > .tooltip {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  > .tooltip {
+    background: red;
+    top: 0;
+  }
+}
+
+// Hide tooltips for unfolded code
+code > .tooltip {
+  display: none;
+}
+
+// Hide/show tooltips
 code > span {
+  $bg: #5196F6;
   &.selected {
-    $bg: #5196F6;
     .tooltip {
       background: $bg;
     }
+
     &:hover {
       .tooltip {
         background: lighten($bg, 5%);
       }
     }
   }
+
   &.flaggable:hover {
     .tooltip {
       opacity: 1;
       pointer-events: auto;
     }
   }
+
   &.non-flaggable:hover {
     .tooltip {
       opacity: 0;
@@ -27,12 +48,11 @@ code > span {
 .tooltip {
   $bg: lighten(rgba(11, 106, 194, 0.8), 5%);
   background: $bg;
-  border-radius: 0px;
+  @include border-left-radius(10px);
   color: #FFF;
   cursor: pointer;
-  display: none;
-  @include border-left-radius(10px);
   font-size: 10px;
+  line-height: 1;
   margin-top: -1px;
   opacity: 0;
   padding: 3px 7px 2px 8px;

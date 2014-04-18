@@ -5,8 +5,8 @@ class SetupDemo
   constructor: ->
     @panel = $('.domflags-panel')
     @tree  = $('.dom-tree')
-    @treeLines = @tree.find('code > span')
     @treeFlags = @getTreeFlags()
+    @tooltipStr = '<span class="tooltip">Add Domflag</span>'
     @folds = [
       { start: 17, end: 21 }
       { start: 15, end: 22 }
@@ -28,18 +28,20 @@ class SetupDemo
 
   initTree: ->
     @setupTreeNodes()
+    @foldBlocks(@folds)
     @foldingEvents()
     @panelEvents()
+    # @appendFoldTooltips()
     @tooltipEvents()
 
   setupTreeNodes: ->
-    tooltipStr= '<span class="tooltip">Add Domflag</span>'
     @treeFlags.addClass('domflag-attr').parent().addClass('domflag-line')
-    @treeLines.find('span:last-of-type').after(tooltipStr).end()
+
+    $treeLines = @tree.find('code > span')
+    $treeLines.find('span:last-of-type').after(@tooltipStr).end()
       .filter('.domflag-line').find('.tooltip').text('Remove Domflag')
     $('#line-2').addClass('non-flaggable')
 
-    @foldBlock(@folds) ## Fold all blocks
 
   foldingEvents: ->
     $('.fold-true').on 'click', 'a', (event) =>
@@ -51,7 +53,7 @@ class SetupDemo
         foldObject = $.grep(@folds, (obj) ->
           obj.start is spanID
         )
-        @foldBlock(foldObject)
+        @foldBlocks(foldObject)
 
   unfoldBlock: (target) ->
     leftVal = parseInt $(target).parent().css('padding-left')
@@ -59,18 +61,18 @@ class SetupDemo
       .siblings().removeClass('fold-parent fold-inner').unwrap()
     $(target).children('a').addClass('open')
 
-  foldBlock: (folds) ->
+  foldBlocks: (folds) ->
+    blockStr = "<div class='fold-block' />"
+
     for fold in folds
       $start = @tree.find("#line-#{fold.start}")
       $end   = @tree.find("#line-#{fold.end}")
       $inner = @tree.find($start).nextUntil($end)
       $block = @tree.find("#line-#{fold.start - 1}").nextUntil("#line-#{fold.end + 1}")
-      # console.log $start.find('span:first-of-type').offset().left
       $paddingLeft = Math.ceil $start.find('span:first-of-type').offset().left - @tree.offset().left
       $start.addClass('fold-true fold-parent').css('margin-left', "#{$paddingLeft}px").children('a').css('left', "#{$paddingLeft}px").removeClass('open')
       $end.addClass('fold-parent')
       $inner.addClass('fold-inner')
-      blockStr = "<div class='fold-block' />"
       $block.wrapAll(blockStr)
 
   demoEvents: ->
@@ -119,31 +121,40 @@ class SetupDemo
         @tree.scrollTo('.domflag-line.selected')
     )
 
+  appendFoldTooltips: ->
+    $('.fold-block').append(@tooltipStr)
+
   tooltipEvents: ->
     $('.tooltip').on('click', (event) =>
-      $domflagStr = '<span class="na domflag-attr">domflag</span>'
-      $parent = $(event.currentTarget).parent()
-
-      if $parent.hasClass('domflag-line')
-        index = $parent.index('.domflag-line')
-        $(event.currentTarget).text('Add Domflag')
-        $(@panel).find('li').eq(index).remove()
-        $parent.removeClass('domflag-line').find('.domflag-attr').remove()
-      else
-        $(event.currentTarget).text('Remove Domflag')
-        elString = []
-        stringArray = $(event.currentTarget).siblings().contents().filter( (index) ->
-          unless @data.match(/\>/g) ## unless closing tag
-            string = @data
-            string = @data.toUpperCase() + " " if index == 0
-            elString.push string.replace(/</g,' ').replace(/\= /, '=') ## formatting cleanup
-        )
-        $parent.addClass('domflag-line').find('.s').after($domflagStr)
-        index = $parent.index('.domflag-line')
-        flagItem = "<li class='flag new'>#{elString.join("")}</li>"
-
-        if index < $('ol.flags li').length
-          $('ol.flags li').eq(index).before(flagItem)
-        else
-          $('ol.flags').append(flagItem)
+      tooltipEl = event.currentTarget
+      if $(event.currentTarget).parent().is('.fold-block')
+        tooltipEl = $(event.currentTarget).parent().children(':first-child').find('.tooltip')
+      @handleTooltipClick(tooltipEl)
     )
+
+  handleTooltipClick: (tooltipEl) ->
+    $domflagStr = '<span class="na domflag-attr">domflag</span>'
+    $parent = $(tooltipEl).parent()
+
+    if $parent.hasClass('domflag-line')
+      index = $parent.index('.domflag-line')
+      $(tooltipEl).text('Add Domflag')
+      $(@panel).find('li').eq(index).remove()
+      $parent.removeClass('domflag-line').find('.domflag-attr').remove()
+    else
+      $(tooltipEl).text('Remove Domflag')
+      elString = []
+      stringArray = $(tooltipEl).siblings().contents().filter( (index) ->
+        unless @data.match(/\>/g) ## unless closing tag
+          string = @data
+          string = @data.toUpperCase() + " " if index == 0
+          elString.push string.replace(/</g,' ').replace(/\= /, '=') ## formatting cleanup
+      )
+      $parent.addClass('domflag-line').find('.s').after($domflagStr)
+      index = $parent.index('.domflag-line')
+      flagItem = "<li class='flag new'>#{elString.join("")}</li>"
+
+      if index < $('ol.flags li').length
+        $('ol.flags li').eq(index).before(flagItem)
+      else
+        $('ol.flags').append(flagItem)

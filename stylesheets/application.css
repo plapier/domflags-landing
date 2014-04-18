@@ -260,7 +260,7 @@ dl {
     -ms-transform: translateY(0px);
     -o-transform: translateY(0px);
     transform: translateY(0px); } }
-.devtools .dom-tree code > span.selected .domflag-attr {
+code > span.selected .domflag-attr {
   -webkit-animation: selected-node 0.55s cubic-bezier(0.47, 0, 0.745, 0.715);
   -moz-animation: selected-node 0.55s cubic-bezier(0.47, 0, 0.745, 0.715);
   animation: selected-node 0.55s cubic-bezier(0.47, 0, 0.745, 0.715);
@@ -753,41 +753,41 @@ body, html {
   .devtools .dom-tree pre {
     margin: 0; }
   .devtools .dom-tree .domflag-attr {
-    margin-left: 5px; }
-  .devtools .dom-tree code > span {
-    display: block;
-    line-height: 1.3em;
-    padding: 0 10px;
-    padding-top: 1px;
+    margin-left: 5px;
+    color: red; }
+
+code > span {
+  display: block;
+  line-height: 1.3em;
+  padding: 0 10px;
+  padding-top: 1px;
+  position: relative;
+  z-index: 1; }
+  code > span:hover {
+    background-color: #eaf1fb; }
+  code > span > span {
+    display: inline-block;
+    line-height: 1em; }
+  code > span.selected, code > span.selected * {
+    color: #fff !important; }
+  code > span.selected .domflag-attr {
     position: relative;
-    z-index: 1; }
-    .devtools .dom-tree code > span:hover {
-      background-color: #EAF1FB; }
-    .devtools .dom-tree code > span > span {
-      display: inline-block;
-      line-height: 1em; }
-    .devtools .dom-tree code > span.selected, .devtools .dom-tree code > span.selected * {
-      color: #fff !important; }
-    .devtools .dom-tree code > span.selected .domflag-attr {
-      position: relative;
-      background: #f36133;
-      padding: 1px 4px;
-      border-radius: 1px;
-      margin-right: 5px; }
-    .devtools .dom-tree code > span.selected a {
-      border-left-color: #fff; }
-    .devtools .dom-tree code > span.selected:before {
-      height: 100%;
-      z-index: -1;
-      width: -webkit-calc(100% + 20px);
-      width: calc(100% + 20px);
-      background-color: #3779D9;
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -10px; }
-  .devtools .dom-tree .domflag-attr {
-    color: red !important; }
+    background: #f36133;
+    padding: 1px 4px;
+    border-radius: 1px;
+    margin-right: 5px; }
+  code > span.selected a {
+    border-left-color: #fff; }
+  code > span.selected:before {
+    height: 100%;
+    z-index: -1;
+    width: -webkit-calc(100% + 20px);
+    width: calc(100% + 20px);
+    background-color: #3779D9;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -10px; }
 
 .devtools .dom-properties {
   background: rgba(0, 0, 0, 0.04);
@@ -822,7 +822,20 @@ body, html {
 .fold-block {
   display: block;
   line-height: 1.4em;
+  position: relative;
   white-space: nowrap; }
+  .fold-block:hover {
+    background-color: #eaf1fb; }
+
+.fold-block:hover > .tooltip {
+  opacity: 1;
+  pointer-events: auto; }
+.fold-block > .tooltip {
+  background: red;
+  top: 0; }
+
+code > .tooltip {
+  display: none; }
 
 code > span.selected .tooltip {
   background: #5196f6; }
@@ -837,13 +850,12 @@ code > span.non-flaggable:hover .tooltip {
 
 .tooltip {
   background: rgba(12, 119, 218, 0.8);
-  border-radius: 0px;
-  color: #FFF;
-  cursor: pointer;
-  display: none;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  color: #FFF;
+  cursor: pointer;
   font-size: 10px;
+  line-height: 1;
   margin-top: -1px;
   opacity: 0;
   padding: 3px 7px 2px 8px;
