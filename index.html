@@ -14,14 +14,14 @@ tags: [Jekyll]
     <script type="text/javascript" src="//use.typekit.net/irh3bar.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   </head>
-  <body>
+  <body data-attr="body">
     <div class="bg"></div>
     <section class="main">
-      <section class="browser layer" data-depth="0.1">
+      <section class="browser layer">
         <div class="header">
-          <div class="browser-button"></div>
-          <div class="browser-button"></div>
-          <div class="browser-button"></div>
+          <div class="browser-button first" domflag></div>
+          <div class="browser-button second"></div>
+          <div class="browser-button third"></div>
         </div>
 
         <div class="body">
@@ -40,11 +40,11 @@ tags: [Jekyll]
           <div class="domflags-panel">
             <a class="target"></a>
             <a class="target solid"></a>
-            <header>DOMFLAGS</header>
+            <header class="panel-title" domflag>DOMFLAGS</header>
             <ol class="flags">
-              <li class="flag">DIV class="browser-button"</li>
-              <li class="flag">HEADER class="title"</li>
-              <li class="flag">LI class="flag"</li>
+              <li class="flag first">DIV class="browser-button first"</li>
+              <li class="flag second">A href="#" class="start-demo"</li>
+              <li class="flag third">LI class="flag third"</li>
             </ol>
           </div>
           <div class="dom-tree">

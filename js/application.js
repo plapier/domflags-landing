@@ -14,26 +14,35 @@
       this.tooltipStr = '<span class="tooltip">Add Domflag</span>';
       this.folds = [
         {
-          start: 17,
+          start: 30,
+          end: 35
+        }, {
+          start: 26,
+          end: 36
+        }, {
+          start: 25,
+          end: 38
+        }, {
+          start: 18,
           end: 21
         }, {
           start: 15,
           end: 22
         }, {
           start: 14,
-          end: 25
+          end: 23
+        }, {
+          start: 8,
+          end: 12
         }, {
           start: 7,
-          end: 11
+          end: 39
         }, {
           start: 6,
-          end: 26
-        }, {
-          start: 5,
-          end: 27
+          end: 40
         }, {
           start: 4,
-          end: 28
+          end: 41
         }
       ];
       this.demoEvents();
@@ -180,7 +189,7 @@
                 return elString.push(string.replace(/</g, ' ').replace(/\= /, '='));
               }
             });
-            $parent.addClass('domflag-line').find('.s').after($domflagStr);
+            $parent.addClass('domflag-line').find('.s').last().after($domflagStr);
             index = $parent.index('.domflag-line');
             flagItem = "<li class='flag new'>" + (elString.join("")) + "</li>";
             if (index < $('ol.flags li').length) {
