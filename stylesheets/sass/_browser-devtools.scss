@@ -39,19 +39,16 @@
       @extend %animation-click-target;
       background: $color;
       border-radius: $s;
-      // left: 140px;
       right: 8px;
       pointer-events: none;
       position: absolute;
       @include size($s);
       top: 35px;
-      z-index: 1;
+      z-index: 100;
 
       &.solid {
         @extend %animation-click-target-solid;
         @include transform(scale(0.4));
-        // @include animation(none);
-        // opacity: 0.8;
       }
 
       &.pos-1 {
@@ -80,12 +77,20 @@
 
     ol {
       li {
+        @include box-sizing(border-box);
         cursor: pointer;
         @include ellipsis;
         display: block;
+        height: 36px;
+        height: 36px;
         max-width: 100%;
-        padding: 6px 14px;
+        padding: 0;
         position: relative;
+
+        span {
+          padding: 6px 14px;
+          display: inline-block;
+        }
 
         &:hover, &.demo {
           background-color: darken(#D6DDE5, 3%);
@@ -97,9 +102,19 @@
           background-color: $bg;
           color: #FFF;
           text-shadow: rgba(0, 0, 0, 0.33) 0px 1px 0px;
-          // box-shadow: -1px 0 0 $bg;
         }
+
         &.new {
+          background-color: darken(#D6DDE5, 3%);
+          box-shadow: inset -1px 0 0 hsla(0, 0%, 0%, 0.2);
+          position: fixed;
+          z-index: 2;
+
+          &.animate {
+            // @extend %animation-flag-in;
+            @extend %animation-flipInX;
+          }
+
           &:after {
             $size: 8px;
             background: $callout-color;
@@ -111,10 +126,29 @@
             @include size($size);
           }
         }
+
+        &.remove {
+          @extend %animation-flag-remove;
+          &:after { opacity: 0; }
+        }
+
+        &.move-down {
+          @include transition(all 0.3s $ease-out-sine);
+          @include transform(translateY(36px));
+        }
+
+        $delay: 50ms;
+        @for $i from 1 through 100 {
+          &.delay-#{$i} {
+            @include transition-delay($delay);
+            $delay: $delay + 100ms;
+          }
+        }
       }
     }
   }
 }
+
 
 // DOMTREE
 ///////////////////////////////////////////////////////////////////////////

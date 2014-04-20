@@ -119,17 +119,24 @@ class SetupDemo
         @tree.scrollTo('.domflag-line.selected')
 
   tooltipEvents: ->
+    transitionEnd = "webkitTransitionEnd transitionend"
+    animationEnd = "webkitAnimationEnd animationend"
+    panelWidth = @panel.outerWidth()
+
     $('.tooltip').on 'click', (event) =>
       $domflagStr = '<span class="na domflag-attr">domflag</span>'
       tooltipEl = event.currentTarget
       $parent = $(tooltipEl).parent()
 
+      ## Remove
       if $parent.hasClass('domflag-line')
         index = $parent.index('.domflag-line')
         $(tooltipEl).text('Add Domflag')
-        $(@panel).find('li').eq(index).remove()
+        @panel.find('li').eq(index).addClass('remove').one animationEnd, (event) =>
+          $(event.currentTarget).remove()
+
         $parent.removeClass('domflag-line').find('.domflag-attr').remove()
-      else
+      else ## Add
         $(tooltipEl).text('Remove Domflag')
         elString = []
         stringArray = $(tooltipEl).siblings().contents().filter (index) ->
@@ -139,9 +146,16 @@ class SetupDemo
             elString.push string.replace(/</g,' ').replace(/\= /, '=') ## formatting cleanup
         $parent.addClass('domflag-line').find('.s').last().after($domflagStr)
         index = $parent.index('.domflag-line')
-        flagItem = "<li class='flag new'>#{elString.join("")}</li>"
+        flagItem = "<li class='flag new animate' style='width: #{panelWidth}px'><span domflag>#{elString.join("")}</span></li>"
 
-        if index < $('ol.flags li').length
-          $('ol.flags li').eq(index).before(flagItem)
+        if index < @panel.find('li').length
+          @panel.find('li').eq(index).before(flagItem)
+          @panel.find('li').eq(index).nextUntil().each (index) ->
+            $(@).addClass("delay-#{index} move-down")
         else
-          $('ol.flags').append(flagItem)
+          @panel.find('ol').append(flagItem)
+
+        @panel.find('li').eq(index).one animationEnd, (event) =>
+          @panel.find('li').eq(index).nextUntil().removeClass('move-down').removeClass (index, css) ->
+            (css.match(/\bdelay-\S+/g) or []).join " "
+          $(event.currentTarget).css('position': 'relative', 'z-index': '1').removeClass('animate')

@@ -165,6 +165,10 @@
     };
 
     SetupDemo.prototype.tooltipEvents = function() {
+      var animationEnd, panelWidth, transitionEnd;
+      transitionEnd = "webkitTransitionEnd transitionend";
+      animationEnd = "webkitAnimationEnd animationend";
+      panelWidth = this.panel.outerWidth();
       return $('.tooltip').on('click', (function(_this) {
         return function(event) {
           var $domflagStr, $parent, elString, flagItem, index, stringArray, tooltipEl;
@@ -174,7 +178,9 @@
           if ($parent.hasClass('domflag-line')) {
             index = $parent.index('.domflag-line');
             $(tooltipEl).text('Add Domflag');
-            $(_this.panel).find('li').eq(index).remove();
+            _this.panel.find('li').eq(index).addClass('remove').one(animationEnd, function(event) {
+              return $(event.currentTarget).remove();
+            });
             return $parent.removeClass('domflag-line').find('.domflag-attr').remove();
           } else {
             $(tooltipEl).text('Remove Domflag');
@@ -191,12 +197,24 @@
             });
             $parent.addClass('domflag-line').find('.s').last().after($domflagStr);
             index = $parent.index('.domflag-line');
-            flagItem = "<li class='flag new'>" + (elString.join("")) + "</li>";
-            if (index < $('ol.flags li').length) {
-              return $('ol.flags li').eq(index).before(flagItem);
+            flagItem = "<li class='flag new animate' style='width: " + panelWidth + "px'><span domflag>" + (elString.join("")) + "</span></li>";
+            if (index < _this.panel.find('li').length) {
+              _this.panel.find('li').eq(index).before(flagItem);
+              _this.panel.find('li').eq(index).nextUntil().each(function(index) {
+                return $(this).addClass("delay-" + index + " move-down");
+              });
             } else {
-              return $('ol.flags').append(flagItem);
+              _this.panel.find('ol').append(flagItem);
             }
+            return _this.panel.find('li').eq(index).one(animationEnd, function(event) {
+              _this.panel.find('li').eq(index).nextUntil().removeClass('move-down').removeClass(function(index, css) {
+                return (css.match(/\bdelay-\S+/g) || []).join(" ");
+              });
+              return $(event.currentTarget).css({
+                'position': 'relative',
+                'z-index': '1'
+              }).removeClass('animate');
+            });
           }
         };
       })(this));

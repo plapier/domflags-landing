@@ -19,7 +19,7 @@ tags: [Jekyll]
     <section class="main">
       <section class="browser layer">
         <div class="header">
-          <div class="browser-button first" domflag></div>
+          <div class="browser-button first"></div>
           <div class="browser-button second"></div>
           <div class="browser-button third"></div>
         </div>
@@ -29,7 +29,7 @@ tags: [Jekyll]
             <h1>Domflags</h1>
             <h2>bookmarks for deeply nested dom elements</h2>
             <div class="buttons">
-              <a href="#" id="start-demo" domflag>Start Demo</a>
+              <a href="#" id="start-demo">Start Demo</a>
               <a href="//chrome.google.com/webstore/detail/domflags/nindoglnpjcjoaheijieagogboabafkc" id="download">Download Chrome Extension</a>
             </div>
           </div>
@@ -42,9 +42,9 @@ tags: [Jekyll]
             <a class="target solid"></a>
             <header class="panel-title">DOMFLAGS</header>
             <ol class="flags">
-              <li class="flag first">DIV class="browser-button first"</li>
-              <li class="flag second">A href="#" class="start-demo"</li>
-              <li class="flag third" domflag>LI class="flag third"</li>
+              <li class="flag first"><span >DIV class="browser-button first"</span></li>
+              <li class="flag second"><span>A href="#" class="start-demo"</span></li>
+              <li class="flag third"><span>LI class="flag third"</span></li>
             </ol>
           </div>
           <div class="dom-tree">
@@ -55,4 +55,5 @@ tags: [Jekyll]
       </section>
     </section>
   </body>
+  <script src="js/move.min.js"></script>
 </html>
