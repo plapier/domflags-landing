@@ -146,7 +146,7 @@ class SetupDemo
             elString.push string.replace(/</g,' ').replace(/\= /, '=') ## formatting cleanup
         $parent.addClass('domflag-line').find('.s').last().after($domflagStr)
         index = $parent.index('.domflag-line')
-        flagItem = "<li class='flag new animate' style='width: #{panelWidth}px'><span domflag>#{elString.join("")}</span></li>"
+        flagItem = "<li class='flag new animate' style='width: #{panelWidth}px'><span>#{elString.join("")}</span></li>"
 
         if index < @panel.find('li').length
           @panel.find('li').eq(index).before(flagItem)
@@ -155,7 +155,12 @@ class SetupDemo
         else
           @panel.find('ol').append(flagItem)
 
-        @panel.find('li').eq(index).one animationEnd, (event) =>
-          @panel.find('li').eq(index).nextUntil().removeClass('move-down').removeClass (index, css) ->
-            (css.match(/\bdelay-\S+/g) or []).join " "
-          $(event.currentTarget).css('position': 'relative', 'z-index': '1').removeClass('animate')
+        length = @panel.find('.move-down').length
+        count = 1
+        @panel.find('.move-down').one transitionEnd, (event) =>
+          unless count isnt length
+            @panel.find('.move-down').removeClass('move-down').removeClass (index, css) ->
+              (css.match(/\bdelay-\S+/g) or []).join " "
+            @panel.find('li').eq(index).removeClass('animate')
+          count++
+

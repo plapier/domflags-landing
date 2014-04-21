@@ -102,25 +102,19 @@
 }
 
 %animation-flag-in {
-  @include animation(flag-in 0.6s ease-out forwards);
+  @include animation(flag-in 0.3s ease-out 0.05s forwards);
   @include transform-origin(center);
 }
 
 @include keyframes(flag-in) {
   0% {
-    // @include transform(scale(0));
     opacity: 0;
-    @include transform(translateY(20px));
-    // opacity: 0;
-    // height: 0;
+    @include transform(scale(0.6));
   }
 
   100% {
-    @include transform(translateY(0px));
     opacity: 1;
-    // @include transform(scale(1));
-    // height: 36px;
-    // @include padding(6px null);
+    @include transform(scale(1));
   }
 }
 
@@ -145,19 +139,11 @@
 
 @include keyframes(flipInX) {
   $p: 200px;
+
   0% {
     @include transform(perspective($p) rotateX(-90deg));
-    background-color: darken(#D6DDE5, 30%);
-    box-shadow: none;
   }
-
-  70% {
-    box-shadow: none;
-  }
-
   100% {
     @include transform(perspective($p) rotateX(0deg));
-    background-color: darken(#D6DDE5, 3%);
-    box-shadow: inset -1px 0 0 hsla(0, 0%, 0%, 0.2);
   }
 }

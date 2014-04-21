@@ -105,14 +105,15 @@
         }
 
         &.new {
-          background-color: darken(#D6DDE5, 3%);
-          box-shadow: inset -1px 0 0 hsla(0, 0%, 0%, 0.2);
-          position: fixed;
-          z-index: 2;
-
           &.animate {
-            // @extend %animation-flag-in;
-            @extend %animation-flipInX;
+            position: fixed;
+            z-index: 1;
+
+            span {
+              display: inline-block;
+              @extend %animation-flag-in;
+              // @extend %animation-flipInX;
+            }
           }
 
           &:after {
@@ -129,19 +130,23 @@
 
         &.remove {
           @extend %animation-flag-remove;
-          &:after { opacity: 0; }
+
+          &:after {
+            opacity: 0;
+          }
         }
 
         &.move-down {
-          @include transition(all 0.3s $ease-out-sine);
+          @include transition(transform 0.3s $ease-out-sine);
           @include transform(translateY(36px));
+          z-index: 2;
         }
 
         $delay: 50ms;
-        @for $i from 1 through 100 {
+        @for $i from 1 through 20 {
           &.delay-#{$i} {
             @include transition-delay($delay);
-            $delay: $delay + 100ms;
+            $delay: $delay + 75ms;
           }
         }
       }

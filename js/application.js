@@ -171,7 +171,7 @@
       panelWidth = this.panel.outerWidth();
       return $('.tooltip').on('click', (function(_this) {
         return function(event) {
-          var $domflagStr, $parent, elString, flagItem, index, stringArray, tooltipEl;
+          var $domflagStr, $parent, count, elString, flagItem, index, length, stringArray, tooltipEl;
           $domflagStr = '<span class="na domflag-attr">domflag</span>';
           tooltipEl = event.currentTarget;
           $parent = $(tooltipEl).parent();
@@ -197,7 +197,7 @@
             });
             $parent.addClass('domflag-line').find('.s').last().after($domflagStr);
             index = $parent.index('.domflag-line');
-            flagItem = "<li class='flag new animate' style='width: " + panelWidth + "px'><span domflag>" + (elString.join("")) + "</span></li>";
+            flagItem = "<li class='flag new animate' style='width: " + panelWidth + "px'><span>" + (elString.join("")) + "</span></li>";
             if (index < _this.panel.find('li').length) {
               _this.panel.find('li').eq(index).before(flagItem);
               _this.panel.find('li').eq(index).nextUntil().each(function(index) {
@@ -206,14 +206,16 @@
             } else {
               _this.panel.find('ol').append(flagItem);
             }
-            return _this.panel.find('li').eq(index).one(animationEnd, function(event) {
-              _this.panel.find('li').eq(index).nextUntil().removeClass('move-down').removeClass(function(index, css) {
-                return (css.match(/\bdelay-\S+/g) || []).join(" ");
-              });
-              return $(event.currentTarget).css({
-                'position': 'relative',
-                'z-index': '1'
-              }).removeClass('animate');
+            length = _this.panel.find('.move-down').length;
+            count = 1;
+            return _this.panel.find('.move-down').one(transitionEnd, function(event) {
+              if (count === length) {
+                _this.panel.find('.move-down').removeClass('move-down').removeClass(function(index, css) {
+                  return (css.match(/\bdelay-\S+/g) || []).join(" ");
+                });
+                _this.panel.find('li').eq(index).removeClass('animate');
+              }
+              return count++;
             });
           }
         };

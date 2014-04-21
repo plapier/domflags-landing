@@ -460,38 +460,48 @@ code > span.selected .domflag-attr {
     -o-transform: translateY(0px);
     transform: translateY(0px);
     opacity: 1; } }
+.devtools .domflags-panel ol li.new.animate span {
+  -webkit-animation: flag-in 0.3s ease-out 0.05s forwards;
+  -moz-animation: flag-in 0.3s ease-out 0.05s forwards;
+  animation: flag-in 0.3s ease-out 0.05s forwards;
+  -webkit-transform-origin: center;
+  -moz-transform-origin: center;
+  -ms-transform-origin: center;
+  -o-transform-origin: center;
+  transform-origin: center; }
+
 @-webkit-keyframes flag-in {
   0% {
     opacity: 0;
-    -webkit-transform: translateY(20px); }
+    -webkit-transform: scale(0.6); }
 
   100% {
-    -webkit-transform: translateY(0px);
-    opacity: 1; } }
+    opacity: 1;
+    -webkit-transform: scale(1); } }
 @-moz-keyframes flag-in {
   0% {
     opacity: 0;
-    -moz-transform: translateY(20px); }
+    -moz-transform: scale(0.6); }
 
   100% {
-    -moz-transform: translateY(0px);
-    opacity: 1; } }
+    opacity: 1;
+    -moz-transform: scale(1); } }
 @keyframes flag-in {
   0% {
     opacity: 0;
-    -webkit-transform: translateY(20px);
-    -moz-transform: translateY(20px);
-    -ms-transform: translateY(20px);
-    -o-transform: translateY(20px);
-    transform: translateY(20px); }
+    -webkit-transform: scale(0.6);
+    -moz-transform: scale(0.6);
+    -ms-transform: scale(0.6);
+    -o-transform: scale(0.6);
+    transform: scale(0.6); }
 
   100% {
-    -webkit-transform: translateY(0px);
-    -moz-transform: translateY(0px);
-    -ms-transform: translateY(0px);
-    -o-transform: translateY(0px);
-    transform: translateY(0px);
-    opacity: 1; } }
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1); } }
 .devtools .domflags-panel ol li.remove {
   -webkit-animation: flag-remove 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0 forwards;
   -moz-animation: flag-remove 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0 forwards;
@@ -515,65 +525,32 @@ code > span.selected .domflag-attr {
 
   100% {
     height: 0; } }
-.devtools .domflags-panel ol li.new.animate {
-  -webkit-animation: flipInX 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
-  -moz-animation: flipInX 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
-  animation: flipInX 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
-  -webkit-transform-origin: top;
-  -moz-transform-origin: top;
-  -ms-transform-origin: top;
-  -o-transform-origin: top;
-  transform-origin: top;
-  -webkit-backface-visibility: visible;
-  backface-visibility: visible; }
-
 @-webkit-keyframes flipInX {
   0% {
-    -webkit-transform: perspective(200px) rotateX(-90deg);
-    background-color: #788faa;
-    box-shadow: none; }
-
-  70% {
-    box-shadow: none; }
+    -webkit-transform: perspective(200px) rotateX(-90deg); }
 
   100% {
-    -webkit-transform: perspective(200px) rotateX(0deg);
-    background-color: #cdd5df;
-    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.2); } }
+    -webkit-transform: perspective(200px) rotateX(0deg); } }
 @-moz-keyframes flipInX {
   0% {
-    -moz-transform: perspective(200px) rotateX(-90deg);
-    background-color: #788faa;
-    box-shadow: none; }
-
-  70% {
-    box-shadow: none; }
+    -moz-transform: perspective(200px) rotateX(-90deg); }
 
   100% {
-    -moz-transform: perspective(200px) rotateX(0deg);
-    background-color: #cdd5df;
-    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.2); } }
+    -moz-transform: perspective(200px) rotateX(0deg); } }
 @keyframes flipInX {
   0% {
     -webkit-transform: perspective(200px) rotateX(-90deg);
     -moz-transform: perspective(200px) rotateX(-90deg);
     -ms-transform: perspective(200px) rotateX(-90deg);
     -o-transform: perspective(200px) rotateX(-90deg);
-    transform: perspective(200px) rotateX(-90deg);
-    background-color: #788faa;
-    box-shadow: none; }
-
-  70% {
-    box-shadow: none; }
+    transform: perspective(200px) rotateX(-90deg); }
 
   100% {
     -webkit-transform: perspective(200px) rotateX(0deg);
     -moz-transform: perspective(200px) rotateX(0deg);
     -ms-transform: perspective(200px) rotateX(0deg);
     -o-transform: perspective(200px) rotateX(0deg);
-    transform: perspective(200px) rotateX(0deg);
-    background-color: #cdd5df;
-    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.2); } }
+    transform: perspective(200px) rotateX(0deg); } }
 body, html {
   margin: 0; }
 
@@ -849,432 +826,113 @@ body, html {
       background-color: #3779d9;
       color: #FFF;
       text-shadow: rgba(0, 0, 0, 0.33) 0px 1px 0px; }
-    .devtools .domflags-panel ol li.new {
-      background-color: #cdd5df;
-      box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.2);
+    .devtools .domflags-panel ol li.new.animate {
       position: fixed;
-      z-index: 2; }
-      .devtools .domflags-panel ol li.new:after {
-        background: #f36133;
-        border-radius: 8px;
-        top: -webkit-calc(50% - 4px);
-        top: calc(50% - 4px);
-        content: "";
-        position: absolute;
-        right: 21px;
-        height: 8px;
-        width: 8px; }
+      z-index: 1; }
+      .devtools .domflags-panel ol li.new.animate span {
+        display: inline-block; }
+    .devtools .domflags-panel ol li.new:after {
+      background: #f36133;
+      border-radius: 8px;
+      top: -webkit-calc(50% - 4px);
+      top: calc(50% - 4px);
+      content: "";
+      position: absolute;
+      right: 21px;
+      height: 8px;
+      width: 8px; }
     .devtools .domflags-panel ol li.remove:after {
       opacity: 0; }
     .devtools .domflags-panel ol li.move-down {
-      -webkit-transition: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
-      -moz-transition: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
-      transition: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+      -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+      -moz-transition: -moz-transform 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+      transition: transform 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
       -webkit-transform: translateY(36px);
       -moz-transform: translateY(36px);
       -ms-transform: translateY(36px);
       -o-transform: translateY(36px);
-      transform: translateY(36px); }
+      transform: translateY(36px);
+      z-index: 2; }
     .devtools .domflags-panel ol li.delay-1 {
       -webkit-transition-delay: 50ms;
       -moz-transition-delay: 50ms;
       transition-delay: 50ms; }
     .devtools .domflags-panel ol li.delay-2 {
-      -webkit-transition-delay: 150ms;
-      -moz-transition-delay: 150ms;
-      transition-delay: 150ms; }
+      -webkit-transition-delay: 125ms;
+      -moz-transition-delay: 125ms;
+      transition-delay: 125ms; }
     .devtools .domflags-panel ol li.delay-3 {
-      -webkit-transition-delay: 250ms;
-      -moz-transition-delay: 250ms;
-      transition-delay: 250ms; }
+      -webkit-transition-delay: 200ms;
+      -moz-transition-delay: 200ms;
+      transition-delay: 200ms; }
     .devtools .domflags-panel ol li.delay-4 {
+      -webkit-transition-delay: 275ms;
+      -moz-transition-delay: 275ms;
+      transition-delay: 275ms; }
+    .devtools .domflags-panel ol li.delay-5 {
       -webkit-transition-delay: 350ms;
       -moz-transition-delay: 350ms;
       transition-delay: 350ms; }
-    .devtools .domflags-panel ol li.delay-5 {
-      -webkit-transition-delay: 450ms;
-      -moz-transition-delay: 450ms;
-      transition-delay: 450ms; }
     .devtools .domflags-panel ol li.delay-6 {
-      -webkit-transition-delay: 550ms;
-      -moz-transition-delay: 550ms;
-      transition-delay: 550ms; }
+      -webkit-transition-delay: 425ms;
+      -moz-transition-delay: 425ms;
+      transition-delay: 425ms; }
     .devtools .domflags-panel ol li.delay-7 {
+      -webkit-transition-delay: 500ms;
+      -moz-transition-delay: 500ms;
+      transition-delay: 500ms; }
+    .devtools .domflags-panel ol li.delay-8 {
+      -webkit-transition-delay: 575ms;
+      -moz-transition-delay: 575ms;
+      transition-delay: 575ms; }
+    .devtools .domflags-panel ol li.delay-9 {
       -webkit-transition-delay: 650ms;
       -moz-transition-delay: 650ms;
       transition-delay: 650ms; }
-    .devtools .domflags-panel ol li.delay-8 {
-      -webkit-transition-delay: 750ms;
-      -moz-transition-delay: 750ms;
-      transition-delay: 750ms; }
-    .devtools .domflags-panel ol li.delay-9 {
-      -webkit-transition-delay: 850ms;
-      -moz-transition-delay: 850ms;
-      transition-delay: 850ms; }
     .devtools .domflags-panel ol li.delay-10 {
+      -webkit-transition-delay: 725ms;
+      -moz-transition-delay: 725ms;
+      transition-delay: 725ms; }
+    .devtools .domflags-panel ol li.delay-11 {
+      -webkit-transition-delay: 800ms;
+      -moz-transition-delay: 800ms;
+      transition-delay: 800ms; }
+    .devtools .domflags-panel ol li.delay-12 {
+      -webkit-transition-delay: 875ms;
+      -moz-transition-delay: 875ms;
+      transition-delay: 875ms; }
+    .devtools .domflags-panel ol li.delay-13 {
       -webkit-transition-delay: 950ms;
       -moz-transition-delay: 950ms;
       transition-delay: 950ms; }
-    .devtools .domflags-panel ol li.delay-11 {
-      -webkit-transition-delay: 1050ms;
-      -moz-transition-delay: 1050ms;
-      transition-delay: 1050ms; }
-    .devtools .domflags-panel ol li.delay-12 {
-      -webkit-transition-delay: 1150ms;
-      -moz-transition-delay: 1150ms;
-      transition-delay: 1150ms; }
-    .devtools .domflags-panel ol li.delay-13 {
+    .devtools .domflags-panel ol li.delay-14 {
+      -webkit-transition-delay: 1025ms;
+      -moz-transition-delay: 1025ms;
+      transition-delay: 1025ms; }
+    .devtools .domflags-panel ol li.delay-15 {
+      -webkit-transition-delay: 1100ms;
+      -moz-transition-delay: 1100ms;
+      transition-delay: 1100ms; }
+    .devtools .domflags-panel ol li.delay-16 {
+      -webkit-transition-delay: 1175ms;
+      -moz-transition-delay: 1175ms;
+      transition-delay: 1175ms; }
+    .devtools .domflags-panel ol li.delay-17 {
       -webkit-transition-delay: 1250ms;
       -moz-transition-delay: 1250ms;
       transition-delay: 1250ms; }
-    .devtools .domflags-panel ol li.delay-14 {
-      -webkit-transition-delay: 1350ms;
-      -moz-transition-delay: 1350ms;
-      transition-delay: 1350ms; }
-    .devtools .domflags-panel ol li.delay-15 {
-      -webkit-transition-delay: 1450ms;
-      -moz-transition-delay: 1450ms;
-      transition-delay: 1450ms; }
-    .devtools .domflags-panel ol li.delay-16 {
-      -webkit-transition-delay: 1550ms;
-      -moz-transition-delay: 1550ms;
-      transition-delay: 1550ms; }
-    .devtools .domflags-panel ol li.delay-17 {
-      -webkit-transition-delay: 1650ms;
-      -moz-transition-delay: 1650ms;
-      transition-delay: 1650ms; }
     .devtools .domflags-panel ol li.delay-18 {
-      -webkit-transition-delay: 1750ms;
-      -moz-transition-delay: 1750ms;
-      transition-delay: 1750ms; }
+      -webkit-transition-delay: 1325ms;
+      -moz-transition-delay: 1325ms;
+      transition-delay: 1325ms; }
     .devtools .domflags-panel ol li.delay-19 {
-      -webkit-transition-delay: 1850ms;
-      -moz-transition-delay: 1850ms;
-      transition-delay: 1850ms; }
+      -webkit-transition-delay: 1400ms;
+      -moz-transition-delay: 1400ms;
+      transition-delay: 1400ms; }
     .devtools .domflags-panel ol li.delay-20 {
-      -webkit-transition-delay: 1950ms;
-      -moz-transition-delay: 1950ms;
-      transition-delay: 1950ms; }
-    .devtools .domflags-panel ol li.delay-21 {
-      -webkit-transition-delay: 2050ms;
-      -moz-transition-delay: 2050ms;
-      transition-delay: 2050ms; }
-    .devtools .domflags-panel ol li.delay-22 {
-      -webkit-transition-delay: 2150ms;
-      -moz-transition-delay: 2150ms;
-      transition-delay: 2150ms; }
-    .devtools .domflags-panel ol li.delay-23 {
-      -webkit-transition-delay: 2250ms;
-      -moz-transition-delay: 2250ms;
-      transition-delay: 2250ms; }
-    .devtools .domflags-panel ol li.delay-24 {
-      -webkit-transition-delay: 2350ms;
-      -moz-transition-delay: 2350ms;
-      transition-delay: 2350ms; }
-    .devtools .domflags-panel ol li.delay-25 {
-      -webkit-transition-delay: 2450ms;
-      -moz-transition-delay: 2450ms;
-      transition-delay: 2450ms; }
-    .devtools .domflags-panel ol li.delay-26 {
-      -webkit-transition-delay: 2550ms;
-      -moz-transition-delay: 2550ms;
-      transition-delay: 2550ms; }
-    .devtools .domflags-panel ol li.delay-27 {
-      -webkit-transition-delay: 2650ms;
-      -moz-transition-delay: 2650ms;
-      transition-delay: 2650ms; }
-    .devtools .domflags-panel ol li.delay-28 {
-      -webkit-transition-delay: 2750ms;
-      -moz-transition-delay: 2750ms;
-      transition-delay: 2750ms; }
-    .devtools .domflags-panel ol li.delay-29 {
-      -webkit-transition-delay: 2850ms;
-      -moz-transition-delay: 2850ms;
-      transition-delay: 2850ms; }
-    .devtools .domflags-panel ol li.delay-30 {
-      -webkit-transition-delay: 2950ms;
-      -moz-transition-delay: 2950ms;
-      transition-delay: 2950ms; }
-    .devtools .domflags-panel ol li.delay-31 {
-      -webkit-transition-delay: 3050ms;
-      -moz-transition-delay: 3050ms;
-      transition-delay: 3050ms; }
-    .devtools .domflags-panel ol li.delay-32 {
-      -webkit-transition-delay: 3150ms;
-      -moz-transition-delay: 3150ms;
-      transition-delay: 3150ms; }
-    .devtools .domflags-panel ol li.delay-33 {
-      -webkit-transition-delay: 3250ms;
-      -moz-transition-delay: 3250ms;
-      transition-delay: 3250ms; }
-    .devtools .domflags-panel ol li.delay-34 {
-      -webkit-transition-delay: 3350ms;
-      -moz-transition-delay: 3350ms;
-      transition-delay: 3350ms; }
-    .devtools .domflags-panel ol li.delay-35 {
-      -webkit-transition-delay: 3450ms;
-      -moz-transition-delay: 3450ms;
-      transition-delay: 3450ms; }
-    .devtools .domflags-panel ol li.delay-36 {
-      -webkit-transition-delay: 3550ms;
-      -moz-transition-delay: 3550ms;
-      transition-delay: 3550ms; }
-    .devtools .domflags-panel ol li.delay-37 {
-      -webkit-transition-delay: 3650ms;
-      -moz-transition-delay: 3650ms;
-      transition-delay: 3650ms; }
-    .devtools .domflags-panel ol li.delay-38 {
-      -webkit-transition-delay: 3750ms;
-      -moz-transition-delay: 3750ms;
-      transition-delay: 3750ms; }
-    .devtools .domflags-panel ol li.delay-39 {
-      -webkit-transition-delay: 3850ms;
-      -moz-transition-delay: 3850ms;
-      transition-delay: 3850ms; }
-    .devtools .domflags-panel ol li.delay-40 {
-      -webkit-transition-delay: 3950ms;
-      -moz-transition-delay: 3950ms;
-      transition-delay: 3950ms; }
-    .devtools .domflags-panel ol li.delay-41 {
-      -webkit-transition-delay: 4050ms;
-      -moz-transition-delay: 4050ms;
-      transition-delay: 4050ms; }
-    .devtools .domflags-panel ol li.delay-42 {
-      -webkit-transition-delay: 4150ms;
-      -moz-transition-delay: 4150ms;
-      transition-delay: 4150ms; }
-    .devtools .domflags-panel ol li.delay-43 {
-      -webkit-transition-delay: 4250ms;
-      -moz-transition-delay: 4250ms;
-      transition-delay: 4250ms; }
-    .devtools .domflags-panel ol li.delay-44 {
-      -webkit-transition-delay: 4350ms;
-      -moz-transition-delay: 4350ms;
-      transition-delay: 4350ms; }
-    .devtools .domflags-panel ol li.delay-45 {
-      -webkit-transition-delay: 4450ms;
-      -moz-transition-delay: 4450ms;
-      transition-delay: 4450ms; }
-    .devtools .domflags-panel ol li.delay-46 {
-      -webkit-transition-delay: 4550ms;
-      -moz-transition-delay: 4550ms;
-      transition-delay: 4550ms; }
-    .devtools .domflags-panel ol li.delay-47 {
-      -webkit-transition-delay: 4650ms;
-      -moz-transition-delay: 4650ms;
-      transition-delay: 4650ms; }
-    .devtools .domflags-panel ol li.delay-48 {
-      -webkit-transition-delay: 4750ms;
-      -moz-transition-delay: 4750ms;
-      transition-delay: 4750ms; }
-    .devtools .domflags-panel ol li.delay-49 {
-      -webkit-transition-delay: 4850ms;
-      -moz-transition-delay: 4850ms;
-      transition-delay: 4850ms; }
-    .devtools .domflags-panel ol li.delay-50 {
-      -webkit-transition-delay: 4950ms;
-      -moz-transition-delay: 4950ms;
-      transition-delay: 4950ms; }
-    .devtools .domflags-panel ol li.delay-51 {
-      -webkit-transition-delay: 5050ms;
-      -moz-transition-delay: 5050ms;
-      transition-delay: 5050ms; }
-    .devtools .domflags-panel ol li.delay-52 {
-      -webkit-transition-delay: 5150ms;
-      -moz-transition-delay: 5150ms;
-      transition-delay: 5150ms; }
-    .devtools .domflags-panel ol li.delay-53 {
-      -webkit-transition-delay: 5250ms;
-      -moz-transition-delay: 5250ms;
-      transition-delay: 5250ms; }
-    .devtools .domflags-panel ol li.delay-54 {
-      -webkit-transition-delay: 5350ms;
-      -moz-transition-delay: 5350ms;
-      transition-delay: 5350ms; }
-    .devtools .domflags-panel ol li.delay-55 {
-      -webkit-transition-delay: 5450ms;
-      -moz-transition-delay: 5450ms;
-      transition-delay: 5450ms; }
-    .devtools .domflags-panel ol li.delay-56 {
-      -webkit-transition-delay: 5550ms;
-      -moz-transition-delay: 5550ms;
-      transition-delay: 5550ms; }
-    .devtools .domflags-panel ol li.delay-57 {
-      -webkit-transition-delay: 5650ms;
-      -moz-transition-delay: 5650ms;
-      transition-delay: 5650ms; }
-    .devtools .domflags-panel ol li.delay-58 {
-      -webkit-transition-delay: 5750ms;
-      -moz-transition-delay: 5750ms;
-      transition-delay: 5750ms; }
-    .devtools .domflags-panel ol li.delay-59 {
-      -webkit-transition-delay: 5850ms;
-      -moz-transition-delay: 5850ms;
-      transition-delay: 5850ms; }
-    .devtools .domflags-panel ol li.delay-60 {
-      -webkit-transition-delay: 5950ms;
-      -moz-transition-delay: 5950ms;
-      transition-delay: 5950ms; }
-    .devtools .domflags-panel ol li.delay-61 {
-      -webkit-transition-delay: 6050ms;
-      -moz-transition-delay: 6050ms;
-      transition-delay: 6050ms; }
-    .devtools .domflags-panel ol li.delay-62 {
-      -webkit-transition-delay: 6150ms;
-      -moz-transition-delay: 6150ms;
-      transition-delay: 6150ms; }
-    .devtools .domflags-panel ol li.delay-63 {
-      -webkit-transition-delay: 6250ms;
-      -moz-transition-delay: 6250ms;
-      transition-delay: 6250ms; }
-    .devtools .domflags-panel ol li.delay-64 {
-      -webkit-transition-delay: 6350ms;
-      -moz-transition-delay: 6350ms;
-      transition-delay: 6350ms; }
-    .devtools .domflags-panel ol li.delay-65 {
-      -webkit-transition-delay: 6450ms;
-      -moz-transition-delay: 6450ms;
-      transition-delay: 6450ms; }
-    .devtools .domflags-panel ol li.delay-66 {
-      -webkit-transition-delay: 6550ms;
-      -moz-transition-delay: 6550ms;
-      transition-delay: 6550ms; }
-    .devtools .domflags-panel ol li.delay-67 {
-      -webkit-transition-delay: 6650ms;
-      -moz-transition-delay: 6650ms;
-      transition-delay: 6650ms; }
-    .devtools .domflags-panel ol li.delay-68 {
-      -webkit-transition-delay: 6750ms;
-      -moz-transition-delay: 6750ms;
-      transition-delay: 6750ms; }
-    .devtools .domflags-panel ol li.delay-69 {
-      -webkit-transition-delay: 6850ms;
-      -moz-transition-delay: 6850ms;
-      transition-delay: 6850ms; }
-    .devtools .domflags-panel ol li.delay-70 {
-      -webkit-transition-delay: 6950ms;
-      -moz-transition-delay: 6950ms;
-      transition-delay: 6950ms; }
-    .devtools .domflags-panel ol li.delay-71 {
-      -webkit-transition-delay: 7050ms;
-      -moz-transition-delay: 7050ms;
-      transition-delay: 7050ms; }
-    .devtools .domflags-panel ol li.delay-72 {
-      -webkit-transition-delay: 7150ms;
-      -moz-transition-delay: 7150ms;
-      transition-delay: 7150ms; }
-    .devtools .domflags-panel ol li.delay-73 {
-      -webkit-transition-delay: 7250ms;
-      -moz-transition-delay: 7250ms;
-      transition-delay: 7250ms; }
-    .devtools .domflags-panel ol li.delay-74 {
-      -webkit-transition-delay: 7350ms;
-      -moz-transition-delay: 7350ms;
-      transition-delay: 7350ms; }
-    .devtools .domflags-panel ol li.delay-75 {
-      -webkit-transition-delay: 7450ms;
-      -moz-transition-delay: 7450ms;
-      transition-delay: 7450ms; }
-    .devtools .domflags-panel ol li.delay-76 {
-      -webkit-transition-delay: 7550ms;
-      -moz-transition-delay: 7550ms;
-      transition-delay: 7550ms; }
-    .devtools .domflags-panel ol li.delay-77 {
-      -webkit-transition-delay: 7650ms;
-      -moz-transition-delay: 7650ms;
-      transition-delay: 7650ms; }
-    .devtools .domflags-panel ol li.delay-78 {
-      -webkit-transition-delay: 7750ms;
-      -moz-transition-delay: 7750ms;
-      transition-delay: 7750ms; }
-    .devtools .domflags-panel ol li.delay-79 {
-      -webkit-transition-delay: 7850ms;
-      -moz-transition-delay: 7850ms;
-      transition-delay: 7850ms; }
-    .devtools .domflags-panel ol li.delay-80 {
-      -webkit-transition-delay: 7950ms;
-      -moz-transition-delay: 7950ms;
-      transition-delay: 7950ms; }
-    .devtools .domflags-panel ol li.delay-81 {
-      -webkit-transition-delay: 8050ms;
-      -moz-transition-delay: 8050ms;
-      transition-delay: 8050ms; }
-    .devtools .domflags-panel ol li.delay-82 {
-      -webkit-transition-delay: 8150ms;
-      -moz-transition-delay: 8150ms;
-      transition-delay: 8150ms; }
-    .devtools .domflags-panel ol li.delay-83 {
-      -webkit-transition-delay: 8250ms;
-      -moz-transition-delay: 8250ms;
-      transition-delay: 8250ms; }
-    .devtools .domflags-panel ol li.delay-84 {
-      -webkit-transition-delay: 8350ms;
-      -moz-transition-delay: 8350ms;
-      transition-delay: 8350ms; }
-    .devtools .domflags-panel ol li.delay-85 {
-      -webkit-transition-delay: 8450ms;
-      -moz-transition-delay: 8450ms;
-      transition-delay: 8450ms; }
-    .devtools .domflags-panel ol li.delay-86 {
-      -webkit-transition-delay: 8550ms;
-      -moz-transition-delay: 8550ms;
-      transition-delay: 8550ms; }
-    .devtools .domflags-panel ol li.delay-87 {
-      -webkit-transition-delay: 8650ms;
-      -moz-transition-delay: 8650ms;
-      transition-delay: 8650ms; }
-    .devtools .domflags-panel ol li.delay-88 {
-      -webkit-transition-delay: 8750ms;
-      -moz-transition-delay: 8750ms;
-      transition-delay: 8750ms; }
-    .devtools .domflags-panel ol li.delay-89 {
-      -webkit-transition-delay: 8850ms;
-      -moz-transition-delay: 8850ms;
-      transition-delay: 8850ms; }
-    .devtools .domflags-panel ol li.delay-90 {
-      -webkit-transition-delay: 8950ms;
-      -moz-transition-delay: 8950ms;
-      transition-delay: 8950ms; }
-    .devtools .domflags-panel ol li.delay-91 {
-      -webkit-transition-delay: 9050ms;
-      -moz-transition-delay: 9050ms;
-      transition-delay: 9050ms; }
-    .devtools .domflags-panel ol li.delay-92 {
-      -webkit-transition-delay: 9150ms;
-      -moz-transition-delay: 9150ms;
-      transition-delay: 9150ms; }
-    .devtools .domflags-panel ol li.delay-93 {
-      -webkit-transition-delay: 9250ms;
-      -moz-transition-delay: 9250ms;
-      transition-delay: 9250ms; }
-    .devtools .domflags-panel ol li.delay-94 {
-      -webkit-transition-delay: 9350ms;
-      -moz-transition-delay: 9350ms;
-      transition-delay: 9350ms; }
-    .devtools .domflags-panel ol li.delay-95 {
-      -webkit-transition-delay: 9450ms;
-      -moz-transition-delay: 9450ms;
-      transition-delay: 9450ms; }
-    .devtools .domflags-panel ol li.delay-96 {
-      -webkit-transition-delay: 9550ms;
-      -moz-transition-delay: 9550ms;
-      transition-delay: 9550ms; }
-    .devtools .domflags-panel ol li.delay-97 {
-      -webkit-transition-delay: 9650ms;
-      -moz-transition-delay: 9650ms;
-      transition-delay: 9650ms; }
-    .devtools .domflags-panel ol li.delay-98 {
-      -webkit-transition-delay: 9750ms;
-      -moz-transition-delay: 9750ms;
-      transition-delay: 9750ms; }
-    .devtools .domflags-panel ol li.delay-99 {
-      -webkit-transition-delay: 9850ms;
-      -moz-transition-delay: 9850ms;
-      transition-delay: 9850ms; }
-    .devtools .domflags-panel ol li.delay-100 {
-      -webkit-transition-delay: 9950ms;
-      -moz-transition-delay: 9950ms;
-      transition-delay: 9950ms; }
+      -webkit-transition-delay: 1475ms;
+      -moz-transition-delay: 1475ms;
+      transition-delay: 1475ms; }
 
 .devtools .dom-tree {
   cursor: default;
