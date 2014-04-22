@@ -111,8 +111,8 @@
 
             span {
               display: inline-block;
-              @extend %animation-flag-in;
-              // @extend %animation-flipInX;
+              // @extend %animation-flag-in;
+              @extend %animation-flipInX;
             }
           }
 
@@ -139,6 +139,12 @@
         &.move-down {
           @include transition(transform 0.3s $ease-out-sine);
           @include transform(translateY(36px));
+          z-index: 2;
+        }
+
+        &.move-up {
+          @include transition(transform 0.3s $ease-out-sine);
+          @include transform(translateY(-36px));
           z-index: 2;
         }
 

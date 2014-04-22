@@ -95,7 +95,7 @@ class SetupDemo
       $el = @tree.find('.domflag-line').eq(index)
       $target = $('.target')
 
-      if $(event.currentTarget).hasClass('demo') and index < 2
+      if index < 1
         $target.addClass("pos-#{index + 1}")
         $(event.currentTarget).next().addClass('demo')
       else
@@ -119,7 +119,6 @@ class SetupDemo
         @tree.scrollTo('.domflag-line.selected')
 
   tooltipEvents: ->
-    transitionEnd = "webkitTransitionEnd transitionend"
     animationEnd = "webkitAnimationEnd animationend"
     panelWidth = @panel.outerWidth()
 
@@ -132,10 +131,12 @@ class SetupDemo
       if $parent.hasClass('domflag-line')
         index = $parent.index('.domflag-line')
         $(tooltipEl).text('Add Domflag')
-        @panel.find('li').eq(index).addClass('remove').one animationEnd, (event) =>
-          $(event.currentTarget).remove()
+        @panel.find('li').eq(index).nextUntil().each (index) ->
+          $(@).addClass("delay-#{index} move-up")
 
+        @slidePanelItems('up', index)
         $parent.removeClass('domflag-line').find('.domflag-attr').remove()
+
       else ## Add
         $(tooltipEl).text('Remove Domflag')
         elString = []
@@ -155,12 +156,18 @@ class SetupDemo
         else
           @panel.find('ol').append(flagItem)
 
-        length = @panel.find('.move-down').length
-        count = 1
-        @panel.find('.move-down').one transitionEnd, (event) =>
-          unless count isnt length
-            @panel.find('.move-down').removeClass('move-down').removeClass (index, css) ->
-              (css.match(/\bdelay-\S+/g) or []).join " "
-            @panel.find('li').eq(index).removeClass('animate')
-          count++
+        @slidePanelItems('down', index)
 
+  slidePanelItems: (elDir, index) ->
+    transitionEnd = "webkitTransitionEnd transitionend"
+    $index = @panel.find('li').eq(index)
+    $els = @panel.find(".move-#{elDir}")
+
+    count = 1
+    $els.one transitionEnd, (event) =>
+      unless count isnt $els.length
+        $els.removeClass("move-#{elDir}").removeClass (index, css) ->
+          (css.match(/\bdelay-\S+/g) or []).join " " ## remove delay-* class
+        $index.removeClass('animate')
+        $index.remove() if elDir is "up"
+      count++

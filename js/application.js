@@ -141,7 +141,7 @@
           index = _this.panel.find('li').index(event.currentTarget);
           $el = _this.tree.find('.domflag-line').eq(index);
           $target = $('.target');
-          if ($(event.currentTarget).hasClass('demo') && index < 2) {
+          if (index < 1) {
             $target.addClass("pos-" + (index + 1));
             $(event.currentTarget).next().addClass('demo');
           } else {
@@ -165,22 +165,22 @@
     };
 
     SetupDemo.prototype.tooltipEvents = function() {
-      var animationEnd, panelWidth, transitionEnd;
-      transitionEnd = "webkitTransitionEnd transitionend";
+      var animationEnd, panelWidth;
       animationEnd = "webkitAnimationEnd animationend";
       panelWidth = this.panel.outerWidth();
       return $('.tooltip').on('click', (function(_this) {
         return function(event) {
-          var $domflagStr, $parent, count, elString, flagItem, index, length, stringArray, tooltipEl;
+          var $domflagStr, $parent, elString, flagItem, index, stringArray, tooltipEl;
           $domflagStr = '<span class="na domflag-attr">domflag</span>';
           tooltipEl = event.currentTarget;
           $parent = $(tooltipEl).parent();
           if ($parent.hasClass('domflag-line')) {
             index = $parent.index('.domflag-line');
             $(tooltipEl).text('Add Domflag');
-            _this.panel.find('li').eq(index).addClass('remove').one(animationEnd, function(event) {
-              return $(event.currentTarget).remove();
+            _this.panel.find('li').eq(index).nextUntil().each(function(index) {
+              return $(this).addClass("delay-" + index + " move-up");
             });
+            _this.slidePanelItems('up', index);
             return $parent.removeClass('domflag-line').find('.domflag-attr').remove();
           } else {
             $(tooltipEl).text('Remove Domflag');
@@ -206,18 +206,30 @@
             } else {
               _this.panel.find('ol').append(flagItem);
             }
-            length = _this.panel.find('.move-down').length;
-            count = 1;
-            return _this.panel.find('.move-down').one(transitionEnd, function(event) {
-              if (count === length) {
-                _this.panel.find('.move-down').removeClass('move-down').removeClass(function(index, css) {
-                  return (css.match(/\bdelay-\S+/g) || []).join(" ");
-                });
-                _this.panel.find('li').eq(index).removeClass('animate');
-              }
-              return count++;
-            });
+            return _this.slidePanelItems('down', index);
           }
+        };
+      })(this));
+    };
+
+    SetupDemo.prototype.slidePanelItems = function(elDir, index) {
+      var $els, $index, count, transitionEnd;
+      transitionEnd = "webkitTransitionEnd transitionend";
+      $index = this.panel.find('li').eq(index);
+      $els = this.panel.find(".move-" + elDir);
+      count = 1;
+      return $els.one(transitionEnd, (function(_this) {
+        return function(event) {
+          if (count === $els.length) {
+            $els.removeClass("move-" + elDir).removeClass(function(index, css) {
+              return (css.match(/\bdelay-\S+/g) || []).join(" ");
+            });
+            $index.removeClass('animate');
+            if (elDir === "up") {
+              $index.remove();
+            }
+          }
+          return count++;
         };
       })(this));
     };
