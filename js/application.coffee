@@ -127,9 +127,10 @@ class SetupDemo
       tooltipEl = event.currentTarget
       $parent = $(tooltipEl).parent()
 
-      ## Remove
+      ## Remove domflags
       if $parent.hasClass('domflag-line')
         index = $parent.index('.domflag-line')
+
         $(tooltipEl).text('Add Domflag')
         @panel.find('li').eq(index).nextUntil().each (index) ->
           $(@).addClass("delay-#{index} move-up")
@@ -137,7 +138,8 @@ class SetupDemo
         @slidePanelItems('up', index)
         $parent.removeClass('domflag-line').find('.domflag-attr').remove()
 
-      else ## Add
+      ## Add domflags
+      else
         $(tooltipEl).text('Remove Domflag')
         elString = []
         stringArray = $(tooltipEl).siblings().contents().filter (index) ->
@@ -146,7 +148,9 @@ class SetupDemo
             string = @data.toUpperCase() + " " if index == 0
             elString.push string.replace(/</g,' ').replace(/\= /, '=') ## formatting cleanup
         $parent.addClass('domflag-line').find('.s').last().after($domflagStr)
+
         index = $parent.index('.domflag-line')
+
         flagItem = "<li class='flag new animate' style='width: #{panelWidth}px'><span>#{elString.join("")}</span></li>"
 
         if index < @panel.find('li').length

@@ -92,7 +92,7 @@
           display: inline-block;
         }
 
-        &:hover, &.demo {
+        &:hover {
           background-color: darken(#D6DDE5, 3%);
           box-shadow: inset -1px 0 0 hsla(0, 0%, 0%, 0.2);
         }
