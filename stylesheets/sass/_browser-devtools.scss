@@ -21,7 +21,6 @@
 ///////////////////////////////////////////////////////////////////////////
 .devtools {
   .domflags-panel {
-    // @extend %open-domflags;
     background: #D6DDE5;
     border-radius: 0 0 0 $browser-radius;
     box-shadow: inset -1px 0 0 hsla(0, 0%, 0%, 0.2);
@@ -79,7 +78,6 @@
       li {
         @include box-sizing(border-box);
         cursor: pointer;
-        @include ellipsis;
         display: block;
         height: 36px;
         height: 36px;
@@ -88,8 +86,10 @@
         position: relative;
 
         span {
+          @include box-sizing(border-box);
+          @include ellipsis;
+          max-width: 90%;
           padding: 6px 14px;
-          display: inline-block;
         }
 
         &:hover {
@@ -108,12 +108,10 @@
           &.animate {
             position: fixed;
             z-index: 1;
+          }
 
-            span {
-              display: inline-block;
-              // @extend %animation-flag-in;
-              @extend %animation-flipInX;
-            }
+          span {
+            @extend %animation-flipInX;
           }
 
           &:after {
@@ -122,17 +120,23 @@
             border-radius: $size;
             @include calc(top, "50% - #{$size/2}");
             content: "";
+            opacity: 0;
             position: absolute;
             right: 21px;
             @include size($size);
+            @extend %animation-fade-in;
           }
         }
 
         &.remove {
-          @extend %animation-flag-remove;
+          // @extend %animation-flag-remove;
+
+          span {
+            @extend %animation-flipOutX;
+          }
 
           &:after {
-            opacity: 0;
+            @extend %animation-fade-out;
           }
         }
 

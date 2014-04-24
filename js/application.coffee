@@ -119,7 +119,6 @@ class SetupDemo
         @tree.scrollTo('.domflag-line.selected')
 
   tooltipEvents: ->
-    animationEnd = "webkitAnimationEnd animationend"
     panelWidth = @panel.outerWidth()
 
     $('.tooltip').on 'click', (event) =>
@@ -130,11 +129,11 @@ class SetupDemo
       ## Remove domflags
       if $parent.hasClass('domflag-line')
         index = $parent.index('.domflag-line')
+        $panelEl = @panel.find('li').eq(index)
 
         $(tooltipEl).text('Add Domflag')
-        @panel.find('li').eq(index).nextUntil().each (index) ->
-          $(@).addClass("delay-#{index} move-up")
-
+        $panelEl.addClass('remove')
+        @addSlideClasses('up', index)
         @slidePanelItems('up', index)
         $parent.removeClass('domflag-line').find('.domflag-attr').remove()
 
@@ -155,15 +154,19 @@ class SetupDemo
 
         if index < @panel.find('li').length
           @panel.find('li').eq(index).before(flagItem)
-          @panel.find('li').eq(index).nextUntil().each (index) ->
-            $(@).addClass("delay-#{index} move-down")
+          @addSlideClasses('down', index)
         else
           @panel.find('ol').append(flagItem)
 
         @slidePanelItems('down', index)
 
+  addSlideClasses: (elDir, index) ->
+    @panel.find('li').eq(index).nextUntil().each (index) ->
+      $(@).addClass("delay-#{index} move-#{elDir}")
+
   slidePanelItems: (elDir, index) ->
     transitionEnd = "webkitTransitionEnd transitionend"
+    animationEnd = "webkitAnimationEnd animationend"
     $index = @panel.find('li').eq(index)
     $els = @panel.find(".move-#{elDir}")
 
@@ -175,3 +178,9 @@ class SetupDemo
         $index.removeClass('animate')
         $index.remove() if elDir is "up"
       count++
+
+    ## Remove el if only el in panel
+    if $els.length is 0
+      $index.one animationEnd, =>
+        $index.removeClass('animate')
+        $index.remove() if elDir is 'up'

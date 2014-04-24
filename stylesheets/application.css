@@ -234,32 +234,6 @@ dl {
   dl dd {
     margin: 0; }
 
-@-webkit-keyframes open-domflags {
-  0% {
-    -webkit-transform: translateY(300px); }
-
-  100% {
-    -webkit-transform: translateY(0px); } }
-@-moz-keyframes open-domflags {
-  0% {
-    -moz-transform: translateY(300px); }
-
-  100% {
-    -moz-transform: translateY(0px); } }
-@keyframes open-domflags {
-  0% {
-    -webkit-transform: translateY(300px);
-    -moz-transform: translateY(300px);
-    -ms-transform: translateY(300px);
-    -o-transform: translateY(300px);
-    transform: translateY(300px); }
-
-  100% {
-    -webkit-transform: translateY(0px);
-    -moz-transform: translateY(0px);
-    -ms-transform: translateY(0px);
-    -o-transform: translateY(0px);
-    transform: translateY(0px); } }
 code > span.selected .domflag-attr {
   -webkit-animation: selected-node 0.55s cubic-bezier(0.47, 0, 0.745, 0.715);
   -moz-animation: selected-node 0.55s cubic-bezier(0.47, 0, 0.745, 0.715);
@@ -492,11 +466,6 @@ code > span.selected .domflag-attr {
     -ms-transform: scale(1);
     -o-transform: scale(1);
     transform: scale(1); } }
-.devtools .domflags-panel ol li.remove {
-  -webkit-animation: flag-remove 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0 forwards;
-  -moz-animation: flag-remove 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0 forwards;
-  animation: flag-remove 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0 forwards; }
-
 @-webkit-keyframes flag-remove {
   0% {
     height: 36px; }
@@ -515,7 +484,7 @@ code > span.selected .domflag-attr {
 
   100% {
     height: 0; } }
-.devtools .domflags-panel ol li.new.animate span {
+.devtools .domflags-panel ol li.new span {
   -webkit-animation: flipInX 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
   -moz-animation: flipInX 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
   animation: flipInX 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
@@ -553,6 +522,90 @@ code > span.selected .domflag-attr {
     -ms-transform: perspective(200px) rotateX(0deg);
     -o-transform: perspective(200px) rotateX(0deg);
     transform: perspective(200px) rotateX(0deg); } }
+.devtools .domflags-panel ol li.remove span {
+  -webkit-animation: flipOutX 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+  -moz-animation: flipOutX 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+  animation: flipOutX 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+  -webkit-transform-origin: top;
+  -moz-transform-origin: top;
+  -ms-transform-origin: top;
+  -o-transform-origin: top;
+  transform-origin: top;
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible; }
+
+@-webkit-keyframes flipOutX {
+  0% {
+    -webkit-transform: perspective(200px) rotateX(0deg); }
+
+  100% {
+    -webkit-transform: perspective(200px) rotateX(-90deg); } }
+@-moz-keyframes flipOutX {
+  0% {
+    -moz-transform: perspective(200px) rotateX(0deg); }
+
+  100% {
+    -moz-transform: perspective(200px) rotateX(-90deg); } }
+@keyframes flipOutX {
+  0% {
+    -webkit-transform: perspective(200px) rotateX(0deg);
+    -moz-transform: perspective(200px) rotateX(0deg);
+    -ms-transform: perspective(200px) rotateX(0deg);
+    -o-transform: perspective(200px) rotateX(0deg);
+    transform: perspective(200px) rotateX(0deg); }
+
+  100% {
+    -webkit-transform: perspective(200px) rotateX(-90deg);
+    -moz-transform: perspective(200px) rotateX(-90deg);
+    -ms-transform: perspective(200px) rotateX(-90deg);
+    -o-transform: perspective(200px) rotateX(-90deg);
+    transform: perspective(200px) rotateX(-90deg); } }
+.devtools .domflags-panel ol li.new:after {
+  -webkit-animation: fade-in 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+  -moz-animation: fade-in 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+  animation: fade-in 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards; }
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1; } }
+@-moz-keyframes fade-in {
+  0% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1; } }
+@keyframes fade-in {
+  0% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1; } }
+.devtools .domflags-panel ol li.remove:after {
+  -webkit-animation: fade-out 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  -moz-animation: fade-out 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: fade-out 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+
+@-webkit-keyframes fade-out {
+  0% {
+    opacity: 1; }
+
+  100% {
+    opacity: 0; } }
+@-moz-keyframes fade-out {
+  0% {
+    opacity: 1; }
+
+  100% {
+    opacity: 0; } }
+@keyframes fade-out {
+  0% {
+    opacity: 1; }
+
+  100% {
+    opacity: 0; } }
 body, html {
   margin: 0; }
 
@@ -807,11 +860,6 @@ body, html {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     cursor: pointer;
-    display: inline-block;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     display: block;
     height: 36px;
     height: 36px;
@@ -819,8 +867,16 @@ body, html {
     padding: 0;
     position: relative; }
     .devtools .domflags-panel ol li span {
-      padding: 6px 14px;
-      display: inline-block; }
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      display: inline-block;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 90%;
+      padding: 6px 14px; }
     .devtools .domflags-panel ol li:hover {
       background-color: #cdd5df;
       box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.2); }
@@ -831,20 +887,17 @@ body, html {
     .devtools .domflags-panel ol li.new.animate {
       position: fixed;
       z-index: 1; }
-      .devtools .domflags-panel ol li.new.animate span {
-        display: inline-block; }
     .devtools .domflags-panel ol li.new:after {
       background: #f36133;
       border-radius: 8px;
       top: -webkit-calc(50% - 4px);
       top: calc(50% - 4px);
       content: "";
+      opacity: 0;
       position: absolute;
       right: 21px;
       height: 8px;
       width: 8px; }
-    .devtools .domflags-panel ol li.remove:after {
-      opacity: 0; }
     .devtools .domflags-panel ol li.move-down {
       -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
       -moz-transition: -moz-transform 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);

@@ -165,21 +165,20 @@
     };
 
     SetupDemo.prototype.tooltipEvents = function() {
-      var animationEnd, panelWidth;
-      animationEnd = "webkitAnimationEnd animationend";
+      var panelWidth;
       panelWidth = this.panel.outerWidth();
       return $('.tooltip').on('click', (function(_this) {
         return function(event) {
-          var $domflagStr, $parent, elString, flagItem, index, stringArray, tooltipEl;
+          var $domflagStr, $panelEl, $parent, elString, flagItem, index, stringArray, tooltipEl;
           $domflagStr = '<span class="na domflag-attr">domflag</span>';
           tooltipEl = event.currentTarget;
           $parent = $(tooltipEl).parent();
           if ($parent.hasClass('domflag-line')) {
             index = $parent.index('.domflag-line');
+            $panelEl = _this.panel.find('li').eq(index);
             $(tooltipEl).text('Add Domflag');
-            _this.panel.find('li').eq(index).nextUntil().each(function(index) {
-              return $(this).addClass("delay-" + index + " move-up");
-            });
+            $panelEl.addClass('remove');
+            _this.addSlideClasses('up', index);
             _this.slidePanelItems('up', index);
             return $parent.removeClass('domflag-line').find('.domflag-attr').remove();
           } else {
@@ -200,9 +199,7 @@
             flagItem = "<li class='flag new animate' style='width: " + panelWidth + "px'><span>" + (elString.join("")) + "</span></li>";
             if (index < _this.panel.find('li').length) {
               _this.panel.find('li').eq(index).before(flagItem);
-              _this.panel.find('li').eq(index).nextUntil().each(function(index) {
-                return $(this).addClass("delay-" + index + " move-down");
-              });
+              _this.addSlideClasses('down', index);
             } else {
               _this.panel.find('ol').append(flagItem);
             }
@@ -212,13 +209,20 @@
       })(this));
     };
 
+    SetupDemo.prototype.addSlideClasses = function(elDir, index) {
+      return this.panel.find('li').eq(index).nextUntil().each(function(index) {
+        return $(this).addClass("delay-" + index + " move-" + elDir);
+      });
+    };
+
     SetupDemo.prototype.slidePanelItems = function(elDir, index) {
-      var $els, $index, count, transitionEnd;
+      var $els, $index, animationEnd, count, transitionEnd;
       transitionEnd = "webkitTransitionEnd transitionend";
+      animationEnd = "webkitAnimationEnd animationend";
       $index = this.panel.find('li').eq(index);
       $els = this.panel.find(".move-" + elDir);
       count = 1;
-      return $els.one(transitionEnd, (function(_this) {
+      $els.one(transitionEnd, (function(_this) {
         return function(event) {
           if (count === $els.length) {
             $els.removeClass("move-" + elDir).removeClass(function(index, css) {
@@ -232,6 +236,16 @@
           return count++;
         };
       })(this));
+      if ($els.length === 0) {
+        return $index.one(animationEnd, (function(_this) {
+          return function() {
+            $index.removeClass('animate');
+            if (elDir === 'up') {
+              return $index.remove();
+            }
+          };
+        })(this));
+      }
     };
 
     return SetupDemo;

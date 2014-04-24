@@ -1,27 +1,7 @@
-%open-domflags {
-  @include animation(open-domflags 0.6s $ease-out-sine);
-  @include animation-fill-mode(both);
-  @include animation-delay(2s);
-}
-
-@include keyframes(open-domflags) {
-  0% {
-    @include transform(translateY(300px))
-    // @include flex(0 0 0);
-  }
-  100% {
-    // @include flex(1.5 1.5 314px)
-    @include transform(translateY(0px))
-  }
-}
-
 %selected-node {
   @include animation(selected-node 0.55s $ease-in-sine);
   @include animation-delay(0.25s);
-  // @include animation-fill-mode(forwards);
-  // @include transform-origin(top left);
 }
-
 @include keyframes(selected-node) {
   50% {
     @include transform(scale(1.2));
@@ -32,7 +12,6 @@
   @include animation(browser-zoom 1.2s $ease-out-sine 0s forwards);
   @include transform(scale(0.85));
 }
-
 @include keyframes(browser-zoom) {
   0% {
     @include transform(scale(0.85));
@@ -47,7 +26,6 @@
   @include animation-iteration-count(infinite);
   opacity: 1;
 }
-
 @include keyframes(click-target) {
   0% {
     opacity: 0.6;
@@ -62,7 +40,6 @@
 %animation-click-target-solid {
   @include animation(click-target-solid 1.5s linear 1.3s forwards infinite);
 }
-
 @include keyframes(click-target-solid) {
   10% {
     @include transform(scale(0.48));
@@ -75,7 +52,6 @@
 %animation-start-hide {
   @include animation(start-hide 0.5s $ease-in-quad 0.5s forwards);
 }
-
 @include keyframes(start-hide) {
   0% {
     @include transform(translateY(0px));
@@ -89,7 +65,6 @@
 %animation-download-show {
   @include animation(download-show 0.5s $ease-out-quad 0.4s forwards);
 }
-
 @include keyframes(download-show) {
   0% {
     @include transform(translateY(50px));
@@ -103,9 +78,8 @@
 
 %animation-flag-in {
   @include animation(flag-in 0.3s ease-out 0.05s forwards);
-  @include transform-origin(center);
+  @include transform-origin(left center);
 }
-
 @include keyframes(flag-in) {
   0% {
     opacity: 0;
@@ -120,8 +94,8 @@
 
 %animation-flag-remove {
   @include animation(flag-remove 0.3s $ease-out-quad 0 forwards);
+  @include transform-origin(left center);
 }
-
 @include keyframes(flag-remove) {
   0% {
     height: 36px;
@@ -135,7 +109,7 @@
   @include animation(flipInX 0.5s $ease-out-sine forwards);
   @include transform-origin(top);
   @include backface-visibility(visible);
- }
+}
 
 @include keyframes(flipInX) {
   $p: 200px;
@@ -145,5 +119,48 @@
   }
   100% {
     @include transform(perspective($p) rotateX(0deg));
+  }
+}
+
+%animation-flipOutX {
+  @include animation(flipOutX 0.3s $ease-out-sine forwards);
+  @include transform-origin(top);
+  @include backface-visibility(visible);
+}
+
+@include keyframes(flipOutX) {
+  $p: 200px;
+
+  0% {
+    @include transform(perspective($p) rotateX(0deg));
+  }
+  100% {
+    @include transform(perspective($p) rotateX(-90deg));
+  }
+}
+
+%animation-fade-in {
+  @include animation(fade-in 0.3s $ease-out-quad 0.3s forwards);
+}
+
+@include keyframes(fade-in) {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+%animation-fade-out {
+  @include animation(fade-out 0.15s $ease-out-quad forwards);
+}
+
+@include keyframes(fade-out) {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
