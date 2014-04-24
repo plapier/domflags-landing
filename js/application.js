@@ -169,41 +169,41 @@
       panelWidth = this.panel.outerWidth();
       return $('.tooltip').on('click', (function(_this) {
         return function(event) {
-          var $domflagStr, $panelEl, $parent, elString, flagItem, index, stringArray, tooltipEl;
+          var $domflagStr, $panelEl, $parent, $treeIndex, elString, flagItem, tooltipEl;
           $domflagStr = '<span class="na domflag-attr">domflag</span>';
           tooltipEl = event.currentTarget;
           $parent = $(tooltipEl).parent();
+          $panelEl = _this.panel.find('li');
+          elString = [];
           if ($parent.hasClass('domflag-line')) {
-            index = $parent.index('.domflag-line');
-            $panelEl = _this.panel.find('li').eq(index);
+            $treeIndex = $parent.index('.domflag-line');
             $(tooltipEl).text('Add Domflag');
-            $panelEl.addClass('remove');
-            _this.addSlideClasses('up', index);
-            _this.slidePanelItems('up', index);
+            $panelEl.eq($treeIndex).addClass('remove');
+            _this.addSlideClasses('up', $treeIndex);
+            _this.slidePanelItems('up', $treeIndex);
             return $parent.removeClass('domflag-line').find('.domflag-attr').remove();
           } else {
             $(tooltipEl).text('Remove Domflag');
-            elString = [];
-            stringArray = $(tooltipEl).siblings().contents().filter(function(index) {
+            $(tooltipEl).siblings().contents().filter(function($treeIndex) {
               var string;
               if (!this.data.match(/\>/g)) {
                 string = this.data;
-                if (index === 0) {
+                if ($treeIndex === 0) {
                   string = this.data.toUpperCase() + " ";
                 }
                 return elString.push(string.replace(/</g, ' ').replace(/\= /, '='));
               }
             });
             $parent.addClass('domflag-line').find('.s').last().after($domflagStr);
-            index = $parent.index('.domflag-line');
+            $treeIndex = $parent.index('.domflag-line');
             flagItem = "<li class='flag new animate' style='width: " + panelWidth + "px'><span>" + (elString.join("")) + "</span></li>";
-            if (index < _this.panel.find('li').length) {
-              _this.panel.find('li').eq(index).before(flagItem);
-              _this.addSlideClasses('down', index);
+            if ($treeIndex < $panelEl.length) {
+              $panelEl.eq($treeIndex).before(flagItem);
+              _this.addSlideClasses('down', $treeIndex);
             } else {
               _this.panel.find('ol').append(flagItem);
             }
-            return _this.slidePanelItems('down', index);
+            return _this.slidePanelItems('down', $treeIndex);
           }
         };
       })(this));
@@ -216,10 +216,10 @@
     };
 
     SetupDemo.prototype.slidePanelItems = function(elDir, index) {
-      var $els, $index, animationEnd, count, transitionEnd;
+      var $els, $panelIndex, animationEnd, count, transitionEnd;
       transitionEnd = "webkitTransitionEnd transitionend";
       animationEnd = "webkitAnimationEnd animationend";
-      $index = this.panel.find('li').eq(index);
+      $panelIndex = this.panel.find('li').eq(index);
       $els = this.panel.find(".move-" + elDir);
       count = 1;
       $els.one(transitionEnd, (function(_this) {
@@ -228,20 +228,20 @@
             $els.removeClass("move-" + elDir).removeClass(function(index, css) {
               return (css.match(/\bdelay-\S+/g) || []).join(" ");
             });
-            $index.removeClass('animate');
+            $panelIndex.removeClass('animate');
             if (elDir === "up") {
-              $index.remove();
+              $panelIndex.remove();
             }
           }
           return count++;
         };
       })(this));
       if ($els.length === 0) {
-        return $index.one(animationEnd, (function(_this) {
+        return $panelIndex.one(animationEnd, (function(_this) {
           return function() {
-            $index.removeClass('animate');
+            $panelIndex.removeClass('animate');
             if (elDir === 'up') {
-              return $index.remove();
+              return $panelIndex.remove();
             }
           };
         })(this));

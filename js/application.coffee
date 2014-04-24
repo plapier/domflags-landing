@@ -124,41 +124,39 @@ class SetupDemo
     $('.tooltip').on 'click', (event) =>
       $domflagStr = '<span class="na domflag-attr">domflag</span>'
       tooltipEl = event.currentTarget
-      $parent = $(tooltipEl).parent()
+      $parent   = $(tooltipEl).parent()
+      $panelEl  = @panel.find('li')
+      elString  = []
 
       ## Remove domflags
       if $parent.hasClass('domflag-line')
-        index = $parent.index('.domflag-line')
-        $panelEl = @panel.find('li').eq(index)
+        $treeIndex = $parent.index('.domflag-line')
 
         $(tooltipEl).text('Add Domflag')
-        $panelEl.addClass('remove')
-        @addSlideClasses('up', index)
-        @slidePanelItems('up', index)
+        $panelEl.eq($treeIndex).addClass('remove')
+        @addSlideClasses('up', $treeIndex)
+        @slidePanelItems('up', $treeIndex)
         $parent.removeClass('domflag-line').find('.domflag-attr').remove()
 
-      ## Add domflags
-      else
+      else ## Add domflags
         $(tooltipEl).text('Remove Domflag')
-        elString = []
-        stringArray = $(tooltipEl).siblings().contents().filter (index) ->
+        $(tooltipEl).siblings().contents().filter ($treeIndex) ->
           unless @data.match(/\>/g) ## unless closing tag
             string = @data
-            string = @data.toUpperCase() + " " if index == 0
+            string = @data.toUpperCase() + " " if $treeIndex == 0
             elString.push string.replace(/</g,' ').replace(/\= /, '=') ## formatting cleanup
         $parent.addClass('domflag-line').find('.s').last().after($domflagStr)
 
-        index = $parent.index('.domflag-line')
-
+        $treeIndex = $parent.index('.domflag-line')
         flagItem = "<li class='flag new animate' style='width: #{panelWidth}px'><span>#{elString.join("")}</span></li>"
 
-        if index < @panel.find('li').length
-          @panel.find('li').eq(index).before(flagItem)
-          @addSlideClasses('down', index)
+        if $treeIndex < $panelEl.length
+          $panelEl.eq($treeIndex).before(flagItem)
+          @addSlideClasses('down', $treeIndex)
         else
           @panel.find('ol').append(flagItem)
 
-        @slidePanelItems('down', index)
+        @slidePanelItems('down', $treeIndex)
 
   addSlideClasses: (elDir, index) ->
     @panel.find('li').eq(index).nextUntil().each (index) ->
@@ -166,8 +164,8 @@ class SetupDemo
 
   slidePanelItems: (elDir, index) ->
     transitionEnd = "webkitTransitionEnd transitionend"
-    animationEnd = "webkitAnimationEnd animationend"
-    $index = @panel.find('li').eq(index)
+    animationEnd  = "webkitAnimationEnd animationend"
+    $panelIndex = @panel.find('li').eq(index)
     $els = @panel.find(".move-#{elDir}")
 
     count = 1
@@ -175,12 +173,12 @@ class SetupDemo
       unless count isnt $els.length
         $els.removeClass("move-#{elDir}").removeClass (index, css) ->
           (css.match(/\bdelay-\S+/g) or []).join " " ## remove delay-* class
-        $index.removeClass('animate')
-        $index.remove() if elDir is "up"
+        $panelIndex.removeClass('animate')
+        $panelIndex.remove() if elDir is "up"
       count++
 
     ## Remove el if only el in panel
     if $els.length is 0
-      $index.one animationEnd, =>
-        $index.removeClass('animate')
-        $index.remove() if elDir is 'up'
+      $panelIndex.one animationEnd, =>
+        $panelIndex.removeClass('animate')
+        $panelIndex.remove() if elDir is 'up'
