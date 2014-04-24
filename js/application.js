@@ -78,28 +78,28 @@
         return function(event) {
           var $parent, foldObject, spanID;
           $parent = $(event.delegateTarget).parent();
-          if ($parent.hasClass('fold-block')) {
-            return _this.unfoldBlock(event.delegateTarget);
-          } else {
+          if (!$parent.hasClass('fold-block')) {
             spanID = parseInt($(event.delegateTarget)[0].id.replace(/\D/g, ''));
             foldObject = $.grep(_this.folds, function(obj) {
               return obj.start === spanID;
             });
             return _this.foldBlocks(foldObject);
+          } else {
+            return _this.unfoldBlock(event.delegateTarget);
           }
         };
       })(this));
     };
 
     SetupDemo.prototype.unfoldBlock = function(target) {
-      var leftVal;
-      leftVal = parseInt($(target).parent().css('padding-left'));
-      $(target).removeClass('fold-parent').attr('style', '').siblings().removeClass('fold-parent fold-inner').unwrap();
-      return $(target).children('a').addClass('open');
+      var $target;
+      $target = $(target);
+      $target.removeClass('fold-parent').attr('style', '').siblings().removeClass('fold-parent fold-inner').unwrap();
+      return $target.children('a').addClass('open');
     };
 
     SetupDemo.prototype.foldBlocks = function(folds) {
-      var $block, $end, $inner, $paddingLeft, $start, blockStr, fold, _i, _len, _results;
+      var $block, $end, $inner, $start, blockStr, fold, paddingLeft, _i, _len, _results;
       _results = [];
       for (_i = 0, _len = folds.length; _i < _len; _i++) {
         fold = folds[_i];
@@ -107,11 +107,11 @@
         $end = this.tree.find("#line-" + fold.end);
         $inner = this.tree.find($start).nextUntil($end);
         $block = this.tree.find("#line-" + (fold.start - 1)).nextUntil("#line-" + (fold.end + 1));
-        $paddingLeft = Math.ceil($start.find('span:first-of-type').offset().left - this.tree.offset().left);
-        $start.addClass('fold-true fold-parent').children('a').css('left', "" + $paddingLeft + "px").removeClass('open');
+        paddingLeft = Math.ceil($start.find('span:first-of-type').offset().left - this.tree.offset().left);
+        $start.addClass('fold-true fold-parent').children('a').css('left', "" + paddingLeft + "px").removeClass('open');
         $end.addClass('fold-parent');
         $inner.addClass('fold-inner');
-        blockStr = "<div class='fold-block' style='padding-left: " + $paddingLeft + "px' />";
+        blockStr = "<div class='fold-block' style='padding-left: " + paddingLeft + "px' />";
         _results.push($block.wrapAll(blockStr));
       }
       return _results;

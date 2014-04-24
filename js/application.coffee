@@ -47,19 +47,20 @@ class SetupDemo
   foldingEvents: ->
     $('.fold-true').on 'click', 'a', (event) =>
       $parent = $(event.delegateTarget).parent()
-      if $parent.hasClass('fold-block')
-        @unfoldBlock(event.delegateTarget)
-      else
+
+      if !$parent.hasClass('fold-block')
         spanID = parseInt $(event.delegateTarget)[0].id.replace(/\D/g,'') ## Get line-id
         foldObject = $.grep @folds, (obj) ->
           obj.start is spanID
         @foldBlocks(foldObject)
+      else
+        @unfoldBlock(event.delegateTarget)
 
   unfoldBlock: (target) ->
-    leftVal = parseInt $(target).parent().css('padding-left')
-    $(target).removeClass('fold-parent').attr('style', '')
+    $target = $(target)
+    $target.removeClass('fold-parent').attr('style', '')
       .siblings().removeClass('fold-parent fold-inner').unwrap()
-    $(target).children('a').addClass('open')
+    $target.children('a').addClass('open')
 
   foldBlocks: (folds) ->
     for fold in folds
@@ -67,11 +68,12 @@ class SetupDemo
       $end   = @tree.find("#line-#{fold.end}")
       $inner = @tree.find($start).nextUntil($end)
       $block = @tree.find("#line-#{fold.start - 1}").nextUntil("#line-#{fold.end + 1}")
-      $paddingLeft = Math.ceil $start.find('span:first-of-type').offset().left - @tree.offset().left
-      $start.addClass('fold-true fold-parent').children('a').css('left', "#{$paddingLeft}px").removeClass('open')
+      paddingLeft = Math.ceil $start.find('span:first-of-type').offset().left - @tree.offset().left
+
+      $start.addClass('fold-true fold-parent').children('a').css('left', "#{paddingLeft}px").removeClass('open')
       $end.addClass('fold-parent')
       $inner.addClass('fold-inner')
-      blockStr = "<div class='fold-block' style='padding-left: #{$paddingLeft}px' />"
+      blockStr = "<div class='fold-block' style='padding-left: #{paddingLeft}px' />"
       $block.wrapAll(blockStr)
 
   demoEvents: ->
@@ -80,9 +82,8 @@ class SetupDemo
       $(event.currentTarget).addClass('hide').parent().addClass('show-download')
       $('.devtools-toolbar, .devtools').addClass('open')
       @panel.addClass('open').find('li:first-child').addClass('demo')
-
       @initTree() ## initTree after click to fix arrow position bug
-      return false
+      false
 
   panelEvents: ->
     $('.devtools').on "transitionend webkitTransitionEnd", ->
