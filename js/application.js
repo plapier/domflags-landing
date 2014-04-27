@@ -14,15 +14,6 @@
       this.tooltipStr = '<span class="tooltip">Add Domflag</span>';
       this.folds = [
         {
-          start: 30,
-          end: 35
-        }, {
-          start: 26,
-          end: 36
-        }, {
-          start: 25,
-          end: 38
-        }, {
           start: 18,
           end: 21
         }, {
@@ -36,13 +27,13 @@
           end: 12
         }, {
           start: 7,
-          end: 39
+          end: 24
         }, {
           start: 6,
-          end: 40
+          end: 25
         }, {
           start: 4,
-          end: 41
+          end: 26
         }
       ];
       this.demoEvents();
@@ -141,7 +132,7 @@
           index = _this.panel.find('li').index(event.currentTarget);
           $el = _this.tree.find('.domflag-line').eq(index);
           $target = $('.target');
-          if (index < 1) {
+          if (index < 2) {
             $target.addClass("pos-" + (index + 1));
             $(event.currentTarget).next().addClass('demo');
           } else {

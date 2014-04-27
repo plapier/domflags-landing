@@ -8,16 +8,13 @@ class SetupDemo
     @treeFlags = @getTreeFlags()
     @tooltipStr = '<span class="tooltip">Add Domflag</span>'
     @folds = [
-      { start: 30, end: 35 }
-      { start: 26, end: 36 }
-      { start: 25, end: 38 }
       { start: 18, end: 21 }
       { start: 15, end: 22 }
       { start: 14, end: 23 }
       { start: 8, end: 12 }
-      { start: 7, end: 39 }
-      { start: 6, end: 40 }
-      { start: 4, end: 41 }
+      { start: 7, end: 24 }
+      { start: 6, end: 25 }
+      { start: 4, end: 26 }
     ]
     @demoEvents()
 
@@ -96,7 +93,7 @@ class SetupDemo
       $el = @tree.find('.domflag-line').eq(index)
       $target = $('.target')
 
-      if index < 1
+      if index < 2
         $target.addClass("pos-#{index + 1}")
         $(event.currentTarget).next().addClass('demo')
       else
