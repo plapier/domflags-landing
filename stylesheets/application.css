@@ -746,13 +746,13 @@ body, html {
     letter-spacing: 0.4px;
     line-height: 1.0em; }
   .body .buttons {
-    margin-top: 5.5vh;
+    margin-top: 35px;
     position: relative;
     -webkit-transition: margin 0.1s linear;
     -moz-transition: margin 0.1s linear;
     transition: margin 0.1s linear; }
     .body .buttons.show-download {
-      margin-top: 4.5vh; }
+      margin-top: 35px; }
   .body a {
     background: white;
     border: 2px solid white;
@@ -1126,6 +1126,13 @@ code > span.non-flaggable:hover .tooltip {
   text-transform: uppercase; }
   .tooltip:hover {
     background: rgba(12, 102, 218, 0.8); }
+
+section.marketing-info {
+  background: #fff; }
+  section.marketing-info .inner {
+    width: 800px;
+    margin: 0 auto;
+    padding: 40px; }
 
 .highlight {
   background: #ffffff; }

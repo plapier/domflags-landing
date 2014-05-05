@@ -28,12 +28,12 @@
   }
 
   .buttons {
-    margin-top: 5.5vh;
+    margin-top: 35px;
     position: relative;
     @include transition(margin 0.1s linear);
 
     &.show-download {
-      margin-top: 4.5vh;
+      margin-top: 35px;
     }
   }
 
