@@ -234,7 +234,7 @@ dl {
   dl dd {
     margin: 0; }
 
-code > span.selected .domflag-attr {
+.devtools code > span.selected .domflag-attr {
   -webkit-animation: selected-node 0.55s cubic-bezier(0.47, 0, 0.745, 0.715);
   -moz-animation: selected-node 0.55s cubic-bezier(0.47, 0, 0.745, 0.715);
   animation: selected-node 0.55s cubic-bezier(0.47, 0, 0.745, 0.715);
@@ -676,7 +676,14 @@ body, html {
   display: flex;
   height: 0vh; }
   .devtools.open {
-    height: 37vh; }
+    height: 37vh;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0); }
   .devtools .domflags-panel {
     max-width: 314px;
     -webkit-box-flex: 1.5;
@@ -1016,30 +1023,29 @@ body, html {
   .devtools .dom-tree .domflag-attr {
     margin-left: 5px;
     color: red; }
-
-code > span {
+.devtools code > span {
   display: block;
   line-height: 1.3em;
   padding: 0 10px;
   padding-top: 1px;
   position: relative;
   z-index: 1; }
-  code > span:hover {
+  .devtools code > span:hover {
     background-color: #eaf1fb; }
-  code > span > span {
+  .devtools code > span > span {
     display: inline-block;
     line-height: 1em; }
-  code > span.selected, code > span.selected * {
+  .devtools code > span.selected, .devtools code > span.selected * {
     color: #fff !important; }
-  code > span.selected .domflag-attr {
+  .devtools code > span.selected .domflag-attr {
     position: relative;
     background: #f36133;
     padding: 1px 4px;
     border-radius: 1px;
     margin-right: 5px; }
-  code > span.selected a {
+  .devtools code > span.selected a {
     border-left-color: #fff; }
-  code > span.selected:before {
+  .devtools code > span.selected:before {
     height: 100%;
     z-index: -1;
     width: -webkit-calc(100% + 20px);
@@ -1130,9 +1136,48 @@ code > span.non-flaggable:hover .tooltip {
 section.marketing-info {
   background: #fff; }
   section.marketing-info .inner {
-    width: 800px;
+    font-family: "chaparral-pro", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    max-width: 700px;
     margin: 0 auto;
-    padding: 40px; }
+    padding: 70px 40px;
+    font-size: 23px;
+    line-height: 1.6; }
+  section.marketing-info section {
+    margin-bottom: 3em; }
+  section.marketing-info h1, section.marketing-info h2 {
+    color: #444;
+    font-family: Avenir, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
+  section.marketing-info h1 {
+    font-size: 1.65em;
+    margin-bottom: 1.25em;
+    text-align: center; }
+  section.marketing-info h2 {
+    font-size: 1.05em;
+    font-weight: 800;
+    margin-bottom: 0.6em;
+    text-transform: uppercase; }
+  section.marketing-info p {
+    -webkit-font-smoothing: subpixel-antialiased; }
+  section.marketing-info .metadata {
+    font-size: 0.9em;
+    color: #999999;
+    display: block; }
+  section.marketing-info pre {
+    background: #f8f8f8;
+    border-radius: 3px;
+    font-size: 24px;
+    margin: 1em 0 1.7em;
+    padding: 1.2em;
+    text-align: center;
+    -webkit-font-smoothing: subpixel-antialiased; }
+    section.marketing-info pre .df {
+      color: #f36133;
+      margin: 0 5px 0 12px; }
+  section.marketing-info ol {
+    list-style-type: decimal;
+    margin-left: 60px;
+    margin-bottom: 1.5em; }
 
 .highlight {
   background: #ffffff; }
@@ -1392,6 +1437,7 @@ body, html {
 
 .bg {
   background: url("../images/bg-sm.jpg") no-repeat;
+  background-attachment: fixed;
   background-position: 0 50%;
   background-size: cover;
   bottom: 0;

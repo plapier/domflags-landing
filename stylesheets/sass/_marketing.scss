@@ -1,9 +1,66 @@
 section.marketing-info {
   background: #fff;
 
-  .inner{
-    width: 800px;
+  .inner {
+    font-family: "chaparral-pro", $sans-serif;
+    max-width: 700px;
     margin: 0 auto;
-    padding: 40px;
+    padding: 70px 40px;
+    font-size: 23px;
+    line-height: 1.6;
+  }
+
+  section {
+    margin-bottom: 3em;
+  }
+
+  h1, h2 {
+    color: #444;
+    font-family: Avenir, $helvetica;
+    font-family: $header-font-family;
+  }
+
+  h1 {
+    font-size: 1.65em;
+    margin-bottom: 1.25em;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.05em;
+    font-weight: 800;
+    margin-bottom: 0.6em;
+    text-transform: uppercase;
+  }
+
+  p {
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
+
+  .metadata {
+    font-size: 0.9em;
+    color: $medium-gray;
+    display: block;
+  }
+
+  pre {
+    background: #f8f8f8;
+    border-radius: 3px;
+    font-size: 24px;
+    margin: 1em 0 1.7em;
+    padding: 1.2em;
+    text-align: center;
+    -webkit-font-smoothing: subpixel-antialiased;
+
+    .df {
+      color: $callout-color;
+      margin: 0 5px 0 12px;
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+    margin-left: 60px;
+    margin-bottom: 1.5em;
   }
 }

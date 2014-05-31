@@ -8,6 +8,7 @@ tags: [Jekyll]
     <meta charset="utf-8">
     <title>DomFlags - Bookmarks for deeply nested dom elements</title>
     <link rel="stylesheet" href="stylesheets/application.css">
+    <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/nindoglnpjcjoaheijieagogboabafkc">
     <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.11/jquery.scrollTo.min.js"></script>
     <script src="js/application.js"></script>
@@ -56,7 +57,54 @@ tags: [Jekyll]
     </section>
     <section class="marketing-info">
       <div class="inner">
-        <h1>DomFlags help you debug the Elements panel.</h1>
+        <article>
+          <h1>DomFlags will help you style and debug elements with speed and precision.</h1>
+          <section>
+            <p>Every seasoned designer or developer working with the DevTools has run into those tricky elements that are difficult to inspect, or seem to get lost in the choas of the dom. DomFlags offers a solution. DomFlags are like bookmarks for navigating the dom tree. But DomFlags go even further by offering auto-inspect features for making styling and debugging much faster and easier.</p>
+          </section>
+
+          <section>
+            <h2>How to use DomFlags</h2>
+            <p>DomFlags are created by adding the ‘domflag’ attribute to an element.
+              <span class="metadata">The empty ‘domflag’ attribute is a valid HTML5 boolean attribute.</span></p>
+
+            <pre><code>&lt;div class="foo"<span class="df">domflag</span>&gt; &hellip; &lt;/div&gt;</code></pre>
+
+            <p>DomFlags can be added to the dom using the following methods:</p>
+            <ol>
+              <li>Add ‘domflag’ attrbiutes directly in your html documents.</li>
+              <li>Add ‘domflag’ attributes from the DevTools Elements panel.</li>
+            </ol>
+            <p>The advantage of method #1 is the DomFlags will persist across page reloads. Method #2 is great for a quick one-time use per DevTools session.</p>
+          </section>
+
+          <section>
+            <h2>Auto-focusing flagged elements</h2>
+            <p>By default, the DomFlags extension will auto-focus (inspect) the first flagged element in the dom tree when the page is reloaded. This feature is useful for targeting an element and ensuring the DevTools always reengages that element when you reload the page, regardless of the currently inspected node.</p>
+
+            <p>Another useful auto-focus feature is for targeting the flagged element when the DevTools is opened (via cmd + shift + i). The feature instantly inspects the flagged element—which can dramatically speed up the time it takes to expand deep nodes, or visually inspect the tricky element.</p>
+
+            <p>Becuase these features may be undesirable while using multiple DomFlags per page, the extension contains a settings panel for toggling the auto-focus features.</p>
+            <figure></figure>
+            <p>Keep an eye out for more features to be added to the settings panel as development on the extension continues.</p>
+          </section>
+
+          <section>
+            <h2>Looking to the future</h2>
+            <p>In regards to improving the tools we use in our daily workflows, DomFlags have been a valuable asset to my front-end development process. So much so that I would like to see DomFlags built natively into the DevTools of all modern browsers.</p>
+            <p>Here’s a peek at what the native implementation of DomFlags might look like.</p>
+            <figure></figure>
+          </section>
+
+          <section>
+            <h2>Help start the conversation</h2>
+            <p>If you’d like to see DomFlags implemented natively in Webkit browsers—Chrome, Safari, etc.—tweet at these fine folks.</p>
+            <p>If you’d like to see DomFlags implemented natively in Firefox— tweet at these fine folks.</p>
+            <p>Want to chat about DomFlags? Tweet me — @PhilLaPier</p>
+            <p>Go forth and download the extension. Ratings and reviews are nice :)</p>
+          </section>
+
+        </article>
       </div>
     </section>
     <script>
