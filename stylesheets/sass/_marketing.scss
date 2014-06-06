@@ -5,7 +5,7 @@ section.marketing-info {
     font-family: "chaparral-pro", $sans-serif;
     max-width: 700px;
     margin: 0 auto;
-    padding: 70px 40px;
+    padding: 90px 40px;
     font-size: 23px;
     line-height: 1.6;
   }
@@ -21,8 +21,8 @@ section.marketing-info {
   }
 
   h1 {
-    font-size: 1.65em;
-    margin-bottom: 1.25em;
+    font-size: 1.75em;
+    margin-bottom: 1.45em;
     text-align: center;
   }
 
@@ -38,9 +38,11 @@ section.marketing-info {
   }
 
   .metadata {
-    font-size: 0.9em;
+    font-size: 0.8em;
     color: $medium-gray;
+    text-align: center;
     display: block;
+    margin-top: -2.5em;
   }
 
   pre {
@@ -63,4 +65,17 @@ section.marketing-info {
     margin-left: 60px;
     margin-bottom: 1.5em;
   }
+
+  figure {
+    margin: 2em 0 2.5em;
+  }
+
+  img {
+    margin: 0 auto;
+    border: 1px solid hsla(0, 0%, 59%, 0.42);
+    border-top-color: hsla(0, 0%, 59%, 0.72);
+    display: block;
+    box-shadow: inset 0 0 0 1px red;
+  }
+
 }

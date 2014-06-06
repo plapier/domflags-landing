@@ -58,15 +58,26 @@ tags: [Jekyll]
     <section class="marketing-info">
       <div class="inner">
         <article>
-          <h1>DomFlags will help you style and debug elements with speed and precision.</h1>
+          <h1>DomFlags help you style and debug elements with speed and precision.</h1>
           <section>
-            <p>Every seasoned designer or developer working with the DevTools has run into those tricky elements that are difficult to inspect, or seem to get lost in the choas of the dom. DomFlags offers a solution. DomFlags are like bookmarks for navigating the dom tree. But DomFlags go even further by offering auto-inspect features for making styling and debugging much faster and easier.</p>
+            <p>Every seasoned designer or developer working with the DevTools
+              has struggled with tricky elements that are difficult to inspect,
+              or seem to get lost in the choas of the DOM. DomFlags offers a
+              solution. DomFlags are like bookmarks for navigating the DOM tree.
+              They help you track important elements. But DomFlags offers even
+              more. The auto-inspect features can increase your speed and
+              precison while you style or debug flagged elements.</p>
+            <p>DomFlags are the solution to my many days of inspecting, styling,
+              and debugging precaious DOM elements &ndash; especailly DOM
+              elements that are rendered via javascript after the DOM has fully
+              loaded. Users of javascript frameworks like Ember, Backbone,
+              Angular, or any other scripts that swap or load content will
+              find DomFlags incredibly useful.</p>
           </section>
 
           <section>
             <h2>How to use DomFlags</h2>
-            <p>DomFlags are created by adding the ‘domflag’ attribute to an element.
-              <span class="metadata">The empty ‘domflag’ attribute is a valid HTML5 boolean attribute.</span></p>
+            <p>DomFlags are created by adding the ‘domflag’ attribute to an element.</p>
 
             <pre><code>&lt;div class="foo"<span class="df">domflag</span>&gt; &hellip; &lt;/div&gt;</code></pre>
 
@@ -84,8 +95,9 @@ tags: [Jekyll]
 
             <p>Another useful auto-focus feature is for targeting the flagged element when the DevTools is opened (via cmd + shift + i). The feature instantly inspects the flagged element—which can dramatically speed up the time it takes to expand deep nodes, or visually inspect the tricky element.</p>
 
-            <p>Becuase these features may be undesirable while using multiple DomFlags per page, the extension contains a settings panel for toggling the auto-focus features.</p>
-            <figure></figure>
+            <!-- <p>The extension contains a settings panel for toggling these features.</p> -->
+            <p>The auto-focus features can be toggled from the settings panel.</p>
+            <figure><img src="/images/settings_2x.png" height="315px" width="500px"></figure>
             <p>Keep an eye out for more features to be added to the settings panel as development on the extension continues.</p>
           </section>
 

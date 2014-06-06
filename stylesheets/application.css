@@ -1139,7 +1139,7 @@ section.marketing-info {
     font-family: "chaparral-pro", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
     max-width: 700px;
     margin: 0 auto;
-    padding: 70px 40px;
+    padding: 90px 40px;
     font-size: 23px;
     line-height: 1.6; }
   section.marketing-info section {
@@ -1149,8 +1149,8 @@ section.marketing-info {
     font-family: Avenir, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
     font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
   section.marketing-info h1 {
-    font-size: 1.65em;
-    margin-bottom: 1.25em;
+    font-size: 1.75em;
+    margin-bottom: 1.45em;
     text-align: center; }
   section.marketing-info h2 {
     font-size: 1.05em;
@@ -1160,9 +1160,11 @@ section.marketing-info {
   section.marketing-info p {
     -webkit-font-smoothing: subpixel-antialiased; }
   section.marketing-info .metadata {
-    font-size: 0.9em;
+    font-size: 0.8em;
     color: #999999;
-    display: block; }
+    text-align: center;
+    display: block;
+    margin-top: -2.5em; }
   section.marketing-info pre {
     background: #f8f8f8;
     border-radius: 3px;
@@ -1178,6 +1180,14 @@ section.marketing-info {
     list-style-type: decimal;
     margin-left: 60px;
     margin-bottom: 1.5em; }
+  section.marketing-info figure {
+    margin: 2em 0 2.5em; }
+  section.marketing-info img {
+    margin: 0 auto;
+    border: 1px solid rgba(150, 150, 150, 0.42);
+    border-top-color: rgba(150, 150, 150, 0.72);
+    display: block;
+    box-shadow: inset 0 0 0 1px red; }
 
 .highlight {
   background: #ffffff; }
