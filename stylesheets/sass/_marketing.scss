@@ -1,29 +1,39 @@
 section.marketing-info {
+  $inner-width: 700px;
   background: #fff;
+  font-family: "chaparral-pro", $sans-serif;
+  font-size: 23px;
+  line-height: 1.6;
+  padding: 90px 0;
 
   .inner {
-    font-family: "chaparral-pro", $sans-serif;
-    max-width: 700px;
+    max-width: $inner-width;
     margin: 0 auto;
-    padding: 90px 40px;
-    font-size: 23px;
-    line-height: 1.6;
+    padding: 0 40px;
   }
 
   section {
-    margin-bottom: 3em;
+    margin-bottom: 3.5em;
   }
 
   h1, h2 {
     color: #444;
-    font-family: Avenir, $helvetica;
     font-family: $header-font-family;
   }
 
   h1 {
-    font-size: 1.75em;
-    margin-bottom: 1.45em;
+    font-size: 2.5em;
+    font-weight: 700;
+    margin: 0 auto 1.2em;
+    max-width: $inner-width*1.1;
+    padding: 0 0.5em;
     text-align: center;
+
+    span {
+      border-bottom: 4px solid #EFEFEF;
+      display: inline-block;
+      line-height: 0.9;
+    }
   }
 
   h2 {
@@ -46,13 +56,18 @@ section.marketing-info {
   }
 
   pre {
+    $delta: 1.08;
+    $width: 700px * $delta;
     background: #f8f8f8;
     border-radius: 3px;
+    box-sizing: border-box;
     font-size: 24px;
     margin: 1em 0 1.7em;
+    margin-left: -($width - 700) / 2;
     padding: 1.2em;
     text-align: center;
     -webkit-font-smoothing: subpixel-antialiased;
+    width: $delta * 100%;
 
     .df {
       color: $callout-color;
@@ -67,15 +82,44 @@ section.marketing-info {
   }
 
   figure {
-    margin: 2em 0 2.5em;
+    margin: 2em 0 3.9em;
+
+    &.native, &.keyboard  {
+      margin: 2.5em 0 4.4em;
+    }
+
+    &.native {
+      img {
+        @include transform(scale(1.08));
+      }
+    }
+
+    &.keyboard {
+      background: #F8F8F8;
+      border-radius: 3px;
+      padding: 40px;
+      @include transform(scale(1.08));
+
+      img {
+        border-radius: 10px;
+        box-shadow: #ccc 1px 1px 0;
+        margin: 0 auto;
+      }
+    }
   }
 
   img {
-    margin: 0 auto;
-    border: 1px solid hsla(0, 0%, 59%, 0.42);
-    border-top-color: hsla(0, 0%, 59%, 0.72);
     display: block;
-    box-shadow: inset 0 0 0 1px red;
+    border-radius: 3px;
+
+    &.settings {
+      margin: 0 auto;
+      border: 1px solid hsla(0, 0%, 59%, 0.42);
+      border-top-color: hsla(0, 0%, 59%, 0.72);
+    }
   }
 
+  .shortcut {
+    font-style: italic;
+  }
 }

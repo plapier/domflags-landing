@@ -1134,24 +1134,31 @@ code > span.non-flaggable:hover .tooltip {
     background: rgba(12, 102, 218, 0.8); }
 
 section.marketing-info {
-  background: #fff; }
+  background: #fff;
+  font-family: "chaparral-pro", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-size: 23px;
+  line-height: 1.6;
+  padding: 90px 0; }
   section.marketing-info .inner {
-    font-family: "chaparral-pro", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
     max-width: 700px;
     margin: 0 auto;
-    padding: 90px 40px;
-    font-size: 23px;
-    line-height: 1.6; }
+    padding: 0 40px; }
   section.marketing-info section {
-    margin-bottom: 3em; }
+    margin-bottom: 3.5em; }
   section.marketing-info h1, section.marketing-info h2 {
     color: #444;
-    font-family: Avenir, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
     font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
   section.marketing-info h1 {
-    font-size: 1.75em;
-    margin-bottom: 1.45em;
+    font-size: 2.5em;
+    font-weight: 700;
+    margin: 0 auto 1.2em;
+    max-width: 770.0px;
+    padding: 0 0.5em;
     text-align: center; }
+    section.marketing-info h1 span {
+      border-bottom: 4px solid #EFEFEF;
+      display: inline-block;
+      line-height: 0.9; }
   section.marketing-info h2 {
     font-size: 1.05em;
     font-weight: 800;
@@ -1168,11 +1175,14 @@ section.marketing-info {
   section.marketing-info pre {
     background: #f8f8f8;
     border-radius: 3px;
+    box-sizing: border-box;
     font-size: 24px;
     margin: 1em 0 1.7em;
+    margin-left: -28px;
     padding: 1.2em;
     text-align: center;
-    -webkit-font-smoothing: subpixel-antialiased; }
+    -webkit-font-smoothing: subpixel-antialiased;
+    width: 108%; }
     section.marketing-info pre .df {
       color: #f36133;
       margin: 0 5px 0 12px; }
@@ -1181,13 +1191,37 @@ section.marketing-info {
     margin-left: 60px;
     margin-bottom: 1.5em; }
   section.marketing-info figure {
-    margin: 2em 0 2.5em; }
+    margin: 2em 0 3.9em; }
+    section.marketing-info figure.native, section.marketing-info figure.keyboard {
+      margin: 2.5em 0 4.4em; }
+    section.marketing-info figure.native img {
+      -webkit-transform: scale(1.08);
+      -moz-transform: scale(1.08);
+      -ms-transform: scale(1.08);
+      -o-transform: scale(1.08);
+      transform: scale(1.08); }
+    section.marketing-info figure.keyboard {
+      background: #F8F8F8;
+      border-radius: 3px;
+      padding: 40px;
+      -webkit-transform: scale(1.08);
+      -moz-transform: scale(1.08);
+      -ms-transform: scale(1.08);
+      -o-transform: scale(1.08);
+      transform: scale(1.08); }
+      section.marketing-info figure.keyboard img {
+        border-radius: 10px;
+        box-shadow: #ccc 1px 1px 0;
+        margin: 0 auto; }
   section.marketing-info img {
-    margin: 0 auto;
-    border: 1px solid rgba(150, 150, 150, 0.42);
-    border-top-color: rgba(150, 150, 150, 0.72);
     display: block;
-    box-shadow: inset 0 0 0 1px red; }
+    border-radius: 3px; }
+    section.marketing-info img.settings {
+      margin: 0 auto;
+      border: 1px solid rgba(150, 150, 150, 0.42);
+      border-top-color: rgba(150, 150, 150, 0.72); }
+  section.marketing-info .shortcut {
+    font-style: italic; }
 
 .highlight {
   background: #ffffff; }

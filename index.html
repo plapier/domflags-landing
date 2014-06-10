@@ -6,7 +6,7 @@ tags: [Jekyll]
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>DomFlags - Bookmarks for deeply nested dom elements</title>
+    <title>DomFlags - Bookmarks for deeply nested DOM elements</title>
     <link rel="stylesheet" href="stylesheets/application.css">
     <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/nindoglnpjcjoaheijieagogboabafkc">
     <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
@@ -56,9 +56,9 @@ tags: [Jekyll]
       </section>
     </section>
     <section class="marketing-info">
+      <h1>Style and debug tricky elements with <em><span>speed</span> and <span>precision</span>.</em></h1>
       <div class="inner">
         <article>
-          <h1>DomFlags help you style and debug elements with speed and precision.</h1>
           <section>
             <p>Every seasoned designer or developer working with the DevTools
               has struggled with tricky elements that are difficult to inspect,
@@ -72,46 +72,71 @@ tags: [Jekyll]
               elements that are rendered via javascript after the DOM has fully
               loaded. Users of javascript frameworks like Ember, Backbone,
               Angular, or any other scripts that swap or load content will
-              find DomFlags incredibly useful.</p>
+              find DomFlags and the auto-focus features incredibly useful.</p>
           </section>
 
           <section>
             <h2>How to use DomFlags</h2>
-            <p>DomFlags are created by adding the ‘domflag’ attribute to an element.</p>
+            <p>DomFlags are created by adding the &lsquo;domflag&rsquo; attribute to an element.</p>
 
             <pre><code>&lt;div class="foo"<span class="df">domflag</span>&gt; &hellip; &lt;/div&gt;</code></pre>
 
-            <p>DomFlags can be added to the dom using the following methods:</p>
+            <p>DomFlags can be added to the DOM using the following methods:</p>
             <ol>
-              <li>Add ‘domflag’ attrbiutes directly in your html documents.</li>
-              <li>Add ‘domflag’ attributes from the DevTools Elements panel.</li>
+              <li>Add &lsquo;domflag&rsquo; attrbiutes directly in your html documents.</li>
+              <li>Add &lsquo;domflag&rsquo; attributes from the DevTools Elements panel.</li>
+              <li>Add &lsquo;domflag&rsquo; attributes using JavaScript.</li>
             </ol>
-            <p>The advantage of method #1 is the DomFlags will persist across page reloads. Method #2 is great for a quick one-time use per DevTools session.</p>
+            <p>The advantage of method #1 is the DomFlags will persist across
+              page reloads. Method #2 is great for a quick one-time use per
+              DevTools session. And method #3 is useful during JavaScript development.</p>
+          </section>
+
+          <section>
+            <h2>Keyboard shortcuts to DOM elements</h2>
+            <p>Flagged elements can be readily accessed from the keyboard.
+              With the DevTools open, use the keyboard shortcuts to inspect
+              any of the first 10 flagged elements.</p>
+            <p>Press <span class="shortcut">Shift + Option + [number]</span> to
+             inspect a flagged element.</p>
+            <figure class="keyboard"><img src="/images/keyboard.svg" width="600px" height="auto"></figure>
           </section>
 
           <section>
             <h2>Auto-focusing flagged elements</h2>
-            <p>By default, the DomFlags extension will auto-focus (inspect) the first flagged element in the dom tree when the page is reloaded. This feature is useful for targeting an element and ensuring the DevTools always reengages that element when you reload the page, regardless of the currently inspected node.</p>
+            <p>By default, the DomFlags extension will auto-focus (inspect) the
+              first flagged element in the DOM tree when the page is reloaded.
+              This feature is useful for targeting an element and ensuring the
+              DevTools always reengages that element when you reload the page,
+              regardless of the currently inspected node.</p>
 
-            <p>Another useful auto-focus feature is for targeting the flagged element when the DevTools is opened (via cmd + shift + i). The feature instantly inspects the flagged element—which can dramatically speed up the time it takes to expand deep nodes, or visually inspect the tricky element.</p>
+            <p>Another useful auto-focus feature is for targeting the first
+              flagged element when the DevTools gets opened
+              (via <span class="shortcut">Cmd + Shift + i</span>).
+              The feature instantly inspects the flagged element—which can
+              dramatically speed up the time it takes to expand deep
+              nodes, or visually inspect the tricky element.</p>
 
-            <!-- <p>The extension contains a settings panel for toggling these features.</p> -->
             <p>The auto-focus features can be toggled from the settings panel.</p>
-            <figure><img src="/images/settings_2x.png" height="315px" width="500px"></figure>
-            <p>Keep an eye out for more features to be added to the settings panel as development on the extension continues.</p>
+            <figure><img class="settings" src="/images/settings_2x.png" height="315px" width="500px"></figure>
           </section>
 
           <section>
             <h2>Looking to the future</h2>
-            <p>In regards to improving the tools we use in our daily workflows, DomFlags have been a valuable asset to my front-end development process. So much so that I would like to see DomFlags built natively into the DevTools of all modern browsers.</p>
-            <p>Here’s a peek at what the native implementation of DomFlags might look like.</p>
-            <figure></figure>
+            <p>In regards to improving the tools we use in our daily workflows,
+              DomFlags have been a valuable asset to my front-end development
+              process. So much so that I would like to see DomFlags built
+              natively into the DevTools of all modern browsers.</p>
+
+            <p>Similar to the demo featured above, here’s a peek at what the
+              native implementation of DomFlags might look like in Chrome.</p>
+            <figure class="native"><img class="native" src="/images/native-hover_2x.png" height="auto" width="700px"></figure>
           </section>
 
           <section>
             <h2>Help start the conversation</h2>
             <p>If you’d like to see DomFlags implemented natively in Webkit browsers—Chrome, Safari, etc.—tweet at these fine folks.</p>
-            <p>If you’d like to see DomFlags implemented natively in Firefox— tweet at these fine folks.</p>
+            <p>If you’d like to see DomFlags implemented natively in Firefox—tweet at these fine folks.</p>
             <p>Want to chat about DomFlags? Tweet me — @PhilLaPier</p>
             <p>Go forth and download the extension. Ratings and reviews are nice :)</p>
           </section>
