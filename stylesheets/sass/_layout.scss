@@ -25,26 +25,17 @@ body, html {
 
 .devtools {
   @include display(flex);
-  // @include flex(0);
   height: 0vh;
 
   &.open {
     height: 37vh;
     @include backface-visibility(hidden);
-    @include transform(translateZ(0));
-    // @include flex(1 1 0);
+    // @include transform(translateZ(0));
   }
 
   .domflags-panel {
-    // width: 314px;
-    // @include flex(0 0 0);
     max-width: 314px;
     @include flex(1.5 314px);
-
-    // &.open {
-      // @include flex(1 1 1px);
-    // }
-
   }
 
   .dom-tree {

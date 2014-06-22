@@ -678,12 +678,7 @@ body, html {
   .devtools.open {
     height: 37vh;
     -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    -o-transform: translateZ(0);
-    transform: translateZ(0); }
+    backface-visibility: hidden; }
   .devtools .domflags-panel {
     max-width: 314px;
     -webkit-box-flex: 1.5;
@@ -1162,16 +1157,14 @@ section.marketing-info {
   section.marketing-info h2 {
     font-size: 1.15em;
     font-weight: 800;
-    margin-bottom: 0.7em;
+    margin-bottom: 0.6em;
     text-transform: uppercase; }
   section.marketing-info p {
     -webkit-font-smoothing: subpixel-antialiased; }
   section.marketing-info .metadata {
     font-size: 0.8em;
     color: #999999;
-    text-align: center;
-    display: block;
-    margin-top: -2.5em; }
+    display: block; }
   section.marketing-info pre {
     background: #f8f8f8;
     border-radius: 3px;
@@ -1186,10 +1179,13 @@ section.marketing-info {
     section.marketing-info pre .df {
       color: #f36133;
       margin: 0 5px 0 12px; }
-  section.marketing-info ol {
-    list-style-type: decimal;
+  section.marketing-info ol, section.marketing-info ul {
     margin-left: 60px;
     margin-bottom: 1.5em; }
+  section.marketing-info ol {
+    list-style-type: decimal; }
+  section.marketing-info ul {
+    list-style-type: disc; }
   section.marketing-info figure {
     margin: 2em 0 3.9em; }
     section.marketing-info figure.native, section.marketing-info figure.keyboard {
