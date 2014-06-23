@@ -3,7 +3,12 @@
   var SetupDemo;
 
   $(document).ready(function() {
-    return new SetupDemo();
+    new SetupDemo();
+    $('#install-button').on("click", function() {
+      chrome.webstore.install();
+      console.log("clicked");
+      return false;
+    });
   });
 
   SetupDemo = (function() {

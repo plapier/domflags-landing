@@ -1,6 +1,14 @@
 $(document).ready ->
   new SetupDemo()
 
+  $('#install-button').on "click", ->
+    chrome.webstore.install()
+    console.log "clicked"
+    return false
+
+  return
+
+
 class SetupDemo
   constructor: ->
     @panel = $('.domflags-panel')
