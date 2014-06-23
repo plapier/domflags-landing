@@ -1218,6 +1218,8 @@ section.marketing-info {
       border-top-color: rgba(150, 150, 150, 0.72); }
   section.marketing-info .shortcut {
     font-style: italic; }
+  section.marketing-info footer a {
+    color: #fff; }
 
 .highlight {
   background: #ffffff; }
