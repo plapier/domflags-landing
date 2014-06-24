@@ -1133,7 +1133,7 @@ section.marketing-info {
   font-family: "chaparral-pro", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   font-size: 23px;
   line-height: 1.6;
-  padding: 90px 0; }
+  padding: 90px 0 0; }
   section.marketing-info .inner {
     max-width: 700px;
     margin: 0 auto;
@@ -1218,8 +1218,62 @@ section.marketing-info {
       border-top-color: rgba(150, 150, 150, 0.72); }
   section.marketing-info .shortcut {
     font-style: italic; }
-  section.marketing-info footer a {
-    color: #fff; }
+  section.marketing-info section.install {
+    background: rgba(214, 221, 229, 0.44);
+    border-radius: 3px;
+    padding: 40px 20px 45px;
+    text-align: center; }
+    section.marketing-info section.install #install-button {
+      background: rgba(11, 106, 194, 0.8);
+      border-radius: 3px;
+      color: #fff;
+      font-family: "brandon-grotesque", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 5px 37px;
+      text-transform: uppercase; }
+  section.marketing-info section.share {
+    text-align: center; }
+  section.marketing-info footer {
+    border-top: 1px solid #ccc;
+    padding: 40px 30px 50px;
+    position: relative; }
+    section.marketing-info footer:after {
+      content: "";
+      display: table;
+      clear: both; }
+    @media screen and (max-width: 700px) {
+      section.marketing-info footer {
+        padding: 40px 0 50px; } }
+    section.marketing-info footer h3 {
+      font-size: 0.85em;
+      font-weight: 900; }
+    section.marketing-info footer p {
+      font-size: 0.85em; }
+    section.marketing-info footer .avatar {
+      background-image: url("/images/phil-crop.jpg");
+      background-size: cover;
+      border-radius: 80px;
+      display: inline-block;
+      float: left;
+      left: 30px;
+      position: absolute;
+      right: 40px;
+      height: 80px;
+      width: 80px; }
+      @media screen and (max-width: 700px) {
+        section.marketing-info footer .avatar {
+          left: 0; } }
+    section.marketing-info footer .author {
+      float: left;
+      margin: 0;
+      margin-left: 110px; }
+    section.marketing-info footer .twitter-mention-button {
+      margin-top: 5px; }
+    section.marketing-info footer a.google-plus {
+      visibility: hidden;
+      position: absolute; }
 
 .highlight {
   background: #ffffff; }

@@ -1,15 +1,16 @@
+$inner-padding: 40px;
 section.marketing-info {
   $inner-width: 700px;
   background: #fff;
   font-family: "chaparral-pro", $sans-serif;
   font-size: 23px;
   line-height: 1.6;
-  padding: 90px 0;
+  padding: 90px 0 0;
 
   .inner {
     max-width: $inner-width;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 $inner-padding;
   }
 
   section {
@@ -103,7 +104,7 @@ section.marketing-info {
     &.keyboard {
       background: #F8F8F8;
       border-radius: 3px;
-      padding: 40px;
+      padding: $inner-padding;
       @include transform(scale(1.08));
 
       img {
@@ -129,9 +130,77 @@ section.marketing-info {
     font-style: italic;
   }
 
-  footer {
-    a {
+  section.install {
+    background: rgba(214, 221, 229, 0.44);
+    border-radius: 3px;
+    padding: $inner-padding 20px $inner-padding + 5px;
+    text-align: center;
+
+    #install-button {
+      background: rgba(11, 106, 194, 0.8);
+      border-radius: 3px;
       color: #fff;
+      font-family: $header-font-family;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 5px 37px;
+      text-transform: uppercase;
+    }
+  }
+
+  section.share {
+    text-align: center;
+  }
+
+  footer {
+    border-top: 1px solid #ccc;
+    @include clearfix;
+    padding: 40px 30px 50px;
+    position: relative;
+
+    @media screen and (max-width: 700px) {
+      padding: 40px 0 50px;
+    }
+
+    h3 {
+      font-size: 0.85em;
+      font-weight: 900;
+    }
+
+    p {
+      font-size: 0.85em;
+    }
+
+    .avatar {
+      background-image: url('/images/phil-crop.jpg');
+      background-size: cover;
+      border-radius: $avatar-size;
+      display: inline-block;
+      float: left;
+      left: 30px;
+      position: absolute;
+      right: 40px;
+      @include size($avatar-size);
+
+      @media screen and (max-width: 700px) {
+        left: 0;
+      }
+    }
+
+    .author {
+      float: left;
+      margin: 0;
+      margin-left: $avatar-size + 30px;
+    }
+
+    .twitter-mention-button {
+      margin-top: 5px;
+    }
+
+    a.google-plus {
+      visibility: hidden;
+      position: absolute;
     }
   }
 }
