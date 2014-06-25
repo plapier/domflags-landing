@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="11px" height="12px" viewBox="0 0 11 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <title>flag</title>
+    <description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
+    <defs>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.995249629   0 0 0 0 1   0 0 0 0 0.965554893  0 0 0 0.7 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.995249629   0 0 0 0 1   0 0 0 0 0.965554893  0 0 0 0.7 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="flag-icon" sketch:type="MSLayerGroup" transform="translate(0.000000, -1.000000)" fill="#5C6E81">
+            <path d="M0.503028456,2.02094254 C0.865302103,1.93425283 1.23890087,2.12441833 1.33679156,2.44864247 L3.97658577,11.2356914 C4.07369542,11.5595706 3.86008023,11.8926477 3.49611433,11.9791075 C3.1347519,12.0660271 2.76037209,11.8737921 2.6624814,11.5500279 L0.0235984002,2.76332384 C-0.0741621135,2.43817991 0.140754808,2.10728734 0.503028456,2.02094254 C0.503028456,2.02094254 0.140754808,2.10728734 0.503028456,2.02094254 L0.503028456,2.02094254 L0.503028456,2.02094254 Z" id="Shape" filter="url(#filter-1)" sketch:type="MSShapeGroup"></path>
+            <path d="M6.00414861,1.59780532 C8.44054928,3.18538522 9.26060766,2.68251397 10.3030228,2.24494168 C11.3454379,1.80736936 11.0939834,4.09128864 10.3633927,4.77308087 C9.17371135,5.88329957 7.90847432,6.24719755 6.16002753,5.77187285 C4.54251825,5.33208752 3.99313848,6.70199854 3.46044417,7.97752881 C3.28895592,8.38815535 2.10524907,3.04145209 2.00433858,2.53664687 C1.90342809,2.03184164 3.57245229,0.00964661307 6.00414861,1.59780532 Z" id="Shape" filter="url(#filter-2)" sketch:type="MSShapeGroup" transform="translate(6.500000, 4.500000) rotate(-2.000000) translate(-6.500000, -4.500000) "></path>
+        </g>
+    </g>
+</svg>
