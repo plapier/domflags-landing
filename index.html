@@ -75,23 +75,29 @@ tags: [Jekyll]
               They help you track important elements so styling can be a breeze.
               But DomFlags offers even more. The auto-inspect features help
               you target elemets with pinpoint accuracy so you can reengage and style
-              nodes with speed and precision.
+              nodes without losing time.
             </p>
             <p>
               Every seasoned designer or developer working with the DevTools
               has struggled with tricky elements that are difficult to inspect,
-              or seem to get lost in the choas of the DOM. DomFlags are the
-              solution to my many days of inspecting and styling these precarious
-              DOM elements &ndash; especailly DOM elements that are rendered via javascript
+              or seem to get lost in the choas of the DOM. I built DomFlags
+              after many days of wishing for a better way to track these
+              precarious elements. Combined with keyboard shortcuts, DomFlags
+              offers a fast and intuitive method to navigate around the DOM.
+            </p>
+            <!--
+            <p>
+              Especailly DOM elements that are rendered via javascript
               after the DOM has fully loaded. Users of javascript frameworks
               like Ember, Backbone, Angular, or any other scripts that swap or
               load content will find DomFlags incredibly useful.
             </p>
+            -->
           </section>
 
           <section>
             <h2>How to use DomFlags</h2>
-            <p>DomFlags are created by adding the &lsquo;domflag&rsquo; attribute to an element.</p>
+            <p>A DomFlag is created by adding the &lsquo;domflag&rsquo; attribute to an element.</p>
 
             <pre><code>&lt;div class="foo"<span class="df">domflag</span>&gt; &hellip; &lt;/div&gt;</code></pre>
 
@@ -103,7 +109,8 @@ tags: [Jekyll]
             </ol>
             <p>The advantage of method #1 is the DomFlags will persist across
               page reloads. Method #2 is great for a quick one-time use per
-              DevTools session. And method #3 can be especially useful during JavaScript development.</p>
+              DevTools session. And method #3 can be especially useful during
+              JavaScript development.</p>
           </section>
 
           <section>
@@ -111,8 +118,8 @@ tags: [Jekyll]
             <p>
               Keyboard shortcuts will change the way you use the DevTools. For
               the first time ever, you can now create keyboard shortcuts to DOM
-              elements. You'll save a ton of time quickly jumping between multiple elements
-              during styling.
+              elements. They save you time by giving you a quick way to jump
+              between multiple elements while styling.
             </p>
             <ul>
               <li><span class="shortcut">Option + Shift + D</span> to
@@ -126,31 +133,44 @@ tags: [Jekyll]
 
           <section>
             <h2>Auto-focusing flagged elements</h2>
-            <p>By default, the DomFlags extension will auto-focus (inspect) the
-              first flagged element in the DOM tree when the page is reloaded.
-              This feature is useful for targeting an element and ensuring the
-              DevTools always reengages that element when you reload the page,
-              regardless of the currently inspected node.</p>
+            <p>By default, the DomFlags extension will auto-inspect (focus) the
+              first flagged element in the DOM when:</p>
+              <ol>
+                <li>the DevTools gets opened <span class="shortcut">(cmd + shift + i)</span>;</li>
+              <li>the page is reloaded (with the DevTools open).</li>
+            </ol>
+            <p>
+              These features are useful for targeting an element to ensure the
+              DevTools always reengages that element, regardless of the currently
+              inspected node. They will speed your development by dramatically
+              reducing the time it takes to expand deep nodes, or visually
+              inspect a tricky element.</p>
 
-            <p>DomFlags also gives you the ability to auto-focus a
-              flagged element when the DevTools gets opened
-              (via <span class="shortcut">Cmd + Shift + i</span>).
-              The feature instantly inspects the first flagged element—which can
-              dramatically speed up the time it takes to expand deep
-              nodes, or visually inspect the tricky element.</p>
-
-            <p>The auto-focus features can be toggled from the settings panel.</p>
+            <p>The auto-inspect features can be toggled from the settings panel.</p>
             <figure><img class="settings" src="/images/settings_2x.png" height="315px" width="500px"></figure>
           </section>
 
           <section>
-            <h2>Looking to the future</h2>
-            <p>In regards to improving the tools we use in our daily workflows,
-              DomFlags have been a valuable asset to my front-end development
-              process. So much so that I would like to see DomFlags built
-              natively into the DevTools of all modern browsers.</p>
+            <h2>A quick Look</h2>
+            <p>Here's a quick look at how I use it in my workflow.</p>
+            <div class="video"></div>
+            <p>As you can see, DomFlags improves the DevTools by enhancing
+              your ability to track elements so you can navigate the DOM
+              tree with haste.
+            </p>
+          </section>
 
-            <p>Similar to the demo featured above, here’s a peek at what the
+          <section>
+            <h2>Looking to the future</h2>
+            <p>I'm a huge fan of improving the tools we use in our daily
+              workflows, and providing them for people to use. My ultimate
+              vision for DomFlags is to get it built natively into the DevTools
+              and Inspectors of our modern browsers. If you stand behind that
+              vision, please <a href="">install the extension</a>,
+              <a href="">share on twitter</a>, and/or
+              <a href="http://twitter.com/phillapier">follow me</a> for updates. </p>
+
+            <p>Similar to the demo featured at the top of this page, here’s a peek at what the
               native implementation of DomFlags might look like in Chrome.</p>
             <figure class="native"><img class="native" src="/images/native-hover_2x.png" height="auto" width="700px"></figure>
           </section>
@@ -176,8 +196,8 @@ tags: [Jekyll]
           <p>
             Want to chat about DomFlags? Find me on twitter &dash;
             <a href="http://twitter.com/phillapier">@PhilLaPier</a>
-            <a href="https://twitter.com/intent/tweet?screen_name=phillapier" class="twitter-mention-button" data-size="small" data-related="phillapier">Tweet to @phillapier</a>
           </p>
+          <a href="https://twitter.com/phillapier" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @phillapier</a>
           </section>
           <a class="google-plus" href="https://plus.google.com/+PhilLaPier_22?rel=author">Google+</a>
         </footer>

@@ -1,3 +1,6 @@
+---
+---
+
 $(document).ready ->
   new SetupDemo()
 

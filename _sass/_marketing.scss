@@ -59,7 +59,7 @@ section.marketing-info {
     $width: 700px * $delta;
     background: #f8f8f8;
     border-radius: 3px;
-    box-sizing: border-box;
+    @include box-sizing(border-box);
     font-size: 24px;
     margin: 1em 0 1.7em;
     margin-left: -($width - 700) / 2;
@@ -154,9 +154,9 @@ section.marketing-info {
   }
 
   footer {
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #eee;
     @include clearfix;
-    padding: 40px 30px 50px;
+    padding: 40px 30px 60px;
     position: relative;
 
     @media screen and (max-width: 700px) {
@@ -170,6 +170,7 @@ section.marketing-info {
 
     p {
       font-size: 0.85em;
+      margin-bottom: 0.5em;
     }
 
     .avatar {
@@ -192,10 +193,6 @@ section.marketing-info {
       float: left;
       margin: 0;
       margin-left: $avatar-size + 30px;
-    }
-
-    .twitter-mention-button {
-      margin-top: 5px;
     }
 
     a.google-plus {
