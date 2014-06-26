@@ -1,23 +1,29 @@
 ---
-title: Another Test
+title: DomFlags - Bookmarks for deeply nested DOM elements
 tags: [Jekyll]
+
+desc: DomFlags are like bookmarks for navigating the DOM tree.
+keywords: DomFlags, DevTools, chrome, extension, web design, web development,
+  keyboard, shortcuts, web inspector, DOM, JavaScript, CSS, SASS, SCSS, CoffeeScript, developer, tools
 ---
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>DomFlags - Bookmarks for deeply nested DOM elements</title>
-    <meta name="description" content="DomFlags are like bookmarks for navigating the DOM tree.">
-    <meta name="keywords" content="domflags, devtools, chrome, extension, web design, web development, keyboard, shortcuts, web inspector, DOM">
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.desc }}">
+    <meta name="keywords" content="{{ page.keywords }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="stylesheets/application.css">
     <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/nindoglnpjcjoaheijieagogboabafkc">
     <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.11/jquery.scrollTo.min.js"></script>
     <script src="js/application.js"></script>
+    <script src="js/viewport-units-buggyfill.js"></script>
     <script type="text/javascript" src="//use.typekit.net/yuk7mgl.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script>window.viewportUnitsBuggyfill.init();</script>
   </head>
   <body data-attr="body">
     <div class="bg"></div>
@@ -60,7 +66,7 @@ tags: [Jekyll]
       </section>
     </section>
     <section class="marketing-info">
-      <h1>Style and inspect elements with <em><span>speed</span> and <span>precision</span>.</em></h1>
+      <h1>Style and inspect elements with <em><span>speed</span> <span class="amp">&amp;</span> <span>precision</span></em></h1>
       <div class="inner">
         <article>
           <section>
@@ -72,23 +78,22 @@ tags: [Jekyll]
 
             <p>
               DomFlags are like bookmarks for navigating the DOM tree.
-              They help you track important elements so styling can be a breeze.
+              They help you track and navigate to important elements so styling can be a breeze.
               But DomFlags offers even more. The auto-inspect features help
-              you target elemets with pinpoint accuracy so you can reengage and style
-              nodes without losing time.
+              you re-engage elements with pinpoint accuracy to speed your DevTools workflow.
             </p>
             <p>
               Every seasoned designer or developer working with the DevTools
               has struggled with tricky elements that are difficult to inspect,
-              or seem to get lost in the choas of the DOM. I built DomFlags
+              or seem to get lost in the chaos of the DOM. I built DomFlags
               after many days of wishing for a better way to track these
               precarious elements. Combined with keyboard shortcuts, DomFlags
               offers a fast and intuitive method to navigate around the DOM.
             </p>
             <!--
             <p>
-              Especailly DOM elements that are rendered via javascript
-              after the DOM has fully loaded. Users of javascript frameworks
+              Especially DOM elements that are rendered via JavaScript
+              after the DOM has fully loaded. Users of JavaScript frameworks
               like Ember, Backbone, Angular, or any other scripts that swap or
               load content will find DomFlags incredibly useful.
             </p>
@@ -103,7 +108,7 @@ tags: [Jekyll]
 
             <p>DomFlags can be added to the DOM using the following methods:</p>
             <ol>
-              <li>Add &lsquo;domflag&rsquo; attrbiutes directly in your html documents.</li>
+              <li>Add &lsquo;domflag&rsquo; attributes directly in your html documents.</li>
               <li>Add &lsquo;domflag&rsquo; attributes from the DevTools Elements panel.</li>
               <li>Add &lsquo;domflag&rsquo; attributes using JavaScript.</li>
             </ol>
@@ -118,8 +123,8 @@ tags: [Jekyll]
             <p>
               Keyboard shortcuts will change the way you use the DevTools. For
               the first time ever, you can now create keyboard shortcuts to DOM
-              elements. They save you time by giving you a quick way to jump
-              between multiple elements while styling.
+              elements. They will save you time by giving you quick access to
+              multiple elements during styling.
             </p>
             <ul>
               <li><span class="shortcut">Option + Shift + D</span> to
@@ -132,7 +137,7 @@ tags: [Jekyll]
           </section>
 
           <section>
-            <h2>Auto-focusing flagged elements</h2>
+            <h2>Auto-Inspecting flagged elements</h2>
             <p>By default, the DomFlags extension will auto-inspect (focus) the
               first flagged element in the DOM when:</p>
               <ol>
@@ -141,7 +146,7 @@ tags: [Jekyll]
             </ol>
             <p>
               These features are useful for targeting an element to ensure the
-              DevTools always reengages that element, regardless of the currently
+              DevTools always re-engages that element, regardless of the currently
               inspected node. They will speed your development by dramatically
               reducing the time it takes to expand deep nodes, or visually
               inspect a tricky element.</p>
@@ -166,13 +171,16 @@ tags: [Jekyll]
               workflows, and providing them for people to use. My ultimate
               vision for DomFlags is to get it built natively into the DevTools
               and Inspectors of our modern browsers. If you stand behind that
-              vision, please <a href="">install the extension</a>,
-              <a href="">share on twitter</a>, and/or
-              <a href="http://twitter.com/phillapier">follow me</a> for updates. </p>
+              vision, please <a href="">install the extension</a>
+              and <a href="">get vocal on twitter</a>.</p>
 
-            <p>Similar to the demo featured at the top of this page, here’s a peek at what the
+            <p>Similar to the demo featured at the top of this page, here's a peek at what the
               native implementation of DomFlags might look like in Chrome.</p>
-            <figure class="native"><img class="native" src="/images/native-hover_2x.png" height="auto" width="700px"></figure>
+            <figure class="native">
+              <a href="/images/native-hover_2x.png" target="_blank">
+                <img class="native" src="/images/native-hover_2x.png" height="auto" width="700px">
+              </a>
+            </figure>
           </section>
 
           <section class="install">

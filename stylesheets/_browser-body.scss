@@ -43,7 +43,6 @@
     $letter-spacing: 8px;
     $padding-lr: 20px;
     $width: 456px;
-    // $width: 400px;
     background: $fg-color;
     border: 2px solid $fg-color;
     border-radius: 2px;
@@ -74,7 +73,8 @@
 
     &#download {
       $letter-spacing: 3px;
-      @include calc(left, "50% - (#{$width}/2)");
+      @include transform(translateX(-50%));
+      left: 50%;
       letter-spacing: $letter-spacing;
       opacity: 0;
       padding-right: $padding-lr - $letter-spacing;
@@ -87,6 +87,30 @@
         pointer-events: auto;
         @extend %animation-download-show;
       }
+    }
+  }
+}
+
+.body {
+  @media only screen and (max-width : 660px) {
+    h1 {
+      letter-spacing: 20px;
+      margin-left: 20px;
+    }
+
+    h2 {
+      padding: 0 20px;
+    }
+
+    a, a#download {
+      width: 80%;
+    }
+  }
+
+  @media only screen and (max-width : 500px) {
+    h1 {
+      letter-spacing: 5px;
+      margin-left: 5px;
     }
   }
 }

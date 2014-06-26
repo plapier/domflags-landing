@@ -25,15 +25,38 @@ section.marketing-info {
   h1 {
     font-size: 2.5em;
     font-weight: 700;
-    margin: 0 auto 1.2em;
+    margin: 0.4em auto 1.8em;
     max-width: $inner-width*1.1;
     padding: 0 0.5em;
     text-align: center;
 
-    span {
+    font-size: 3.0rem;
+    line-height: 0.8;
+    font-weight: 500;
+
+    span:not(.amp) {
       border-bottom: 4px solid #EFEFEF;
       display: inline-block;
       line-height: 0.9;
+    }
+
+    em {
+      display: block;
+      font-size: 58px;
+      font-size: 4.0rem;
+      font-weight: 600;
+    }
+
+    span.amp {
+      color: #F36133;
+      display: inline-block;
+      font-family: "tamarillo", serif;
+      font-size: 80px;
+      font-weight: 400;
+      padding: 0 7px; // fix bug
+      top: 13px;
+      @include transform(translateY(13px));
+      -webkit-font-smoothing: subpixel-antialiased;
     }
   }
 
@@ -85,6 +108,10 @@ section.marketing-info {
 
   ul {
     list-style-type: disc;
+
+    .shortcut {
+      font-weight: 600;
+    }
   }
 
 
