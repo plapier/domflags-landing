@@ -114,6 +114,24 @@ section.marketing-info {
     }
   }
 
+  li {
+    > span {
+      color: #333;
+    }
+
+    &.toggle {
+      &, .shortcut {
+        color: darken(#8A5FC8, 5%);
+      }
+    }
+
+    &.number {
+      &, .shortcut {
+        color: darken(#4A90E2, 8%);
+      }
+    }
+  }
+
 
   figure {
     margin: 2em 0 3.9em;

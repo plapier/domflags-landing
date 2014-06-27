@@ -24,7 +24,7 @@
                 <g id="Rectangle-29-+-Rectangle-31" transform="translate(38.000000, 0.000000)" fill="#FFFFFF">
                     <rect id="Rectangle-16" x="0" y="0" width="33" height="33" rx="4"></rect>
                 </g>
-                <g id="Rectangle-29-+-Rectangle-32" transform="translate(77.000000, 0.000000)" fill="#4990E2">
+                <g id="Rectangle-29-+-Rectangle-32" transform="translate(77.000000, 0.000000)" fill="#8A5FC8">
                     <rect id="Rectangle-16" x="0" y="0" width="33" height="33" rx="4"></rect>
                 </g>
                 <g id="Rectangle-29-+-Rectangle-33" transform="translate(412.000000, 0.000000)" fill="#FFFFFF">
@@ -75,7 +75,7 @@
                 <g id="Rectangle-72" transform="translate(488.000000, 0.000000)" fill="#FFFFFF">
                     <rect id="Rectangle-70" x="0" y="0" width="84" height="33" rx="4"></rect>
                 </g>
-                <g id="Rectangle-73" fill="#4990E2">
+                <g id="Rectangle-73" fill="#8A5FC8">
                     <rect id="Rectangle-70" x="0" y="0" width="84" height="33" rx="4"></rect>
                 </g>
             </g>
@@ -86,7 +86,7 @@
                 <g id="Rectangle-17" transform="translate(110.000000, 0.000000)" fill="#FFFFFF">
                     <rect id="Rectangle-16" x="0" y="0" width="34" height="33" rx="4"></rect>
                 </g>
-                <g id="Rectangle-18" transform="translate(149.000000, 0.000000)" fill="#4990E2">
+                <g id="Rectangle-18" transform="translate(149.000000, 0.000000)" fill="#8A5FC8">
                     <rect id="Rectangle-16" x="0" y="0" width="34" height="33" rx="4"></rect>
                 </g>
                 <g id="Rectangle-19" transform="translate(189.000000, 0.000000)" fill="#FFFFFF">
@@ -168,13 +168,13 @@
                 <g id="Rectangle-16" fill="#FFFFFF" sketch:type="MSShapeGroup">
                     <rect x="0" y="0" width="34" height="33" rx="4"></rect>
                 </g>
-                <g id="Rectangle-17" transform="translate(40.000000, 0.000000)" fill="#4990E2" sketch:type="MSShapeGroup">
+                <g id="Rectangle-17" transform="translate(40.000000, 0.000000)" fill="#4A90E2" sketch:type="MSShapeGroup">
                     <rect id="Rectangle-16" x="0" y="0" width="34" height="33" rx="4"></rect>
                 </g>
-                <g id="Rectangle-18" transform="translate(79.000000, 0.000000)" fill="#4990E2" sketch:type="MSShapeGroup">
+                <g id="Rectangle-18" transform="translate(79.000000, 0.000000)" fill="#4A90E2" sketch:type="MSShapeGroup">
                     <rect id="Rectangle-16" x="0" y="0" width="34" height="33" rx="4"></rect>
                 </g>
-                <g id="Rectangle-19" transform="translate(119.000000, 0.000000)" fill="#4990E2" sketch:type="MSShapeGroup">
+                <g id="Rectangle-19" transform="translate(119.000000, 0.000000)" fill="#4A90E2" sketch:type="MSShapeGroup">
                     <rect id="Rectangle-16" x="0" y="0" width="34" height="33" rx="4"></rect>
                 </g>
                 <g id="Rectangle-20" transform="translate(159.000000, 0.000000)">
