@@ -14,8 +14,9 @@ $ ->
     trackEvent "Demo: tooltip " + event.target.textContent.toLowerCase()
 
   $('.marketing-info').on "click", "a", (event) ->
-    if event.target.id is "install-button"
-      trackEvent "Marketing: Inline Install"
-    else
+    if event.target.id isnt "marketing-install"
       trackOutboundLink(event.target.href)
     return false
+
+  $('#hero-install, #marketing-install').on "click", (event) ->
+    trackEvent event.target.id

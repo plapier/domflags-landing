@@ -18,13 +18,14 @@
     $(".dom-tree").on("click", ".tooltip", function(event) {
       return trackEvent("Demo: tooltip " + event.target.textContent.toLowerCase());
     });
-    return $('.marketing-info').on("click", "a", function(event) {
-      if (event.target.id === "install-button") {
-        trackEvent("Marketing: Inline Install");
-      } else {
+    $('.marketing-info').on("click", "a", function(event) {
+      if (event.target.id !== "marketing-install") {
         trackOutboundLink(event.target.href);
       }
       return false;
+    });
+    return $('#hero-install, #marketing-install').on("click", function(event) {
+      return trackEvent(event.target.id);
     });
   });
 
