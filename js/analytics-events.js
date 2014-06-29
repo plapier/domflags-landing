@@ -2,6 +2,9 @@
 (function() {
   $(function() {
     var trackEvent, trackOutboundLink;
+    window.trackInstall = function(str) {
+      return ga("send", "event", "Inline install", "Install", str, 1);
+    };
     trackEvent = function(str) {
       return ga("send", "event", "button", "click", str, 1);
     };

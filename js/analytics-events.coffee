@@ -1,4 +1,7 @@
 $ ->
+  window.trackInstall = (str) ->
+    ga "send", "event", "Inline install", "Install", str, 1
+
   trackEvent = (str) ->
     ga "send", "event", "button", "click", str, 1
 

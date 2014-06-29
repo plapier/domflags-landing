@@ -68,6 +68,14 @@ section.marketing-info {
     -webkit-font-smoothing: subpixel-antialiased;
   }
 
+  a:not(.button) {
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      border-bottom: 1px solid currentColor;
+    }
+  }
+
   .metadata {
     font-size: 0.8em;
     color: $medium-gray;
@@ -178,20 +186,23 @@ section.marketing-info {
     padding: $inner-padding 20px $inner-padding + 5px;
     text-align: center;
 
-    #marketing-install {
-      background: rgba(11, 106, 194, 0.8);
-      border-radius: 3px;
-      color: #fff;
-      font-family: $header-font-family;
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      padding: 5px 37px;
-      text-transform: uppercase;
+    h2 {
+      font-size: 1.0em;
+    }
+  }
 
-      &:hover {
-        border-bottom: none;
-      }
+  #marketing-install {
+    background: rgba(11, 106, 194, 0.8);
+    border-radius: 3px;
+    color: #fff;
+    font-family: $header-font-family;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 5px 37px;
+
+    &:hover {
+      border-bottom: none;
     }
   }
 

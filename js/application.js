@@ -3,9 +3,21 @@
   var SetupDemo;
 
   $(document).ready(function() {
+    var installFailure, installSuccess;
     new SetupDemo();
+    installSuccess = function() {
+      var ty;
+      ty = "Thanks for installing :)";
+      document.getElementById("marketing-install").text = ty;
+      document.getElementById("hero-install").text = ty;
+      $('#hero-install, #marketing-install').off("click");
+      return trackInstall("Success");
+    };
+    installFailure = function() {
+      return trackInstall("Failure");
+    };
     return $('#hero-install, #marketing-install').on("click", function() {
-      chrome.webstore.install();
+      chrome.webstore.install('https://chrome.google.com/webstore/detail/nindoglnpjcjoaheijieagogboabafkc', installSuccess, installFailure);
       return false;
     });
   });
