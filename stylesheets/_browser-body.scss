@@ -71,7 +71,7 @@
       pointer-events: none;
     }
 
-    &#download {
+    &#hero-install {
       $letter-spacing: 3px;
       @include transform(translateX(-50%));
       left: 50%;
@@ -102,7 +102,7 @@
       padding: 0 20px;
     }
 
-    a, a#download {
+    a, a#hero-install {
       width: 80%;
     }
   }

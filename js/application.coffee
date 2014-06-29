@@ -1,12 +1,9 @@
 $(document).ready ->
   new SetupDemo()
 
-  $('#install-button').on "click", ->
+  $('#hero-install, #marketing-install').on "click", ->
     chrome.webstore.install()
-    console.log "clicked"
     return false
-
-  return
 
 class SetupDemo
   constructor: ->
@@ -93,7 +90,7 @@ class SetupDemo
     $('.devtools').on "transitionend webkitTransitionEnd", ->
       $('.browser').addClass('open')
       $('#start-demo').addClass('hide')
-      $('#download').addClass('show')
+      $('#hero-install').addClass('show')
 
     @panel.on 'click', 'li', (event) =>
       index = @panel.find('li').index(event.currentTarget)

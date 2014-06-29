@@ -19,7 +19,7 @@
       return trackEvent("Demo: tooltip " + event.target.textContent.toLowerCase());
     });
     return $('.marketing-info').on("click", "a", function(event) {
-      if (event.target.id === "download") {
+      if (event.target.id === "install-button") {
         trackEvent("Marketing: Inline Install");
       } else {
         trackOutboundLink(event.target.href);

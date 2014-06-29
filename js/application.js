@@ -4,9 +4,8 @@
 
   $(document).ready(function() {
     new SetupDemo();
-    $('#install-button').on("click", function() {
+    return $('#hero-install, #marketing-install').on("click", function() {
       chrome.webstore.install();
-      console.log("clicked");
       return false;
     });
   });
@@ -129,7 +128,7 @@
       $('.devtools').on("transitionend webkitTransitionEnd", function() {
         $('.browser').addClass('open');
         $('#start-demo').addClass('hide');
-        return $('#download').addClass('show');
+        return $('#hero-install').addClass('show');
       });
       return this.panel.on('click', 'li', (function(_this) {
         return function(event) {
