@@ -244,6 +244,10 @@
       }
     };
 
+    SetupDemo.prototype.trackEvent = function(str) {
+      return _gaq.push(['_trackEvent', str, 'clicked']);
+    };
+
     return SetupDemo;
 
   })();

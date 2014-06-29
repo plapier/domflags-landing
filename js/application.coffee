@@ -8,7 +8,6 @@ $(document).ready ->
 
   return
 
-
 class SetupDemo
   constructor: ->
     @panel = $('.domflags-panel')
@@ -188,3 +187,6 @@ class SetupDemo
       $panelIndex.one animationEnd, =>
         $panelIndex.removeClass('animate')
         $panelIndex.remove() if elDir is 'up'
+
+  trackEvent: (str) ->
+    _gaq.push ['_trackEvent', str, 'clicked']
