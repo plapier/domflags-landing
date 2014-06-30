@@ -186,8 +186,8 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
               workflows, and providing them for people to use. My ultimate
               vision for DomFlags is to get it built natively into the DevTools
               and the web inspectors of our modern browsers. If you stand behind that
-              vision, please <a href="http://chrome.google.com/webstore/detail/domflags/nindoglnpjcjoaheijieagogboabafkc">install the extension</a>
-              and <a href="">get vocal on twitter</a>.</p>
+              vision, please <a href="javascript:void(0)" id="link-install">install the extension</a>
+              and <a href="https://twitter.com/intent/tweet?url=http://domflags.com/&amp;text={{ page.title }} by @phillapier" data-via="phillapier" target="_blank">get vocal on twitter</a>.</p>
 
             <p>Similar to the demo featured at the top of this page, here's a peek at what the
               native implementation of DomFlags might look like in Chrome.</p>
@@ -208,7 +208,7 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
             <p>
               Let's get DomFlags implemented natively in browsers.
             </p>
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://domflags.com" data-text="DomFlags - Bookmarks for navigating the DOM tree" data-via="phillapier" data-size="large">Tweet</a>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://domflags.com" data-text="{{ page.title }}" data-via="phillapier" data-size="large">Tweet</a>
           </section>
         </article>
 
@@ -227,13 +227,16 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
       </div>
     </section>
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      if (document.location.hostname.indexOf("domflags.com") != -1) {
+        /* Production Google Analytics Code */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-50670996-1', 'auto');
-      ga('send', 'pageview');
+        ga('create', 'UA-50670996-1', 'auto');
+        ga('send', 'pageview');
+      }
     </script>
     <script src="js/analytics-events.js"></script>
 

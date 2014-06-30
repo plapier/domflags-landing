@@ -5,13 +5,13 @@ $(document).ready ->
     ty = "Thanks for installing :)"
     document.getElementById("marketing-install").text = ty
     document.getElementById("hero-install").text = ty
-    $('#hero-install, #marketing-install').off "click"
+    $('#hero-install, #marketing-install, #link-install').off "click"
     trackInstall("Success")
 
   installFailure = ->
     trackInstall("Failure")
 
-  $('#hero-install, #marketing-install').on "click", ->
+  $('#hero-install, #marketing-install, #link-install').on "click", ->
     chrome.webstore.install('https://chrome.google.com/webstore/detail/nindoglnpjcjoaheijieagogboabafkc', installSuccess, installFailure)
     return false
 
