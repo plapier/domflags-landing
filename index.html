@@ -1,10 +1,11 @@
 ---
-title: DomFlags - Bookmarks for deeply nested DOM elements
+title: DomFlags - devtools extension to create shortcuts to DOM elements
+twitter-title: DomFlags - A devtools extension to create shortcuts to DOM elements
 tags: [Jekyll]
 
-desc: DomFlags are like bookmarks for navigating the DOM tree.
+desc: DomFlags is a browser extension for web developers to create shortcuts to DOM elements. Created by Phil LaPier.
 keywords: DomFlags, DevTools, chrome, extension, web design, web development,
-  keyboard, shortcuts, web inspector, DOM, JavaScript, CSS, SASS, SCSS, CoffeeScript, developer, tools
+  keyboard, shortcut, web inspector, DOM, JavaScript, CSS, SASS, SCSS, CoffeeScript, developer, tools, browser
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +16,11 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
     <meta name="description" content="{{ page.desc }}">
     <meta name="keywords" content="{{ page.keywords }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta property="og:title" content="DomFlags" />
+    <meta property="og:description"content="{{ page.title }}">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://domflags.com" />
+    <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg" />
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
     <link rel="stylesheet" href="stylesheets/application.css">
     <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/nindoglnpjcjoaheijieagogboabafkc">
@@ -187,7 +193,7 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
               vision for DomFlags is to get it built natively into the DevTools
               and the web inspectors of our modern browsers. If you stand behind that
               vision, please <a href="javascript:void(0)" id="link-install">install the extension</a>
-              and <a href="https://twitter.com/intent/tweet?url=http://domflags.com/&amp;text={{ page.title }} by @phillapier" data-via="phillapier" target="_blank">get vocal on twitter</a>.</p>
+              and <a href="https://twitter.com/intent/tweet?url=http://domflags.com/&amp;text={{ page.twitter-title }} by @phillapier" data-via="phillapier" target="_blank">get vocal on twitter</a>.</p>
 
             <p>Similar to the demo featured at the top of this page, here's a peek at what the
               native implementation of DomFlags might look like in Chrome.</p>
@@ -208,7 +214,7 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
             <p>
               Let's get DomFlags implemented natively in browsers.
             </p>
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://domflags.com" data-text="{{ page.title }}" data-via="phillapier" data-size="large">Tweet</a>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://domflags.com" data-text="{{ page.twitter-title }}" data-via="phillapier" data-size="large">Tweet</a>
           </section>
         </article>
 
