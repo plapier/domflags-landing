@@ -65,12 +65,15 @@
       color: hsla(0, 0%, 20%, 0.75);
 
       &:before {
+        @include backface-visibility(hidden);
         background: url('../images/flag.svg') no-repeat;
         content: "";
         display: inline-block;
         height: 12px;
-        width: 11px;
         margin-right: 10px;
+        position: relative;
+        top: 2px;
+        width: 11px;
       }
     }
 
