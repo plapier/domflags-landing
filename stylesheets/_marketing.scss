@@ -7,10 +7,26 @@ section.marketing-info {
   line-height: 1.6;
   padding: 90px 0 0;
 
+  @media screen and (max-width: 700px) {
+    font-size: 20px;
+  }
+
+  @media screen and (max-width: 500px) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 400px) {
+    padding-top: 45px;
+  }
+
   .inner {
     max-width: $inner-width;
     margin: 0 auto;
     padding: 0 $inner-padding;
+
+    @media screen and (max-width: 500px) {
+      padding: 0 $inner-padding/2;
+    }
   }
 
   section {
@@ -49,11 +65,40 @@ section.marketing-info {
       color: #F36133;
       display: inline-block;
       font-family: "tamarillo", serif;
-      font-size: 110px;
+      font-size: 1.715em;
       font-weight: 400;
       padding: 0 10px 0 2px; // fix bug
       @include transform(translateY(25px));
       -webkit-font-smoothing: subpixel-antialiased;
+    }
+
+    @media screen and (max-width: 700px) {
+      font-size: 2.3rem;
+      em {
+        font-size: 3.3rem;
+      }
+    }
+
+    @media screen and (max-width: 500px) {
+      font-size: 2rem;
+      em {
+        font-size: 3rem;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      font-size: 1.5rem;
+      padding: 0;
+
+      em {
+        margin-top: 5px;
+        font-size: 2.5rem;
+
+        .amp {
+          @include transform(translateY(16px));
+          padding: 0 6px 0 0;
+        }
+      }
     }
   }
 
@@ -88,9 +133,9 @@ section.marketing-info {
     background: #f8f8f8;
     border-radius: 3px;
     @include box-sizing(border-box);
-    font-size: 24px;
+    font-size: 1.05em;
     margin: 1em 0 1.7em;
-    margin-left: -($width - 700) / 2;
+    margin-left: -(($delta * 100%) - 100%) / 2;
     padding: 1.2em;
     text-align: center;
     -webkit-font-smoothing: subpixel-antialiased;
@@ -100,11 +145,24 @@ section.marketing-info {
       color: $callout-color;
       margin: 0 5px 0 12px;
     }
+
+    @media screen and (max-width: 500px) {
+      font-size: 1.0em;
+    }
+
+    @media screen and (max-width: 430px) {
+      font-size: 0.8em;
+      padding: 1.2em 0.55em;
+    }
   }
 
   ol, ul {
-    margin-left: 60px;
+    margin-left: 2.6em;
     margin-bottom: 1.5em;
+
+    @media screen and (max-width: 430px) {
+      margin-left: 1.5em;
+    }
   }
 
   ol {
@@ -187,7 +245,8 @@ section.marketing-info {
     text-align: center;
 
     h2 {
-      font-size: 1.0em;
+      font-size: 0.9em;
+      margin-bottom: 0.7em;
     }
   }
 
@@ -196,10 +255,9 @@ section.marketing-info {
     border-radius: 3px;
     color: #fff;
     font-family: $header-font-family;
-    font-size: 1.4rem;
+    font-size: 1.1em;
     font-weight: 700;
-    letter-spacing: 2px;
-    padding: 5px 37px;
+    padding: 5px 40px;
 
     &:hover {
       border-bottom: none;
