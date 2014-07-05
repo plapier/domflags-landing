@@ -10,16 +10,15 @@ $ ->
       hitCallback: ->
         document.location = url
 
-  $(".flags").on "click", "li", (event) ->
+  $(".flags").on "mousedown", "li", (event) ->
     trackEvent "Demo: Panel item"
 
-  $(".dom-tree").on "click", ".tooltip", (event) ->
+  $(".dom-tree").on "mousedown", ".tooltip", (event) ->
     trackEvent "Demo: tooltip " + event.target.textContent.toLowerCase()
 
   $('.marketing-info').on "click", "a", (event) ->
-    if event.target.id isnt "marketing-install"
-      trackOutboundLink(event.target.href)
-    return false
-
-  $('#hero-install, #marketing-install').on "click", (event) ->
-    trackEvent event.target.id
+    if event.currentTarget.classList.contains('inbound')
+      trackEvent event.currentTarget.id
+    else if event.currentTarget.classList.contains('outbound')
+      trackOutboundLink(event.currentTarget.href)
+      return false

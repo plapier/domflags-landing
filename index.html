@@ -39,7 +39,7 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
   </head>
   <body data-attr="body">
     <div class="bg"></div>
-    <section id="hero" class="main">
+    <section id="hero" class="main" domflag>
       <section class="browser layer">
         <div class="header">
           <div class="browser-button first"></div>
@@ -58,12 +58,12 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
           </div>
         </div>
 
-        <div class="devtools-toolbar" domflag></div>
+        <div class="devtools-toolbar"></div>
         <section class="devtools">
-          <div class="domflags-panel" domflag>
+          <div class="domflags-panel">
             <a class="target"></a>
             <a class="target solid"></a>
-            <header class="panel-title" domflag>DOMFLAGS</header>
+            <header class="panel-title">DOMFLAGS</header>
             <ol class="flags">
               <li class="flag first"><span >DIV class="browser-button first"</span></li>
               <li class="flag second"><span>H1 class="heading-1"</span></li>
@@ -77,7 +77,7 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
         </section>
       </section>
     </section>
-    <section class="marketing-info">
+    <section class="marketing-info" domflag>
       <h1>Style and inspect elements with <em><span>speed</span> <span class="amp">&amp;</span> <span>precision</span></em></h1>
       <div class="inner">
         <article>
@@ -192,13 +192,13 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
               workflows, and providing them for people to use. My ultimate
               vision for DomFlags is to get it built natively into the DevTools
               and the web inspectors of our modern browsers. If you stand behind that
-              vision, please <a href="javascript:void(0)" id="link-install">install the extension</a>
-              and <a href="https://twitter.com/intent/tweet?url=http://domflags.com/&amp;text={{ page.twitter-title }} by @phillapier" data-via="phillapier" target="_blank">get vocal on twitter</a>.</p>
+              vision, please <a href="javascript:void(0)" id="link-install" class="inbound">install the extension</a>
+              and <a href="https://twitter.com/intent/tweet?url=http://domflags.com/&amp;text={{ page.twitter-title }} by @phillapier" data-via="phillapier" target="_blank" class="outbound">get vocal on twitter</a>.</p>
 
             <p>Similar to the demo featured at the top of this page, here's a peek at what the
               native implementation of DomFlags might look like in Chrome.</p>
             <figure class="native">
-              <a href="/images/native-hover_2x.png" target="_blank">
+              <a href="/images/native-hover_2x.png" target="_blank" id="native-screenshot" class="inbound">
                 <img class="native" src="/images/native-hover_2x.png" height="auto" width="700px">
               </a>
             </figure>
@@ -206,7 +206,7 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
 
           <section class="install">
             <h2>Install For Chrome</h2>
-            <a href="javascript:void(0)" id="marketing-install" class="button"> Install DomFlags</a>
+            <a href="javascript:void(0)" id="marketing-install" class="button inbound"> Install DomFlags</a>
           </section>
 
           <section class="share">
@@ -214,21 +214,21 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
             <p>
               Let's get DomFlags implemented natively in browsers.
             </p>
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://domflags.com" data-text="{{ page.twitter-title }}" data-via="phillapier" data-size="large">Tweet</a>
+            <a href="https://twitter.com/share" class="twitter-share-button" id="share-tweet" data-url="http://domflags.com" data-text="{{ page.twitter-title }}" data-via="phillapier" data-size="large">Tweet</a>
           </section>
         </article>
 
-        <footer>
+        <footer domflag>
           <div class="avatar"></div>
           <section class="author">
           <h3>Philip LaPier</h3>
           <p>
             Want to chat about DomFlags? Find me on twitter &dash;
-            <a href="http://twitter.com/phillapier">@PhilLaPier</a>
+            <a href="http://twitter.com/phillapier" class="outbound">@PhilLaPier</a>
           </p>
-          <a href="https://twitter.com/phillapier" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @phillapier</a>
+          <a href="https://twitter.com/phillapier" class="twitter-follow-button outbound" data-show-count="false" data-size="large">Follow @phillapier</a>
           </section>
-          <a class="google-plus" href="https://plus.google.com/+PhilLaPier_22?rel=author">Google+</a>
+          <a class="google-plus outbound" href="https://plus.google.com/+PhilLaPier_22?rel=author">Google+</a>
         </footer>
       </div>
     </section>

@@ -208,6 +208,10 @@ section.marketing-info {
     }
 
     &.native {
+      a {
+        display: block;
+      }
+
       img {
         @include transform(scale(1.08));
       }
