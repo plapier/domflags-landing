@@ -149,10 +149,14 @@ section.marketing-info {
     @media screen and (max-width: 500px) {
       font-size: 1.0em;
     }
-
     @media screen and (max-width: 430px) {
-      font-size: 0.8em;
+      font-size: 0.85em;
       padding: 1.2em 0.55em;
+      color: #000;
+
+      .df {
+        margin-left: 3px;
+      }
     }
   }
 
@@ -214,6 +218,11 @@ section.marketing-info {
       border-radius: 3px;
       padding: $inner-padding;
       @include transform(scale(1.08));
+
+      @media screen and (max-width: 600px) {
+        background: 0;
+        padding: 0 6px;
+      }
 
       img {
         border-radius: 10px;
