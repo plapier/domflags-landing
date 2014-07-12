@@ -1,0 +1,61 @@
+.ft-tooltip {
+  $bg: #2E4050;
+  $tt-size: 12px;
+
+  background: $bg;
+  border-radius: 3px;
+  box-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.30);
+  color: #fff;
+  font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 15px;
+  position: absolute;
+  z-index: 100;
+
+  &:before {
+    content: "";
+    position: absolute;
+  }
+
+  &.panel {
+    left: 24px;
+    right: 24px;
+    @include transform(translate(0%, 15px));
+
+    &:before {
+      left: 15px;
+      margin-left: -$tt-size/2;
+      top: -$tt-size/2;
+      @include triangle($tt-size+3 $tt-size/2, $bg, up);
+    }
+  }
+
+  &.above {
+    display: none;
+    text-align: left;
+    @include transform(translate(0%, 0%));
+    white-space: normal;
+    width: 240px;
+
+    &:before {
+      bottom: -$tt-size/2;
+      left: 50%;
+      margin-left: -$tt-size/2;
+      @include triangle($tt-size+3 $tt-size/2, $bg, down);
+    }
+
+    &.attr {
+      @include position(absolute, 40px null null 208px);
+    }
+
+    &.toggle {
+      @include position(absolute, 150px 16px null null);
+
+      &:before {
+        right: 15px;;
+        left: auto;
+      }
+    }
+  }
+}

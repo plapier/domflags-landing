@@ -32,30 +32,24 @@
     -webkit-font-smoothing: subpixel-antialiased;
 
     a.target {
-      $color: #FF8158;
-      $s: 32px;
       $color: #1D93F0;
+      $color: $blue;
+      $color: $orange;
+      $s: 32px;
       @extend %animation-click-target;
       background: $color;
       border-radius: $s;
-      right: 8px;
+      display: none;
       pointer-events: none;
       position: absolute;
+      right: 8px;
       @include size($s);
-      top: 35px;
+      top: 2px;
       z-index: 100;
 
       &.solid {
         @extend %animation-click-target-solid;
         @include transform(scale(0.4));
-      }
-
-      &.pos-1 {
-        top: 71px;
-      }
-
-      &.pos-2 {
-        top: 107px;
       }
     }
 
@@ -88,6 +82,11 @@
         padding: 0;
         position: relative;
 
+        &:hover {
+          background-color: darken(#D6DDE5, 3%);
+          box-shadow: inset -1px 0 0 hsla(0, 0%, 0%, 0.2);
+        }
+
         span {
           @include box-sizing(border-box);
           @include ellipsis;
@@ -95,9 +94,10 @@
           padding: 6px 14px;
         }
 
-        &:hover {
-          background-color: darken(#D6DDE5, 3%);
-          box-shadow: inset -1px 0 0 hsla(0, 0%, 0%, 0.2);
+        &.demo {
+          .target {
+            display: block;
+          }
         }
 
         &.active {

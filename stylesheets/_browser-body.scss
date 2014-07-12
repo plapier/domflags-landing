@@ -1,14 +1,9 @@
 .body {
-  // @include background-image(radial-gradient(circle farthest-side at right bottom, #94B9C9, #516994 80%, #324C74));
-  @include background-image(linear-gradient(to right, rgba(251, 95, 119, 0.73), #FC7967 50%, rgba(252, 203, 68, 0.77)));
-  @include background-image(linear-gradient(to right, rgba(251, 95, 119, 0.66), rgba(252, 121, 103, 0.90) 50%, rgba(252, 203, 68, 0.66)));
-  background: rgba(21, 72, 138, 0.56);
-  background: rgba(27, 144, 211, 0.6);
-  background: rgba(0, 82, 128, 0.8);
   background: rgba(11, 106, 194, 0.8);
   background-repeat: no-repeat;
   color: hsla(0, 0%, 100%, 1);
   text-align: center;
+  position: relative;
 
   h1 {
     $letter-spacing: 34.9px;

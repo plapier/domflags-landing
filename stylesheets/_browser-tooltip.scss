@@ -1,3 +1,10 @@
+.dom-tree.hide-tooltips {
+  // hide tooltips until body class is removed with JS
+  span.tooltip {
+    display: none;
+  }
+}
+
 .fold-block {
   &:hover > span:first-of-type .tooltip {
     opacity: 1;

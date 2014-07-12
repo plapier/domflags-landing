@@ -1,5 +1,6 @@
 $(document).ready ->
   new SetupDemo()
+  new SetupReadMore()
 
   installSuccess = ->
     ty = "Thanks for installing :)"
@@ -15,12 +16,28 @@ $(document).ready ->
     chrome.webstore.install('https://chrome.google.com/webstore/detail/nindoglnpjcjoaheijieagogboabafkc', installSuccess, installFailure)
     return false
 
+class SetupReadMore
+  constructor: ->
+    @readMore = document.getElementById 'readMore'
+    window.onscroll = @hideReadMore
+
+  hideReadMore:  ->
+    opacityVal = (1 - window.pageYOffset * 0.0035).toFixed(2)
+    @readMore.style.opacity = opacityVal if opacityVal > -0.1
+
+    if window.pageYOffset >= window.innerHeight
+      @readMore.style.display = "none"
+      window.onscroll = null
+
 class SetupDemo
   constructor: ->
     @panel = $('.domflags-panel')
     @tree  = $('.dom-tree')
     @treeFlags = @getTreeFlags()
     @tooltipStr = '<span class="tooltip">Add Domflag</span>'
+    @treeTooltip1 = @tree.find('.ft-tooltip.attr')
+    @treeTooltip2 = @tree.find('.ft-tooltip.toggle')
+    @panelTooltip = @panel.find('.ft-tooltip.panel')
     @folds = [
       { start: 18, end: 21 }
       { start: 15, end: 22 }
@@ -31,6 +48,7 @@ class SetupDemo
       { start: 4, end: 26 }
     ]
     @demoEvents()
+    # @initTree() ## contains arrow position bug
 
 
   getTreeFlags: ->
@@ -107,11 +125,17 @@ class SetupDemo
       $el = @tree.find('.domflag-line').eq(index)
       $target = $('.target')
 
-      if index < 2
-        $target.addClass("pos-#{index + 1}")
+      @panelTooltip.hide()
+      @treeTooltip1.hide()
+      @treeTooltip2.hide()
+
+      if index is 0 and event.currentTarget.classList.contains('demo')
+        @treeTooltip1.show()
         $(event.currentTarget).next().addClass('demo')
-      else
-        $target.hide()
+      else if index is 1 and event.currentTarget.classList.contains('demo')
+        @treeTooltip2.show()
+        @tree.removeClass('hide-tooltips')
+        document.getElementById('readMore').classList.add('show')
 
       @panel.find('li').removeClass('active').end()
         .find(event.currentTarget).addClass('active').removeClass('demo new')
