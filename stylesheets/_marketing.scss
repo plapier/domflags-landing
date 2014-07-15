@@ -1,5 +1,5 @@
 .read-more {
-  background: #fff;
+  background: hsla(0, 0%, 100%, 0.8);
   border-radius: 3px 3px 0 0;
   bottom: 0;
   font-family: $sans-serif;
@@ -11,11 +11,13 @@
   padding: 10px 30px;
   position: absolute;
   @include transform(translate(-50%, 100%));
+  visibility: hidden;
 
   &.show {
     opacity: 1;
     @include transform(translate(-50%, 0%));
     @include transition(all 0.5s $ease-out-quad);
+    visibility: visible;
   }
 
   span {
@@ -34,11 +36,13 @@
 
 section.marketing-info {
   $inner-width: 700px;
-  background: #fff;
+  // background: #fff;
+  @include background-image(linear-gradient(hsla(0, 0%, 100%, 0.7), #FFF 5%));
   font-family: "chaparral-pro", $sans-serif;
   font-size: 23px;
   line-height: 1.6;
   padding: 90px 0 0;
+  position: relative;
 
   @media screen and (max-width: 700px) {
     font-size: 20px;

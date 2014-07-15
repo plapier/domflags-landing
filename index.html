@@ -80,15 +80,15 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
                 <span>A href="#" class="start-demo"</span>
               </li>
             </ol>
-            <div class="ft-tooltip panel">The DomFlags panel contains the list
+            <div class="ft-tooltip panel" id="ft-tooltip-panel">The DomFlags panel contains the list
               of elements you've made shortcuts to.
             </div>
           </div>
           <div class="dom-tree hide-tooltips">
-            <div class="ft-tooltip attr above">
+            <div class="ft-tooltip attr above" id="ft-tooltip-1">
               The 'domflag' attribute can be added to any element to create a shortcut.
             </div>
-            <div class="ft-tooltip toggle above">
+            <div class="ft-tooltip toggle above" id="ft-tooltip-2">
               In this demo, you can toggle 'domflag' attributes by clicking here.
             </div>
             {% include dom-tree.html %}
@@ -120,8 +120,8 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
               has struggled with tricky elements that are difficult to inspect,
               or seem to get lost in the chaos of the DOM. And sometimes the
               DevTools just doesn't do a great job at keeping focus on the
-              elements you're styling. I built DomFlags
-              as a solution to track these important elements. Combined with keyboard shortcuts, DomFlags
+              elements you're styling. DomFlags was built as a solution to track
+              these important elements. Combined with keyboard shortcuts, DomFlags
               offers a fast and intuitive method to navigate around the DOM.
             </p>
             <!--

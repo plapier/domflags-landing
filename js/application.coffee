@@ -35,9 +35,9 @@ class SetupDemo
     @tree  = $('.dom-tree')
     @treeFlags = @getTreeFlags()
     @tooltipStr = '<span class="tooltip">Add Domflag</span>'
-    @treeTooltip1 = @tree.find('.ft-tooltip.attr')
-    @treeTooltip2 = @tree.find('.ft-tooltip.toggle')
-    @panelTooltip = @panel.find('.ft-tooltip.panel')
+    @treeTooltip1 = document.getElementById('ft-tooltip-1')
+    @treeTooltip2 = document.getElementById('ft-tooltip-2')
+    @panelTooltip = document.getElementById('ft-tooltip-panel')
     @folds = [
       { start: 18, end: 21 }
       { start: 15, end: 22 }
@@ -125,15 +125,15 @@ class SetupDemo
       $el = @tree.find('.domflag-line').eq(index)
       $target = $('.target')
 
-      @panelTooltip.hide()
-      @treeTooltip1.hide()
-      @treeTooltip2.hide()
+      @panelTooltip.style.display = "none"
+      @treeTooltip1.style.display = "none"
+      @treeTooltip2.style.display = "none"
 
       if index is 0 and event.currentTarget.classList.contains('demo')
-        @treeTooltip1.show()
+        @treeTooltip1.style.display = "block"
         $(event.currentTarget).next().addClass('demo')
       else if index is 1 and event.currentTarget.classList.contains('demo')
-        @treeTooltip2.show()
+        @treeTooltip2.style.display = "block"
         @tree.removeClass('hide-tooltips')
         document.getElementById('readMore').classList.add('show')
 
@@ -163,6 +163,8 @@ class SetupDemo
       $parent   = $(tooltipEl).parent()
       $panelEl  = @panel.find('li')
       elString  = []
+
+      @treeTooltip2.style.display = "none" if @treeTooltip2.style.display = "show"
 
       ## Remove domflags
       if $parent.hasClass('domflag-line')

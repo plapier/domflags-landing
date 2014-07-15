@@ -164,3 +164,15 @@
     opacity: 0;
   }
 }
+
+%animation-tooltip-in {
+  @include animation(tooltip-in 0.15s $ease-out-quad forwards);
+}
+@include keyframes(tooltip-in) {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
