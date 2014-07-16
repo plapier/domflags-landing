@@ -31,6 +31,11 @@ class SetupReadMore
 
 class SetupDemo
   constructor: ->
+    @transitionEnd = "webkitTransitionEnd transitionend"
+    @animationEnd  = "webkitAnimationEnd animationend"
+    @browser = $('.browser')
+    @startDemo = $('#start-demo')
+    @devtools = $('.devtools')
     @panel = $('.domflags-panel')
     @tree  = $('.dom-tree')
     @treeFlags = @getTreeFlags()
@@ -48,7 +53,8 @@ class SetupDemo
       { start: 4, end: 26 }
     ]
     @demoEvents()
-    # @initTree() ## contains arrow position bug
+    @setupTreeNodes()
+    @initTree()
 
 
   getTreeFlags: ->
@@ -57,12 +63,14 @@ class SetupDemo
         $(@).parent().addClass('flaggable')
       $(@).text() is "domflag"
 
-  initTree: ->
-    @setupTreeNodes()
-    @foldBlocks(@folds)
-    @foldingEvents()
-    @panelEvents()
-    @tooltipEvents()
+  initTree: =>
+    $('#hero').on @animationEnd, '.browser', (event) =>
+      if event.target.classList.contains "browser"
+        @foldBlocks(@folds)
+        @foldingEvents()
+        @panelEvents()
+        @tooltipEvents()
+        $(event.delegateTarget).off()
 
   setupTreeNodes: ->
     @treeFlags.addClass('domflag-attr').parent().addClass('domflag-line')
@@ -107,23 +115,33 @@ class SetupDemo
 
   demoEvents: ->
     ## Add parent OPEN class and refactor
-    $('#start-demo').on 'click', (event) =>
+    $toolbar = $('.devtools-toolbar')
+    @startDemo.on 'click', (event) =>
       $(event.currentTarget).addClass('hide').parent().addClass('show-download')
-      $('.devtools-toolbar, .devtools').addClass('open')
-      @panel.addClass('open').find('li:first-child').addClass('demo')
-      @initTree() ## initTree after click to fix arrow position bug
+      $toolbar[0].classList.add('open')
+      @devtools.addClass('open')
       false
 
+    $willChange = $('.will-change')
+    @browser.on @transitionEnd, '.devtools', (event) =>
+      $willChange.removeClass('will-change')
+      @panel[0].classList.add('open')
+      $(event.delegateTarget).off()
+
   panelEvents: ->
-    $('.devtools').on "transitionend webkitTransitionEnd", ->
-      $('.browser').addClass('open')
-      $('#start-demo').addClass('hide')
-      $('#hero-install').addClass('show')
+    $heroBtn = $('#hero-install')
+    @devtools.on @transitionEnd, =>
+      @browser.addClass('open')
+      @startDemo.addClass('hide')
+      $heroBtn.addClass('show')
+
+    @panel.on 'mouseover', (event) =>
+      @panelTooltip.style.display = 'block'
+      @panel.off 'mouseover'
 
     @panel.on 'click', 'li', (event) =>
       index = @panel.find('li').index(event.currentTarget)
       $el = @tree.find('.domflag-line').eq(index)
-      $target = $('.target')
 
       @panelTooltip.style.display = "none"
       @treeTooltip1.style.display = "none"
@@ -157,8 +175,8 @@ class SetupDemo
   tooltipEvents: ->
     panelWidth = @panel.outerWidth()
 
+    $domflagStr = '<span class="na domflag-attr">domflag</span>'
     $('.tooltip').on 'click', (event) =>
-      $domflagStr = '<span class="na domflag-attr">domflag</span>'
       tooltipEl = event.currentTarget
       $parent   = $(tooltipEl).parent()
       $panelEl  = @panel.find('li')
@@ -201,13 +219,11 @@ class SetupDemo
       $(@).addClass("delay-#{index} move-#{elDir}")
 
   slidePanelItems: (elDir, index) ->
-    transitionEnd = "webkitTransitionEnd transitionend"
-    animationEnd  = "webkitAnimationEnd animationend"
     $panelIndex = @panel.find('li').eq(index)
     $els = @panel.find(".move-#{elDir}")
 
     count = 1
-    $els.one transitionEnd, (event) =>
+    $els.one @transitionEnd, (event) =>
       unless count isnt $els.length
         $els.removeClass("move-#{elDir}").removeClass (index, css) ->
           (css.match(/\bdelay-\S+/g) or []).join " " ## remove delay-* class
@@ -217,7 +233,7 @@ class SetupDemo
 
     ## Remove el if only el in panel
     if $els.length is 0
-      $panelIndex.one animationEnd, =>
+      $panelIndex.one @animationEnd, =>
         $panelIndex.removeClass('animate')
         $panelIndex.remove() if elDir is 'up'
 

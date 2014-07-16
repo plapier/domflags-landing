@@ -1,18 +1,18 @@
 .ft-tooltip {
   $bg: #2E4050;
   $tt-size: 12px;
-  @extend %animation-tooltip-in;
   background: $bg;
   border-radius: 3px;
   box-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.30);
   color: #fff;
+  display: none;
   font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
   font-size: 12px;
   line-height: 1.5;
+  opacity: 0;
   padding: 15px;
   position: absolute;
   z-index: 100;
-  opacity: 0;
 
   &:before {
     content: "";
@@ -20,6 +20,7 @@
   }
 
   &.panel {
+    @extend %animation-tooltip-in;
     left: 24px;
     right: 24px;
     @include transform(translate(0%, 15px));
@@ -33,9 +34,8 @@
   }
 
   &.above {
-    display: none;
+    @extend %animation-tooltip-in-above;
     text-align: left;
-    @include transform(translate(0%, 0%));
     white-space: normal;
     width: 240px;
 

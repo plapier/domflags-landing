@@ -38,6 +38,7 @@
     $letter-spacing: 8px;
     $padding-lr: 20px;
     $width: 456px;
+    @include backface-visibility(hidden);
     background: $fg-color;
     border: 2px solid $fg-color;
     border-radius: 2px;

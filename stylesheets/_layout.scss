@@ -38,28 +38,36 @@ body, html {
 
 .browser {
   @extend %browser-zoom;
-  background: none;
   border-radius: $browser-radius;
   box-shadow: 0 2px 5px 1px hsla(0, 0%, 0%, 0.3);
   @include display(flex);
   @include flex-direction(column);
   height: $browser-height;
   min-height: 400px;
+  overflow: hidden;
   position: relative;
+  @include backface-visibility(hidden);
 
   .body {
     $height: "#{$browser-height} - #{$devtools-height} - 38px";
     @include calc(height, $height);
     @include display(flex);
     @include flex(1);
+    @include backface-visibility(hidden);
 
     .inner {
       @include align-self(center);
       @include flex-direction(column);
       @include justify-content(center);
+      @include backface-visibility(hidden);
       width: 100%;
+      margin-bottom: $devtools-toolbar-height;
     }
   }
+}
+
+.will-change {
+  will-change: height;
 }
 
 .devtools {
@@ -68,8 +76,6 @@ body, html {
 
   &.open {
     height: 37vh;
-    @include backface-visibility(hidden);
-    // @include transform(translateZ(0));
 
     @media only screen and (max-width : 500px) {
       height: 18vh;

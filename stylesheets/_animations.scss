@@ -166,9 +166,22 @@
 }
 
 %animation-tooltip-in {
-  @include animation(tooltip-in 0.15s $ease-out-quad forwards);
+  @include animation(tooltip-in 0.24s $ease-out-quad forwards);
 }
 @include keyframes(tooltip-in) {
+  0% {
+    opacity: 0;
+    @include transform(translate(0%, 40px));
+  }
+  100% {
+    @include transform(translate(0%, 15px));
+    opacity: 1;
+  }
+}
+%animation-tooltip-in-above {
+  @include animation(tooltip-in-above 0.15s $ease-out-quad forwards);
+}
+@include keyframes(tooltip-in-above) {
   0% {
     opacity: 0;
   }
