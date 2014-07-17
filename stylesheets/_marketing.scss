@@ -36,7 +36,6 @@
 
 section.marketing-info {
   $inner-width: 700px;
-  // background: #fff;
   @include background-image(linear-gradient(hsla(0, 0%, 100%, 0.7), #FFF 5%, #FFF 95%, hsla(0, 0%, 100%, 0.9)));
   font-family: "chaparral-pro", $sans-serif;
   font-size: 23px;
@@ -170,18 +169,14 @@ section.marketing-info {
   }
 
   pre {
-    $delta: 1.08;
-    $width: 700px * $delta;
+    @extend %wide;
     background: #f8f8f8;
     border-radius: 3px;
-    @include box-sizing(border-box);
     font-size: 1.05em;
     margin: 1em 0 1.7em;
-    margin-left: -(($delta * 100%) - 100%) / 2;
     padding: 1.2em;
     text-align: center;
     -webkit-font-smoothing: subpixel-antialiased;
-    width: $delta * 100%;
 
     .df {
       color: $orange;
@@ -245,17 +240,33 @@ section.marketing-info {
   figure {
     margin: 2em 0 3.9em;
 
-    &.native, &.keyboard  {
+    &.native, &.keyboard, &.video  {
+      @extend %wide;
       margin: 2.5em 0 4.4em;
+    }
+
+    &.video {
+      height: 100%;
+      max-height: 426px;
+    }
+
+    iframe {
+      height: 100%;
+      width: 100%;
     }
 
     &.native {
       a {
         display: block;
+
+        &:hover {
+          border: none;
+        }
       }
 
       img {
-        @include transform(scale(1.08));
+        width: 100%;
+        height: auto;
       }
     }
 
@@ -263,7 +274,6 @@ section.marketing-info {
       background: #F8F8F8;
       border-radius: 3px;
       padding: $inner-padding;
-      @include transform(scale(1.08));
 
       @media screen and (max-width: 600px) {
         background: 0;
@@ -373,6 +383,7 @@ section.marketing-info {
 }
 
 .demo-gif {
+  @extend %wide;
   position: relative;
 
   figure.freezeframe-container {

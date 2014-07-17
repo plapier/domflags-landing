@@ -1,0 +1,6 @@
+%wide {
+  $delta: 1.08;
+  @include box-sizing(border-box);
+  @include transform(translateX(-(($delta * 100%) - 100%) / 2 + 0.3));
+  width: $delta * 100%;
+}
