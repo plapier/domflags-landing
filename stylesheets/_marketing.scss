@@ -89,7 +89,7 @@ section.marketing-info {
     text-rendering: optimizeSpeed;
 
     span:not(.amp) {
-      border-bottom: 4px solid #EFEFEF;
+      border-bottom: 4px solid rgba(0, 0, 0, 0.05);
       display: inline-block;
       line-height: 0.9;
     }
@@ -103,8 +103,6 @@ section.marketing-info {
 
     span.amp {
       color: $blue;
-      // color: $purple;
-      // color: $orange;
       display: inline-block;
       font-family: 'Cambo', serif;
       font-size: 1.4em;
@@ -136,8 +134,9 @@ section.marketing-info {
         font-size: 2.5rem;
 
         .amp {
+          margin-left: -2px;
+          padding: 0 3px 0 0;
           @include transform(translateY(16px));
-          padding: 0 6px 0 0;
         }
       }
     }
@@ -213,7 +212,7 @@ section.marketing-info {
     list-style-type: disc;
 
     .shortcut {
-      font-weight: 600;
+      font-style: normal;
     }
   }
 
@@ -389,6 +388,7 @@ section.marketing-info {
   position: relative;
 
   video {
+    background: #fff;
     display: block;
     height: auto;
     width: 100%;
@@ -397,6 +397,7 @@ section.marketing-info {
   .overlay {
     @include align-items(center);
     background: rgba($browser-bg, 0.95);
+    // background: rgba(#fff, 0.95);
     @include display(flex);
     pointer-events: none;
     @include position(absolute, 0);
