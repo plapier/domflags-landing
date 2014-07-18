@@ -1,6 +1,7 @@
 $(document).ready ->
   new SetupDemo()
   new SetupReadMore()
+  new GfyControl()
 
   installSuccess = ->
     ty = "Thanks for installing :)"
@@ -15,7 +16,7 @@ $(document).ready ->
   $('#hero-install, #marketing-install, #link-install').on "click", ->
     chrome.webstore.install('https://chrome.google.com/webstore/detail/nindoglnpjcjoaheijieagogboabafkc', installSuccess, installFailure)
     return false
-
+ 
 class SetupReadMore
   constructor: ->
     @readMore = document.getElementById 'readMore'
@@ -28,6 +29,18 @@ class SetupReadMore
     if window.pageYOffset >= window.innerHeight
       @readMore.style.display = "none"
       window.onscroll = null
+
+class GfyControl
+  constructor: ->
+    video = document.getElementById('demo-gif')
+    video.pause()
+
+    video.addEventListener 'mouseover', ->
+      video.currentTime = 0
+      video.play()
+
+    video.addEventListener 'mouseout', ->
+      video.pause()
 
 class SetupDemo
   constructor: ->

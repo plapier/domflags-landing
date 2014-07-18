@@ -32,7 +32,6 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
     <link href='http://fonts.googleapis.com/css?family=Cambo' rel='stylesheet' type='text/css'>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <script>window.viewportUnitsBuggyfill.init();</script>
-    <script type="text/javascript" src="js/freezeframe.min.js"></script>
     <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-50670996-1']);
@@ -40,7 +39,7 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
     </script>
   </head>
   <body data-attr="body">
-    <div class="bg"></div>
+    <div class="bg" domflag></div>
     <section id="hero" class="main">
       <section class="browser layer">
         <div class="header">
@@ -125,18 +124,17 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
               these important elements. Combined with keyboard shortcuts, DomFlags
               offers a fast and intuitive method to navigate the DOM.
             </p>
-            <!--
-            <p>
-              Especially DOM elements that are rendered via JavaScript
-              after the DOM has fully loaded. Users of JavaScript frameworks
-              like Ember, Backbone, Angular, or any other scripts that swap or
-              load content will find DomFlags incredibly useful.
-            </p>
-            -->
-            <div class="demo-gif">
-              <img class="freezeframe" src="/images/demo.gif" size="760x280">
-              <figcaption>Watch the keyboard shortcuts in action</figcaption>
-            </div>
+
+            <figure class="gif">
+              <video id="demo-gif" width="756" height="280" loop>
+                <source src="/images/demo.mp4" type="video/mp4" class="mp4source">
+              </video>
+              <div class="overlay">
+                <figcaption>
+                  <span>Watch how fast the DOM can be styled</span>
+                  <span class="metadata">(using keyboard shortcuts)</span>
+                </figcaption>
+              </div>
           </section>
 
           <section>
@@ -273,15 +271,6 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
       }
     </script>
     <script src="js/analytics-events.js" async></script>
-    <script type="text/javascript">
-      freezeframe_options = {
-        loading_background_color: "#efefef",
-        animation_icon_image: false,
-        loading_fade_in_speed: 0,
-        animation_fade_out_speed: 0
-      }
-    </script>
-
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
   </body>
 </html>

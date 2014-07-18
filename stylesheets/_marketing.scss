@@ -70,7 +70,7 @@ section.marketing-info {
   }
 
   section {
-    margin-bottom: 3.5em;
+    margin-bottom: 3.7em;
   }
 
   h1, h2 {
@@ -150,7 +150,7 @@ section.marketing-info {
     text-transform: uppercase;
   }
 
-  p {
+  p, ol, ul, pre {
     -webkit-font-smoothing: subpixel-antialiased;
   }
 
@@ -176,7 +176,6 @@ section.marketing-info {
     margin: 1em 0 1.7em;
     padding: 1.2em;
     text-align: center;
-    -webkit-font-smoothing: subpixel-antialiased;
 
     .df {
       color: $orange;
@@ -199,7 +198,7 @@ section.marketing-info {
 
   ol, ul {
     margin-left: 2.6em;
-    margin-bottom: 1.5em;
+    margin-bottom: 1.6em;
 
     @media screen and (max-width: 430px) {
       margin-left: 1.5em;
@@ -220,7 +219,7 @@ section.marketing-info {
 
   li {
     > span {
-      color: #333;
+      color: $base-font-color;
     }
 
     &.toggle {
@@ -240,7 +239,7 @@ section.marketing-info {
   figure {
     margin: 2em 0 3.9em;
 
-    &.native, &.keyboard, &.video  {
+    &.native, &.keyboard, &.video, &.gif  {
       @extend %wide;
       margin: 2.5em 0 4.4em;
     }
@@ -382,33 +381,45 @@ section.marketing-info {
   }
 }
 
-.demo-gif {
-  @extend %wide;
+.gif {
+  border: 1px solid darken($browser-bg, 10%);
+  border-radius: 3px;
+  height: 280px;
+  overflow: hidden;
   position: relative;
 
-  figure.freezeframe-container {
-    background: $browser-bg !important;
-    border: 1px solid darken($browser-bg, 10%);
-    border-radius: 3px;
-    margin: 0;
+  .overlay {
+    background: rgba($browser-bg, 0.95);
+    pointer-events: none;
+    @include position(absolute, 0);
   }
 
   figcaption {
-    text-decoration: underline;
     font-family: $sans-serif;
     font-weight: bold;
-    left: 0;
+    pointer-events: none;
     position: absolute;
-    right: 0;
     text-align: center;
     top: 42%;
-    z-index: 1;
-    pointer-events: none;
-    backface-visibility: hidden;
+    width: 100%;
+
+    span {
+      display: inline-block;
+      line-height: 1.3;
+    }
+
+    .metadata {
+      color: #888;
+      border: 0;
+      display: block;
+      font-size: 0.75em;
+      text-decoration: none;
+      font-weight: 500;
+    }
   }
 
   &:hover {
-    figcaption {
+    .overlay, figcaption {
       opacity: 0;
     }
   }
