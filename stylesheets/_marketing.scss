@@ -384,12 +384,20 @@ section.marketing-info {
 .gif {
   border: 1px solid darken($browser-bg, 10%);
   border-radius: 3px;
-  height: 280px;
+  max-height: 280px;
   overflow: hidden;
   position: relative;
 
+  video {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+
   .overlay {
+    @include align-items(center);
     background: rgba($browser-bg, 0.95);
+    @include display(flex);
     pointer-events: none;
     @include position(absolute, 0);
   }
@@ -398,9 +406,7 @@ section.marketing-info {
     font-family: $sans-serif;
     font-weight: bold;
     pointer-events: none;
-    position: absolute;
     text-align: center;
-    top: 42%;
     width: 100%;
 
     span {
