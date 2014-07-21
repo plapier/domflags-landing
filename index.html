@@ -40,7 +40,7 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
   </head>
   <body data-attr="body">
     <div class="bg"></div>
-    <section id="hero" class="main">
+    <section id="hero" class="main" domflag>
       <section class="browser layer">
         <div class="header">
           <div class="browser-button first"></div>
@@ -98,8 +98,9 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
       </section>
       <div id="readMore" class="read-more"><span>↓</span>Read More<span>↓</span></div>
     </section>
+
     <section class="marketing-info">
-      <h1 class="heading">style and inspect elements with <em><span>speed</span> <span class="amp">&amp;</span> <span>precision</span></em></h1>
+      <h1 class="heading" domflag>style and inspect elements with <em><span>speed</span> <span class="amp">&amp;</span> <span>precision</span></em></h1>
       <div class="inner">
         <article>
           <section>
@@ -126,7 +127,7 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
             </p>
 
             <figure class="gif">
-              <video id="demo-gif" width="756" height="280" loop>
+              <video domflag id="demo-gif" width="756" height="280" loop>
                 <source src="/images/demo.mp4" type="video/mp4" class="mp4source">
                 <source src="/images/demo.webm" type='video/webm;codecs="vp8, vorbis"'/>
               </video>
@@ -152,8 +153,8 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
             </ol>
             <p>The advantage of method #1 is the DomFlags will persist across
               page reloads. Method #2 is great for a quick one-time use per
-              DevTools session. And method #3 can be especially useful during
-              JavaScript development.</p>
+              DevTools session. And method #3 can be useful during JavaScript
+              development.</p>
           </section>
 
           <section>
@@ -231,7 +232,7 @@ keywords: DomFlags, DevTools, chrome, extension, web design, web development,
             </figure>
           </section>
 
-          <section class="install">
+          <section class="install" domflag>
             <h2>Install For Chrome</h2>
             <a href="javascript:void(0)" id="marketing-install" class="button inbound"> Install DomFlags</a>
           </section>

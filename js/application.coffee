@@ -1,4 +1,5 @@
 $(document).ready ->
+  console.warn "%c DomFlags Note: there is a bug in DevTools that crashes the tab when certain elements are inspected programatically, eg. iframes & images. An issue has been opened.",  "font-weight: bold;"
   new SetupDemo()
   new SetupReadMore()
   new GfyControl()
