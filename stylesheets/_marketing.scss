@@ -34,8 +34,8 @@
   }
 }
 
+$marketing-width: 655px;
 section.marketing-info {
-  $inner-width: 700px;
   @include background-image(linear-gradient(hsla(0, 0%, 100%, 0.7), #FFF 5%, #FFF 95%, hsla(0, 0%, 100%, 0.9)));
   font-family: "chaparral-pro", $sans-serif;
   font-size: 23px;
@@ -43,7 +43,7 @@ section.marketing-info {
   padding: 90px 0 0;
   position: relative;
 
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: $marketing-width) {
     font-size: 20px;
   }
 
@@ -56,7 +56,7 @@ section.marketing-info {
   }
 
   .inner {
-    max-width: $inner-width;
+    max-width: $marketing-width;
     margin: 0 auto;
     padding: 0 $inner-padding;
 
@@ -83,7 +83,7 @@ section.marketing-info {
     font-weight: 500;
     line-height: 1.05;
     margin: 0.8em auto 0.8em;
-    max-width: $inner-width*1.1;
+    max-width: $marketing-width*1.1;
     padding: 0 0.5em;
     text-align: center;
     text-rendering: optimizeSpeed;
@@ -111,7 +111,7 @@ section.marketing-info {
       @include transform(translateY(21px));
     }
 
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: $marketing-width) {
       font-size: 2.3rem;
       em {
         font-size: 3.3rem;
@@ -334,10 +334,10 @@ section.marketing-info {
   footer {
     border-top: 1px solid #eee;
     @include clearfix;
-    padding: 40px 30px 60px;
+    padding: 40px 0 60px 30px;
     position: relative;
 
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: $marketing-width) {
       padding: 40px 0 50px;
     }
 
