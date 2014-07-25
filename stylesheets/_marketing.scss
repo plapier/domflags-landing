@@ -331,6 +331,12 @@ section.marketing-info {
     text-align: center;
   }
 
+  .github {
+    font-family: $header-font-family;
+    margin-bottom: 2em;
+    text-align: center;
+  }
+
   footer {
     border-top: 1px solid #eee;
     @include clearfix;
@@ -431,3 +437,4 @@ section.marketing-info {
     }
   }
 }
+
