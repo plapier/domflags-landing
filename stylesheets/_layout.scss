@@ -14,6 +14,7 @@ body, html {
   position: fixed;
   right: 0;
   top: 0;
+  will-change: transform;
 
   @media screen and (max-width: 500px) {
     background: url('../images/bg-mobile.jpg') no-repeat;
